@@ -68,6 +68,8 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
             }
 
         });
+
+        // In this method we will receive and display the distances between users on the recyclerView
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
         reference.addValueEventListener(new ValueEventListener() {
