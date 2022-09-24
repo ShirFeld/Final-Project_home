@@ -73,13 +73,13 @@ public class ProfileFragment extends Fragment {
     static String currentChildren;
     static String currentWhyAreYouHere;
 
+    boolean flag =false;
     // GPS
     static String myCountry;
     static String myStreet;
     Button btn_take_by_gps;
 
 
-    String children;
     DatabaseReference reference;
     FirebaseUser user;
     EditText userName, age,email,preferExit , city;
@@ -147,12 +147,18 @@ public class ProfileFragment extends Fragment {
 
 
 
+
         //GPS
         btn_take_by_gps = (Button) view.findViewById(R.id.btn_take_by_gps);
         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION }, 123); // request permissions for location
         btn_take_by_gps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+
+
                 GPStracker g = new GPStracker(getContext()); //create a tracker
                 Location l = g.getLocation(); // get the coordinates (latitude , longitude)
                 if(l != null){
@@ -171,15 +177,16 @@ public class ProfileFragment extends Fragment {
                             String newCity = myCountry;
                             if(!currentCity.equals(newCity))
                                 reference.child("city").setValue(newCity);
-
                             // ih the db the type of those values is String so we convert them from double to String
                             reference.child("latitude").setValue( String.valueOf(lat));
                             reference.child("longitude").setValue( String.valueOf(lon));
+
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
+                userName.setText(userName.getText().toString());
             }
         });
 
@@ -216,7 +223,7 @@ public class ProfileFragment extends Fragment {
                     currentWhyAreYouHere = user.getWhyAreYouHere();
 
 
-                    if (user.getHaveChildren() == null){
+                    if (user.getHaveChildren().equals("")){
                         r1.setChecked(false);
                         r2.setChecked(false);
                     }
@@ -243,17 +250,14 @@ public class ProfileFragment extends Fragment {
                         public void onCheckedChanged(RadioGroup group, int checkedId) {
                             switch (checkedId){
                                 case R.id.yesChildren:
-                                    children = "Yes";
                                     user.setHaveChildren("Yes");
                                     break;
 
                                 case R.id.noChildren:
-                                    children = "No";
                                     user.setHaveChildren("No");
                                     break;
 
                                 default:
-                                    children = null;
                                     user.setHaveChildren("");
                                     break;
                             }
@@ -293,7 +297,8 @@ public class ProfileFragment extends Fragment {
                 String newStatus = status.getText().toString();
                 String newMovie = moviesCategory.getText().toString();
                 String newExit = preferExit.getText().toString();
-                String newChildren = children;
+
+
                 String newWhyAreYouHere = whyAreYouHere.getText().toString();
 
                 // if the details were changed do the second line
@@ -327,16 +332,23 @@ public class ProfileFragment extends Fragment {
                 if(!currentPreferExit.equals(newExit))
                     reference.child("preferExit").setValue(newExit);
 
-                if (currentChildren != null){
-                    if (!currentChildren.equals(newChildren) )
-                        reference.child("haveChildren").setValue(newChildren);
+
+                if (r1.isChecked()){
+                    reference.child("haveChildren").setValue("Yes");
+                    flag = true;
                 }
-                else currentChildren =" ";
+                else if(r2.isChecked()){
+                    reference.child("haveChildren").setValue("No");
+                    flag = true;
+                }
+
+                else
+                    reference.child("haveChildren").setValue("");
 
 
                 if(currentName.equals(newName) && currentAge.equals(newAge)  && currentCity.equals(newCity) && currentSex.equals(newGender) && currentAnimal.equals(newAnimal)
-                        && currentStatus.equals(newStatus) && currentFavoriteMoviesCategory.equals(newMovie) && currentPreferExit.equals(newExit) && currentChildren.equals(newChildren)
-                        && currentWhyAreYouHere.equals(newWhyAreYouHere)){
+                        && currentStatus.equals(newStatus) && currentFavoriteMoviesCategory.equals(newMovie) && currentPreferExit.equals(newExit)
+                       && currentWhyAreYouHere.equals(newWhyAreYouHere) && flag == false){
                     Toast.makeText(getActivity(), "Data has not updated", Toast.LENGTH_SHORT).show();
                 }
                 else {

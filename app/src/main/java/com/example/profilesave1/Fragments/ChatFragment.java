@@ -184,7 +184,7 @@ public class ChatFragment extends Fragment {
 
     private void getMessages() {
 
-        FirebaseDatabase.getInstance().getReference("messages/").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("messages").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
