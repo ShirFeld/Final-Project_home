@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/recview">
+
+    <fragment
+        android:id="@+id/recview"
+        android:name="com.example.profilesave1.Fragments.recfragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_recfragment" />
+    <fragment
+        android:id="@+id/menuProfile"
+        android:name="com.example.profilesave1.Fragments.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/menuAboutUs"
+        android:name="com.example.profilesave1.Fragments.AboutUsFragment"
+        android:label="About us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/menuChat"
+        android:name="com.example.profilesave1.Fragments.ChatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/menuLogOut"
+        android:name="com.example.profilesave1.Fragments.LogOutFragment"
+        android:label="Log out"
+        tools:layout="@layout/fragment_log_out" />
+    <!--    <fragment-->
+    <!--        android:id="@+id/menuSearch"-->
+    <!--        android:name="com.example.profilesave1.Fragments.SearchFragment"-->
+    <!--        android:label="Search"-->
+    <!--        tools:layout="@layout/fragment_search" />-->
+    <fragment
+        android:id="@+id/menuSettings"
+        android:name="com.example.profilesave1.Fragments.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/menudetales"
+        android:name="com.example.profilesave1.Fragments.descfragment"
+        android:label="detales"
+        tools:layout="@layout/fragment_descfragment" />
+</navigation>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.descfragment"
+    android:background="@color/colorBgColor">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/colorPrimary"
+                >
+
+            </ImageView>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagegholder"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="-125dp"
+                android:src="@color/common_google_signin_btn_text_dark_disabled" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Nameholder1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/name2"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    />
+                <TextView
+                    android:id="@+id/nameholder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Candidate name"
+                    android:layout_margin="10dp"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/agePlace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/age"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    />
+                <TextView
+                    android:id="@+id/ageholder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Candidate Age"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/cityholder1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="City:"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/cityholder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Candidate city"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/typeRelationship1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Relationship type: "
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/typeRelationshipHolder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Candidate relationship"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/animalsHolder1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/have_animals"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/animalsHolder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Candidate animals"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/l1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:weightSum="2">
+
+
+                <Button
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/montserrat_alternates_semibold"
+                    android:text="@string/back"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/montserrat_alternates_semibold"
+                    android:text="@string/Chat"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </ScrollView>
+</FrameLayout>

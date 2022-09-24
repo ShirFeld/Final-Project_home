@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.ProfileFragment"
+    android:background="@color/colorBgColor">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@color/colorPrimary">
+
+                </TextView>
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image_prof"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="-125dp"
+                    android:src="@drawable/ic_profile"
+                    android:clickable="true"
+                    />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="-70dp"
+                    android:src="@drawable/ic_camera24"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25sp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/prof_name_layout_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:hint="Full Name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconDrawable="@drawable/ic_user"
+                    app:helperText="Char"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+                    app:endIconMode="clear_text"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/prof_name_editText_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:maxLength="21"
+                        android:inputType="text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25sp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/prof_old_layout_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:hint="Age"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconDrawable="@drawable/ic_age"
+                    app:helperText="Char"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="2"
+                    app:endIconMode="clear_text"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/prof_old_editText_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:maxLength="4"
+                        android:inputType="number"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25sp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/city"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:hint="@string/city"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconDrawable="@drawable/ic_baseline_home_24"
+                    app:helperText="Char"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
+                    app:endIconMode="clear_text"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/city_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:maxLength="15"
+                        android:inputType="text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15sp"
+                android:gravity="center_horizontal"
+                >
+                <Button
+                    android:id="@+id/btn_take_by_gps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:gravity="center"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:text="Take city by GPS"
+                    android:textSize="10dp"
+                    android:fontFamily="@font/montserrat_alternates_semibold"
+                    />
+            </LinearLayout>
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:layout_marginTop="25sp">-->
+
+            <!--                <com.google.android.material.textfield.TextInputLayout-->
+            <!--                    android:id="@+id/prof_email_layout_id"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_marginStart="40sp"-->
+            <!--                    android:layout_marginEnd="40sp"-->
+            <!--                    android:hint="Email"-->
+            <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+            <!--                    app:startIconDrawable="@drawable/ic_mail"-->
+            <!--                    app:helperText="Char"-->
+            <!--                    app:counterEnabled="true"-->
+            <!--                    app:counterMaxLength="25"-->
+            <!--                    app:endIconMode="clear_text"-->
+            <!--                    >-->
+
+            <!--                    <com.google.android.material.textfield.TextInputEditText-->
+            <!--                        android:id="@+id/prof_email_editText_id"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:textColor="#000"-->
+            <!--                        android:textSize="15sp"-->
+            <!--                        android:textStyle="bold"-->
+            <!--                        android:maxLength="35"-->
+            <!--                        android:inputType="textWebEmailAddress"-->
+            <!--                        />-->
+
+            <!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+
+            <!--            </LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25sp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/preferExit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:hint="@string/favorite_place"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconDrawable="@drawable/ic_baseline_blur_off_24"
+                    app:helperText="Char"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="25"
+                    app:endIconMode="clear_text"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/preferExit_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:maxLength="35"
+                        android:inputType="textWebEmailAddress"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25sp"
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:hint="Gender"
+                    app:startIconDrawable="@drawable/ic_sex"
+                    >
+
+                    <AutoCompleteTextView
+                        android:id="@+id/auto_Complete_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="none"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25sp"
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:hint="Type of relationship you looking"
+                    app:startIconDrawable="@drawable/ic_baseline_connect_without_contact_24"
+                    >
+
+                    <AutoCompleteTextView
+                        android:id="@+id/whyAreYouHere"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="none"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25sp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:hint="Have Animals?"
+                    app:startIconDrawable="@drawable/ic_pets_24"
+                    >
+
+                    <AutoCompleteTextView
+                        android:id="@+id/auto_Complete_TextView_animal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="#000"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:maxLength="20"
+                        android:inputType="none"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25sp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:hint="favorite Movies Category"
+                    app:startIconDrawable="@drawable/ic_baseline_child_care_24"
+                    >
+
+                    <AutoCompleteTextView
+                        android:id="@+id/auto_Complete_TextView_favoriteMoviesCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="#000"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:maxLength="20"
+                        android:inputType="none"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25sp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:hint="Status"
+                    app:startIconDrawable="@drawable/ic_baseline_connect_without_contact_24"
+                    >
+
+                    <AutoCompleteTextView
+                        android:id="@+id/auto_Complete_TextView_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="#000"
+                        android:layout_weight="1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:maxLength="20"
+                        android:inputType="none"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="25sp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:layout_marginStart="40sp"
+                    android:layout_marginEnd="40sp"
+                    android:textStyle="bold"
+                    android:text="Do you have children?"/>
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/yesChildren"
+                        android:layout_marginStart="40sp"
+                        android:layout_marginEnd="10sp"
+                        android:checked="false"
+                        android:text="Yes"
+                        />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40sp"
+                        android:layout_marginEnd="10sp"
+                        android:id="@+id/noChildren"
+                        android:checked="false"
+                        android:text="No"
+                        />
+                </RadioGroup>
+
+
+
+
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/btn_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50sp"
+                android:layout_marginBottom="50sp"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/montserrat_alternates_semibold"
+                android:text="@string/update"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</FrameLayout>

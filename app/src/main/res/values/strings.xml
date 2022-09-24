@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">profileSave1</string>
+
+    <string name="Questions">User preferences: </string>
+    <string name="name">Your full name </string>
+    <string name="email_edit_text0">answer:</string>
+    <string name="Done">Save</string>
+    <string name="name_text"> </string>
+    <string name="full_name">Full Name:</string>
+    <string name="hello">Welcome to us at </string>
+
+    <string name="gender">Male or female? </string>
+    <string name="app_name_after">Better Together</string>
+    <string name="text_bottom">Enter to your Account or Register new one</string>
+    <string name="btn_sign_in">SIGN IN </string>
+    <string name="btn_registry">REGISTER</string>
+
+
+    <string name="phoneField">*Telephone number </string>
+    <string name="details_fullName">Full Name:</string>
+    <string name="details_age">Age:</string>
+    <string name="details_email">Email:</string>
+    <string name="details_sex">Sex:</string>
+    <string name="details_haveAnimals">If you have animals:</string>
+    <string name="details_haveChildren">Ih you have children:</string>
+    <string name="details_maritalStatus">Material status:</string>
+    <string name="details_favoriteMoviesCategory">Your favorite film:</string>
+    <string name="details_NightOrMorningPerson">Night or Morning person:</string>
+    <string name="details_AndroidOrIphone">Android or Iphone:</string>
+    <string name="details_preferExit">Prefer to exit:</string>
+    <string name="profile">Profile</string>
+    <string name="chat">Chat</string>
+    <string name="search">Search</string>
+    <string name="about_us">About us</string>
+    <string name="settings">Settings</string>
+    <string name="headername">headerName</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="log_out">Log out</string>
+    <string name="psik">,</string>
+    <string name="headerAge">Age</string>
+    <string name="update">Update</string>
+    <string name="verify">verify</string>
+    <string name="male">Male</string>
+    <string name="Choose"> Choose</string>
+    <string name="Upload">Upload</string>
+    <string name="who">Who are we?</string>
+    <string name="about">
+    We studied software engineering at Ariel University and this app is our final project.
+    Following the corona virus, we thought about the fact that many of us felt alone.
+    That is why we thought of creating an app that would connect people!
+    Not necessarily in a romantic way, but any relationship you want.
+    That way we will not feel alone and will always find a friend - even for a walk with the dog or looking for a dance class partner.
+    </string>
+    <string name="age">Age: </string>
+    <string name="name2">Name: </string>
+    <string name="have_animals">Have animals:</string>
+    <string name="favorite_place">Favorite place</string>
+    <string name="city">City </string>
+    <string name="back">Back</string>
+    <string name="Chat">Chat</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="Try_to_sign_in">After changing password press here</string>
+    <string name="RESET_PASSWORD">RESET PASSWORD</string>
+    <string name="deletebutton">Delete your account:</string>
+    <string name="changepassword">change your password:</string>
+    <string name="changeEmail">change your email:</string>
+    <string name="button">CHANGE email</string>
+    <string name="pas_button">CHANGE password</string>
+    <string name="del_button">DELETE account</string>
+    <string-array name="Gender">
+        <item>All</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+
+</resources>
