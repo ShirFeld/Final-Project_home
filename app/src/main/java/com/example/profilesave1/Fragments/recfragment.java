@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Spinner;
 
@@ -62,6 +63,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
     static int counter =0;
     public static ArrayList<User> listU;
     ProgressDialog mProgressDialog;
+    private ProgressBar progressBar;
 
 
     static String text ="";
@@ -97,7 +99,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                              Bundle savedInstanceState) {
 
         View view=inflater.inflate(R.layout.fragment_recfragment, container, false);
-
+        progressBar = view.findViewById(R.id.progreeBar);
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(getContext());
             mProgressDialog.setMessage("Please wait ");
@@ -145,6 +147,11 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         FirebaseDatabase.getInstance().getReference().child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                progressBar.setVisibility(View.GONE);
+                filter.setVisibility(View.VISIBLE);
+                recview.setVisibility(View.VISIBLE);
+
+
                 List<User> list = new ArrayList<>();
                 for(DataSnapshot ds : snapshot.getChildren()) {
                     String uuid = ds.getKey();

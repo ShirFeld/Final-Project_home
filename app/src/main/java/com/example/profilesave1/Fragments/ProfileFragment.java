@@ -15,6 +15,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -78,7 +79,6 @@ public class ProfileFragment extends Fragment {
     static String myCountry;
     static String myStreet;
     Button btn_take_by_gps;
-
 
     DatabaseReference reference;
     FirebaseUser user;
@@ -144,7 +144,6 @@ public class ProfileFragment extends Fragment {
         radioGroup = (RadioGroup)view.findViewById(R.id.radioGroup);
         r1 = view.findViewById(R.id.yesChildren);
         r2 = view.findViewById(R.id.noChildren);
-
 
 
 

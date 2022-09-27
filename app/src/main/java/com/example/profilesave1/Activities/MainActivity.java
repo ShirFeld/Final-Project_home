@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                     addDetails();
                 }
                 else
-                    Snackbar.make(findViewById(R.id.google_btn),"This user is alredy sign in",Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.google_btn),"This user is already sign in.Press on Sign in button",Snackbar.LENGTH_LONG).show();
 
 
             }
@@ -256,43 +256,6 @@ public class MainActivity extends AppCompatActivity {
                     });
 
 
-
-//
-//                    addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            if (task.isSuccessful()){
-//                                User user = new User(name, email,city, phone, sex, age, haveAnimals, haveChildren, maritalStatus, favoriteMoviesCategory, whyAreYouHere, preferExit,latitude, longitude, UDurl);
-//                                users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-//                                        .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                    @Override
-//                                    public void onSuccess(Void unused) {
-//                                        Toast.makeText(MainActivity.this, "Login Successful , change your password on the settings page", Toast.LENGTH_SHORT).show();
-//                                        startActivity(new Intent(MainActivity.this, FirstPageActivity.class));
-//                                    }
-//                                });
-////                            progressDialog.dismiss();
-//                            }
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            progressDialog.dismiss();
-//                            //Toast.makeText(MainActivity.this, "Something went wrong..", Toast.LENGTH_SHORT).show();
-////                            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-////                            System.out.println(e.getMessage());
-//                            User user = new User(name, email,city, phone, sex, age, haveAnimals, haveChildren, maritalStatus, favoriteMoviesCategory, whyAreYouHere, preferExit,latitude, longitude, UDurl);
-//                            users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-//                                    .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                @Override
-//                                public void onSuccess(Void unused) {
-//                                    Toast.makeText(MainActivity.this, "Login Successful , change your password on the settings page", Toast.LENGTH_SHORT).show();
-//                                    startActivity(new Intent(MainActivity.this, FirstPageActivity.class));
-//                                }
-//                            });
-//                        }
-//
-//            });
         }
 
     }

@@ -9,10 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.profilesave1.Activities.MainActivity;
 import com.example.profilesave1.R;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInApi;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.concurrent.Executor;
+
+import io.reactivex.rxjava3.annotations.NonNull;
 
 
 public class LogOutFragment extends Fragment {
@@ -24,7 +36,7 @@ public class LogOutFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private FirebaseAuth mFirebaseAuth;
-    private Button btn;
+    private Button btn_logout;
 
     private String mParam1;
     private String mParam2;
@@ -50,7 +62,7 @@ public class LogOutFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        mFirebaseAuth = FirebaseAuth.getInstance();
+
 
     }
 
@@ -60,10 +72,13 @@ public class LogOutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.fragment_log_out, container, false);
-       Button btn_logout = (Button)view.findViewById(R.id.log_out_btn);
+       btn_logout = (Button)view.findViewById(R.id.log_out_btn);
+       mFirebaseAuth = FirebaseAuth.getInstance();
 
-       // When the user will press the log=out button he will transfer to the main page
+
+       // When the user will press the logout button he will transfer to the main page
        btn_logout.setOnClickListener(new View.OnClickListener() {
+
            @Override
            public void onClick(View v) {
                mFirebaseAuth.signOut();
@@ -74,6 +89,7 @@ public class LogOutFragment extends Fragment {
 
        return view;
     }
+
 
 
 
