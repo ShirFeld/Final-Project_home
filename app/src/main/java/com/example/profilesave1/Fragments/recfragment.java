@@ -123,6 +123,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
         myfilter = view.findViewById(R.id.searchBar);
         filter = view.findViewById(R.id.btn_filter);
+        LinearLayout linearLayout = view.findViewById(R.id.filter);
         filter.setOnClickListener(new View.OnClickListener() {
             // will close and open the filter button
             @Override
@@ -148,7 +149,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 progressBar.setVisibility(View.GONE);
-                filter.setVisibility(View.VISIBLE);
+                linearLayout.setVisibility(View.VISIBLE);
                 recview.setVisibility(View.VISIBLE);
 
 
