@@ -155,7 +155,9 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
+                System.out.println(userName.getText().toString() + " user name");
+                userName.setText(userName.getText().toString());
+                System.out.println(userName.getText().toString() + " user name");
 
 
 
@@ -223,6 +225,7 @@ public class ProfileFragment extends Fragment {
                     currentWhyAreYouHere = user.getWhyAreYouHere();
 
 
+                    // Displays the radioGroup on the screen
                     if (user.getHaveChildren().equals("")){
                         r1.setChecked(false);
                         r2.setChecked(false);
