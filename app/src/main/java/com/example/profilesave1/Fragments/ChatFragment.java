@@ -65,7 +65,7 @@ public class ChatFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
 
     String myImageUrl;
-    String  name =" ";
+
     public ChatFragment() {
         // Required empty public constructor
     }
@@ -149,6 +149,15 @@ public class ChatFragment extends Fragment {
 
     // here the user can search for a person
     private void getUsers(String s) {
+
+        // All names are saved in the database with the first letter capitalized.
+        // So the search will be done when the first letter is capitalized even if the user enters a lowercase .
+
+        if (!s.equals("")){
+            String name1 = s.substring(0, 1).toUpperCase(); // the first letter on uppercase
+            s = name1 + s.substring(1);
+        }
+
 
         users.clear();
         FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("name").startAt(s).endAt(s+"\uf8ff").addValueEventListener(new ValueEventListener() {
