@@ -44,7 +44,7 @@ public class PhoneActivity extends AppCompatActivity {
     Button verify_btn , otp_btn;
     FirebaseAuth mAuth;
 
-
+    String name2 = "";
     FirebaseDatabase db;
     DatabaseReference users;
 
@@ -173,7 +173,7 @@ public class PhoneActivity extends AppCompatActivity {
     private void addDetails(){
         final EditText phone2 = phone;
         final EditText email2 = email;
-        final EditText name2 = name;
+        final EditText name0 = name;
         final String password = phone.getText().toString();
         final String sex = "";
         final String age = "";
@@ -194,7 +194,13 @@ public class PhoneActivity extends AppCompatActivity {
                 addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        User user = new User(name2.getText().toString(),email2.getText().toString(),phone2.getText().toString(),city,sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,whyAreYouHere,preferExit,latitude,longitude,UDurl);
+
+                        if (name != null) {
+                            String name1 = name0.getText().toString().substring(0, 1).toUpperCase(); // the first letter on uppercase
+                            name2 = name1 + name0.getText().toString().substring(1);
+                        }
+
+                        User user = new User(name2,email2.getText().toString(),phone2.getText().toString(),city,sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,whyAreYouHere,preferExit,latitude,longitude,UDurl);
                         users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

@@ -100,6 +100,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
         View view=inflater.inflate(R.layout.fragment_recfragment, container, false);
         progressBar = view.findViewById(R.id.progreeBar);
+
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(getContext());
             mProgressDialog.setMessage("Please wait ");
@@ -124,6 +125,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         myfilter = view.findViewById(R.id.searchBar);
         filter = view.findViewById(R.id.btn_filter);
         LinearLayout linearLayout = view.findViewById(R.id.filter);
+
         filter.setOnClickListener(new View.OnClickListener() {
             // will close and open the filter button
             @Override

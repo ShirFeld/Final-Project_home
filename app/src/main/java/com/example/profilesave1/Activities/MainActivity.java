@@ -38,6 +38,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     /*
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     String uid ="";
     String google_email ="";
-
+    String name2 ="";
 
     //Sign in with google
     private GoogleSignInClient mGoogleSignInClient;
@@ -242,7 +244,13 @@ public class MainActivity extends AppCompatActivity {
                     addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            User user = new User(name, email,city, phone, sex, age, haveAnimals, haveChildren, maritalStatus, favoriteMoviesCategory, whyAreYouHere, preferExit,latitude, longitude, UDurl);
+
+                            if (name != null){
+                                String name1 = name.substring(0, 1).toUpperCase(); // the first letter on uppercase
+                                name2 = name1 + name.substring(1);
+                            }
+
+                            User user = new User(name2, email,city, phone, sex, age, haveAnimals, haveChildren, maritalStatus, favoriteMoviesCategory, whyAreYouHere, preferExit,latitude, longitude, UDurl);
                             users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -330,6 +338,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Button of register
     private void showRegisterWindow() {
+
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Registration");
         dialog.setMessage("Fill the form");
@@ -381,12 +390,20 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(root,"Phone must be only 10 numbers",Snackbar.LENGTH_SHORT).show();
                     return;
                 }
+
                 //register user if pass authentication
                 mAuth.createUserWithEmailAndPassword(email.getText().toString() , password.getText().toString()).
                         addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                User user = new User(name.getText().toString(),email.getText().toString(),city,phone.getText().toString(),sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,whyAreYouHere,preferExit,latitude,longitude,UDurl);
+
+                                if (name != null){
+                                    String name1 = name.getText().toString().substring(0, 1).toUpperCase(); // the first letter on uppercase
+                                    name2 = name1 + name.getText().toString().substring(1);
+                                }
+
+
+                                User user = new User(name2,email.getText().toString(),city,phone.getText().toString(),sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,whyAreYouHere,preferExit,latitude,longitude,UDurl);
                                 users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                         .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override

@@ -35,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class ChatFragment extends Fragment {
@@ -145,8 +146,10 @@ public class ChatFragment extends Fragment {
         return view;
     }
 
+
     // here the user can search for a person
     private void getUsers(String s) {
+
         users.clear();
         FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("name").startAt(s).endAt(s+"\uf8ff").addValueEventListener(new ValueEventListener() {
             @Override
