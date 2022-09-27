@@ -1,5 +1,6 @@
 package com.example.profilesave1.Fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -60,6 +61,8 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
     LinearLayout myfilter;
     static int counter =0;
     public static ArrayList<User> listU;
+    ProgressDialog mProgressDialog;
+
 
     static String text ="";
     static String ageStart ="";
@@ -95,7 +98,12 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
         View view=inflater.inflate(R.layout.fragment_recfragment, container, false);
 
-
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(getContext());
+            mProgressDialog.setMessage("Please wait ");
+            mProgressDialog.setIndeterminate(true);
+        }
+        mProgressDialog.show();
 
         Spinner spinner = view.findViewById(R.id.spinnerGenderFilter);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getContext(),R.array.Gender, R.layout.spinner_item);
@@ -134,13 +142,11 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
 
         // gives us all the users except of getCurrentUser()
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference electricianRef = rootRef.child("Users");
-        ValueEventListener valueEventListener = new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Users").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<User> list = new ArrayList<>();
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                for(DataSnapshot ds : snapshot.getChildren()) {
                     String uuid = ds.getKey();
                     if (!mAuth.getCurrentUser().getUid().equals(uuid)){
                         list.add(ds.getValue(User.class));
@@ -192,12 +198,18 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                 recview.setHasFixedSize(true);
                 mAdapter = new MyAdapter2(listU);
                 recview.setAdapter(mAdapter);
+                if (mProgressDialog != null && mProgressDialog.isShowing()) {
+                    mProgressDialog.dismiss();
+                }
 
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
-        };
-        electricianRef.addListenerForSingleValueEvent(valueEventListener);
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         return view;
     }
 

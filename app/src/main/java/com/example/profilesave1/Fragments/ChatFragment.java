@@ -126,8 +126,8 @@ public class ChatFragment extends Fragment {
             }
         });
 
-        // pass the information to the message
 
+        // pass the information to the message
         onUserClickListener = new UsersAdapter.OnUserClickListener() {
             @Override
             public void onUserClicked(int position) { // user details are pass to message activity
