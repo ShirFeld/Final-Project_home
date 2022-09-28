@@ -63,6 +63,11 @@
     <string name="button">CHANGE email</string>
     <string name="pas_button">CHANGE password</string>
     <string name="del_button">DELETE account</string>
+    <string name="Have_children">Have children:</string>
+    <string name="Status">Status:</string>
+    <string name="sex">Sex:</string>
+    <string name="Movie">Movie:</string>
+    <string name="Purpose">Purpose:</string>
     <string-array name="Gender">
         <item>All</item>
         <item>Male</item>

@@ -1,6 +1,5 @@
 package com.example.profilesave1.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -14,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-
-import com.example.profilesave1.Fragments.ChatFragment;
 import com.example.profilesave1.Models.Message;
 import com.example.profilesave1.Models.User;
 import com.example.profilesave1.R;

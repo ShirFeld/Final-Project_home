@@ -35,7 +35,8 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity=(AppCompatActivity)view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new descfragment(model.getCity(),model.getName(),model.getUrl(),model.getAge(),model.getWhyAreYouHere(),model.getHaveAnimals())).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new descfragment(model.getCity(),model.getName(),model.getUrl(),model.getAge(),model.getWhyAreYouHere(),model.getHaveAnimals() , model.getSex(), model.getMaritalStatus()
+                , model.getHaveChildren(),model.getFavoriteMoviesCategory())).addToBackStack(null).commit();
             }
 
         });

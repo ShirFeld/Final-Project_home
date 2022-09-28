@@ -14,7 +14,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -141,7 +140,6 @@ public class ProfileFragment extends Fragment {
         radioGroup = (RadioGroup)view.findViewById(R.id.radioGroup);
         r1 = view.findViewById(R.id.yesChildren);
         r2 = view.findViewById(R.id.noChildren);
-
 
         //GPS
         btn_take_by_gps = (Button) view.findViewById(R.id.btn_take_by_gps);

@@ -2,7 +2,7 @@ package com.example.profilesave1.Models;
 
 public class model
 {
-    String city,name,Url,age, whyAreYouHere,haveAnimals;
+    String city,name,Url,age, whyAreYouHere,haveAnimals,sex , maritalStatus , haveChildren , favoriteMoviesCategory;
 
     public model() {
     }
@@ -12,15 +12,43 @@ public class model
         this.age=age;
     }
 
-    public model(String city, String name, String Url,String age,String whyAreYouHere,String haveAnimals) {
+    public model(String city, String name, String Url,String age,String whyAreYouHere,String haveAnimals ,  String sex , String maritalStatus , String haveChildren, String favoriteMoviesCategory ) {
         this.city = city;
         this.name = name;
         this.Url = Url;
         this.age=age;
         this.whyAreYouHere = whyAreYouHere;
         this.haveAnimals = haveAnimals;
+        this.sex = sex;
+        this.maritalStatus = maritalStatus;
+        this.haveChildren = haveChildren;
+        this.favoriteMoviesCategory = favoriteMoviesCategory;
     }
 
+    public String getSex() {
+        return sex;
+    }
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+    public String getMaritalStatus() {
+        return maritalStatus;
+    }
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+    public String getHaveChildren() {
+        return haveChildren;
+    }
+    public void setHaveChildren(String haveChildren) {
+        this.haveChildren = haveChildren;
+    }
+    public String getFavoriteMoviesCategory() {
+        return favoriteMoviesCategory;
+    }
+    public void setFavoriteMoviesCategory(String favoriteMoviesCategory) {
+        this.favoriteMoviesCategory = favoriteMoviesCategory;
+    }
     public String getHaveAnimals() {
         return haveAnimals;
     }

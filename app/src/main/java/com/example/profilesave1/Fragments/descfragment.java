@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.example.profilesave1.Activities.MessageActivity;
@@ -46,18 +45,22 @@ public class descfragment extends Fragment {
     private ArrayList<User> users2 ;
     String myImageUrl;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    String city, name, Url,age ,relationship, haveAnimals;
+    String city, name, Url,age ,relationship, haveAnimals , sex , maritalStatus , haveChildren , favoriteMoviesCategory;
 
 
     public descfragment() {
     }
-    public descfragment(String city, String name, String Url, String age, String relationship, String haveAnimals) {
+    public descfragment(String city, String name, String Url, String age, String relationship, String haveAnimals , String sex , String maritalStatus , String haveChildren, String favoriteMoviesCategory ) {
         this.city=city;
         this.name = name;
         this.Url=Url;
         this.age = age;
         this.relationship = relationship;
         this.haveAnimals=haveAnimals;
+        this.sex = sex;
+        this.maritalStatus = maritalStatus;
+        this.haveChildren = haveChildren;
+        this.favoriteMoviesCategory = favoriteMoviesCategory;
     }
 
     public static descfragment newInstance(String param1, String param2) {
@@ -93,6 +96,12 @@ public class descfragment extends Fragment {
         TextView nameholder=view.findViewById(R.id.nameholder);
         TextView relationshipHolder=view.findViewById(R.id.typeRelationshipHolder);
         TextView haveAnimalsholder=view.findViewById(R.id.animalsHolder);
+        TextView sexholder=view.findViewById(R.id.sexholder);
+        TextView maritalStatusholder=view.findViewById(R.id.statusholder);
+        TextView haveChildrenholder=view.findViewById(R.id.childrenholder);
+        TextView favoriteMoviesCategoryholder=view.findViewById(R.id.movieholder);
+
+
 
         Button btn_back = view.findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +141,11 @@ public class descfragment extends Fragment {
         TextView cityholder1= view.findViewById(R.id.cityholder1);
         TextView typeRelationship1= view.findViewById(R.id.typeRelationship1);
         TextView Nameholder1= view.findViewById(R.id.Nameholder1);
+        TextView Sexholder1= view.findViewById(R.id.Sexholder1);
+        TextView MaritalStatusholder1= view.findViewById(R.id.Statusholder1);
+        TextView HaveChildrenholder1= view.findViewById(R.id.Childrenholder1);
+        TextView FavoriteMoviesCategoryholder1= view.findViewById(R.id.Moviesholder1);
+
 
         // show user's data
         cityholder.setText(city);
@@ -140,6 +154,11 @@ public class descfragment extends Fragment {
         Glide.with(getContext()).load(Url).into(imageholder); // url
         relationshipHolder.setText(relationship);
         haveAnimalsholder.setText(haveAnimals);
+        sexholder.setText(sex);
+        maritalStatusholder.setText(maritalStatus);
+        haveChildrenholder.setText(haveChildren);
+        favoriteMoviesCategoryholder.setText(favoriteMoviesCategory);
+
 
         // if there are no data in the fields so we dont want to show the the titles and the context
         if(haveAnimalsholder.getText().toString().equals("")){
@@ -161,6 +180,25 @@ public class descfragment extends Fragment {
         if(nameholder.getText().toString().equals("")){
             nameholder.setVisibility(View.GONE);
             Nameholder1.setVisibility(View.GONE);
+        }
+        if(favoriteMoviesCategoryholder.getText().toString().equals("")){
+            favoriteMoviesCategoryholder.setVisibility(View.GONE);
+            FavoriteMoviesCategoryholder1.setVisibility(View.GONE);
+        }
+
+        if(maritalStatusholder.getText().toString().equals("")){
+            maritalStatusholder.setVisibility(View.GONE);
+            MaritalStatusholder1.setVisibility(View.GONE);
+        }
+
+        if(sexholder.getText().toString().equals("")){
+            sexholder.setVisibility(View.GONE);
+            Sexholder1.setVisibility(View.GONE);
+        }
+
+        if(haveChildrenholder.getText().toString().equals("")){
+            haveChildrenholder.setVisibility(View.GONE);
+            HaveChildrenholder1.setVisibility(View.GONE);
         }
         return  view;
     }
