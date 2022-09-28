@@ -62,7 +62,6 @@ public class ProfileFragment extends Fragment {
     static String currentName;
     static String currentAnimal;
     static String currentAge;
-    static String currentEmail;
     static String currentCity;
     static String currentSex;
     static String currentStatus;
@@ -76,11 +75,21 @@ public class ProfileFragment extends Fragment {
     static String myCountry;
     static String myStreet;
     Button btn_take_by_gps;
-    static String userNameCurrent;
+    // if the user changes the data and click the GPS button
+    static String userNameTemp;
+    static String userAnimalTemp;
+    static String userAgeTemp;
+    static String userSexTemp;
+    static String userStatusTemp;
+    static String userFavoriteMoviesCategoryTemp;
+    static String userPreferExitTemp;
+    static String userChildrenTemp;
+    static String userWhyAreYouHereTemp;
+
 
     DatabaseReference reference;
     FirebaseUser user;
-    EditText userName, age,email,preferExit , city;
+    EditText userName, age, preferExit , city;
     ImageView imageView;
     RadioGroup radioGroup;
     RadioButton r1 , r2;
@@ -130,14 +139,13 @@ public class ProfileFragment extends Fragment {
         userName = view.findViewById(R.id.prof_name_editText_id);
         age = view.findViewById(R.id.prof_old_editText_id);
         city = view.findViewById(R.id.city_edit);
-        // email = view.findViewById(R.id.prof_email_editText_id);
         sex = view.findViewById(R.id.auto_Complete_TextView);
         animals = view.findViewById(R.id.auto_Complete_TextView_animal);
         whyAreYouHere = view.findViewById(R.id.whyAreYouHere);
         preferExit = view.findViewById(R.id.preferExit_edit);
         moviesCategory = view.findViewById(R.id.auto_Complete_TextView_favoriteMoviesCategory);
         status = view.findViewById(R.id.auto_Complete_TextView_status);
-        radioGroup = (RadioGroup)view.findViewById(R.id.radioGroup);
+        radioGroup = view.findViewById(R.id.radioGroup);
         r1 = view.findViewById(R.id.yesChildren);
         r2 = view.findViewById(R.id.noChildren);
 
@@ -147,7 +155,17 @@ public class ProfileFragment extends Fragment {
         btn_take_by_gps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userNameCurrent = userName.getText().toString();
+                // In these variables we will save what the user has entered
+                userNameTemp = userName.getText().toString();
+                userAnimalTemp = animals.getText().toString();
+                userAgeTemp = age.getText().toString();
+                userSexTemp = sex.getText().toString();
+                userStatusTemp = status.getText().toString();
+                userFavoriteMoviesCategoryTemp = moviesCategory.getText().toString();
+                userPreferExitTemp = preferExit.getText().toString();
+                userChildrenTemp = radioGroup.getContext().toString();
+                userWhyAreYouHereTemp = whyAreYouHere.getText().toString();
+
                 GPStracker g = new GPStracker(getContext()); //create a tracker
                 Location l = g.getLocation(); // get the coordinates (latitude , longitude)
                 if(l != null){
@@ -179,7 +197,28 @@ public class ProfileFragment extends Fragment {
                 new android.os.Handler().postDelayed(
                         new Runnable() {
                             public void run() {
-                                userName.setText(userNameCurrent);
+                                userName.setText(userNameTemp);
+                                animals.setText(userAnimalTemp);
+                                age.setText(userAgeTemp);
+                                sex.setText(userSexTemp);
+                                status.setText(userStatusTemp);
+                                moviesCategory.setText(userFavoriteMoviesCategoryTemp);
+                                preferExit.setText(userPreferExitTemp);
+                                whyAreYouHere.setText(userWhyAreYouHereTemp);
+
+                                if (userChildrenTemp.equals("Yes")){
+                                    r1.setChecked(true);
+                                    r2.setChecked(false);
+                                }
+                                else if (userChildrenTemp.equals("No")){
+                                    r1.setChecked(false);
+                                    r2.setChecked(true);
+                                }
+                                else if (userChildrenTemp.equals("")){
+                                    r1.setChecked(false);
+                                    r2.setChecked(false);
+                                }
+
                             }
                         }, 100);
             }
