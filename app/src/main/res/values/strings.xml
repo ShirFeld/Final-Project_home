@@ -68,6 +68,8 @@
     <string name="sex">Sex:</string>
     <string name="Movie">Movie:</string>
     <string name="Purpose">Purpose:</string>
+    <string name="Step_1">Step 1:</string>
+    <string name="Step_2">Step 2:</string>
     <string-array name="Gender">
         <item>All</item>
         <item>Male</item>
