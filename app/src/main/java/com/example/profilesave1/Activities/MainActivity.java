@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
 
-        phoneBtn.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, PhoneActivity.class);
@@ -89,13 +89,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Two buttons of signIn / register
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showRegisterWindow();
-            }
-        });
+        // button of signIn
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         btnSignIn = findViewById(R.id.btn_sign_in);
         btnRegister = findViewById(R.id.btn_registry);
         googleBtn = findViewById(R.id.google_btn);
-        phoneBtn = findViewById(R.id.phone_bt);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
         users = db.getReference("Users");
@@ -324,92 +317,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Button of register
-    private void showRegisterWindow() {
-
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle("Registration");
-        dialog.setMessage("Fill the form");
-        LayoutInflater inflater = LayoutInflater.from(this);
-        View registerWindow = inflater.inflate(R.layout.register_window,null);
-        dialog.setView(registerWindow);
-
-        final MaterialEditText email = registerWindow.findViewById(R.id.emailField);
-        final MaterialEditText password = registerWindow.findViewById(R.id.passwordField);
-        final MaterialEditText name = registerWindow.findViewById(R.id.nameField);
-        final MaterialEditText phone = registerWindow.findViewById(R.id.phoneField);
-        final String sex = "";
-        final String age = "";
-        final String city = "";
-        final String haveAnimals = "";
-        final String haveChildren = "";
-        final String maritalStatus = "";
-        final String favoriteMoviesCategory = "";
-        final String whyAreYouHere = "";
-        final String preferExit = "";
-        final String latitude = "";
-        final String longitude = "";
-        final String UDurl = "";
-
-
-
-        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                dialogInterface.dismiss();
-            }
-        });
-        dialog.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                if(TextUtils.isEmpty(email.getText().toString())){
-                    Snackbar.make(root,"Enter your email",Snackbar.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(name.getText().toString())){
-                    Snackbar.make(root,"Enter your name",Snackbar.LENGTH_SHORT).show();
-                    return;
-                }
-                if(password.getText().toString().length() <=5){
-                    Snackbar.make(root,"Your password must be more then 5 chars",Snackbar.LENGTH_SHORT).show();
-                    return;
-                }
-                if(phone.getText().toString().length() < 9 || phone.getText().toString().length() >10 ){
-                    Snackbar.make(root,"Phone must be only 10 numbers",Snackbar.LENGTH_SHORT).show();
-                    return;
-                }
-
-                //register user if pass authentication
-                mAuth.createUserWithEmailAndPassword(email.getText().toString() , password.getText().toString()).
-                        addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                            @Override
-                            public void onSuccess(AuthResult authResult) {
-
-                                if (name != null){
-                                    String name1 = name.getText().toString().substring(0, 1).toUpperCase(); // the first letter on uppercase
-                                    name2 = name1 + name.getText().toString().substring(1);
-                                }
-
-                                User user = new User(name2,email.getText().toString(),city,phone.getText().toString(),sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,
-                                        whyAreYouHere,preferExit,latitude,longitude,UDurl);
-                                users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                        .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Snackbar.make(root,"User has been registered",Snackbar.LENGTH_SHORT).show();
-                                        startActivity(new Intent(MainActivity.this,FirstPageActivity.class));
-                                        finish();
-                                    }
-                                });
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Snackbar.make(root,"User is already exists. " + e.getMessage(),Snackbar.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
-        dialog.show();
-    }
 }

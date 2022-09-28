@@ -86,16 +86,8 @@
         android:layout_centerHorizontal='true'
         android:layout_marginBottom="55dp"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="1">
 
-
-        <ImageView
-            android:id="@+id/phone_bt"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:src="@drawable/p3" />
 
         <ImageView
             android:id="@+id/google_btn"
