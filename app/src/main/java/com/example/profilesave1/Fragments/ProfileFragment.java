@@ -1,6 +1,5 @@
 package com.example.profilesave1.Fragments;
 
-
 import android.Manifest;
 import android.content.Intent;
 import android.location.Address;
@@ -41,7 +40,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-
 public class ProfileFragment extends Fragment {
 
     /*
@@ -79,6 +77,7 @@ public class ProfileFragment extends Fragment {
     static String myCountry;
     static String myStreet;
     Button btn_take_by_gps;
+    static String userNameCurrent;
 
     DatabaseReference reference;
     FirebaseUser user;
@@ -101,8 +100,6 @@ public class ProfileFragment extends Fragment {
 
     public ProfileFragment() {
     }
-
-
     public static ProfileFragment newInstance(String param1, String param2) {
         ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
@@ -111,7 +108,6 @@ public class ProfileFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +118,7 @@ public class ProfileFragment extends Fragment {
 
 
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -146,20 +143,13 @@ public class ProfileFragment extends Fragment {
         r2 = view.findViewById(R.id.noChildren);
 
 
-
         //GPS
         btn_take_by_gps = (Button) view.findViewById(R.id.btn_take_by_gps);
         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION }, 123); // request permissions for location
         btn_take_by_gps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                System.out.println(userName.getText().toString() + " user name");
-                userName.setText(userName.getText().toString());
-                System.out.println(userName.getText().toString() + " user name");
-
-
-
+                userNameCurrent = userName.getText().toString();
                 GPStracker g = new GPStracker(getContext()); //create a tracker
                 Location l = g.getLocation(); // get the coordinates (latitude , longitude)
                 if(l != null){
@@ -187,7 +177,13 @@ public class ProfileFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
-                userName.setText(userName.getText().toString());
+                // setTimeout()
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                userName.setText(userNameCurrent);
+                            }
+                        }, 100);
             }
         });
 
@@ -202,7 +198,6 @@ public class ProfileFragment extends Fragment {
                     //Glide - url
                     Glide.with(view.getContext()).load(user.getUrl()).into(imageView);
 
-
                     // this view , each one of the array will be of this type , the array
                     adapterGenderItems = new ArrayAdapter<String>(view.getContext(),R.layout.drop_down_item,genderItems);
                     adapterGenderItems_animals = new ArrayAdapter<String>(view.getContext(),R.layout.drop_down_item,animalsItems);
@@ -215,14 +210,12 @@ public class ProfileFragment extends Fragment {
                     currentAnimal = user.getHaveAnimals();
                     currentAge = user.getAge();
                     currentCity = user.getCity();
-                    // currentEmail = user.getEmail();
                     currentSex = user.getSex();
                     currentStatus = user.getMaritalStatus();
                     currentFavoriteMoviesCategory = user.getFavoriteMoviesCategory();
                     currentPreferExit = user.getPreferExit();
                     currentChildren = user.getHaveChildren();
                     currentWhyAreYouHere = user.getWhyAreYouHere();
-
 
                     // Displays the radioGroup on the screen
                     if (user.getHaveChildren().equals("")){
@@ -240,7 +233,6 @@ public class ProfileFragment extends Fragment {
 
                     city.setText(user.getCity());
                     age.setText(user.getAge());
-                    // email.setText(user.getEmail());
                     sex.setText(user.getSex());
                     whyAreYouHere.setText(user.getWhyAreYouHere());
                     animals.setText(user.getHaveAnimals());
@@ -272,15 +264,12 @@ public class ProfileFragment extends Fragment {
                     moviesCategory.setAdapter(adapterMoviesCategoryItems);
                     status.setAdapter(adapterStatusItems);
                     whyAreYouHere.setAdapter(adapterWhyAreYouHereItems);
-
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-
         });
 
 // ---------------------------------------------------
@@ -300,7 +289,6 @@ public class ProfileFragment extends Fragment {
                 String newMovie = moviesCategory.getText().toString();
                 String newExit = preferExit.getText().toString();
 
-
                 String newWhyAreYouHere = whyAreYouHere.getText().toString();
 
                 // if the details were changed do the second line
@@ -312,9 +300,6 @@ public class ProfileFragment extends Fragment {
 
                 if(!currentCity.equals(newCity))
                     reference.child("city").setValue(newCity);
-//
-//                if( !currentEmail.equals(newMail) )
-//                    reference.child("email").setValue(newMail);
 
                 if(!currentSex.equals(newGender))
                     reference.child("sex").setValue(newGender);
@@ -334,7 +319,6 @@ public class ProfileFragment extends Fragment {
                 if(!currentPreferExit.equals(newExit))
                     reference.child("preferExit").setValue(newExit);
 
-
                 if (r1.isChecked()){
                     reference.child("haveChildren").setValue("Yes");
                     flag = true;
@@ -343,36 +327,30 @@ public class ProfileFragment extends Fragment {
                     reference.child("haveChildren").setValue("No");
                     flag = true;
                 }
-
                 else
                     reference.child("haveChildren").setValue("");
 
-
                 if(currentName.equals(newName) && currentAge.equals(newAge)  && currentCity.equals(newCity) && currentSex.equals(newGender) && currentAnimal.equals(newAnimal)
                         && currentStatus.equals(newStatus) && currentFavoriteMoviesCategory.equals(newMovie) && currentPreferExit.equals(newExit)
-                       && currentWhyAreYouHere.equals(newWhyAreYouHere) && flag == false){
+                        && currentWhyAreYouHere.equals(newWhyAreYouHere) && flag == false){
                     Toast.makeText(getActivity(), "Data has not updated", Toast.LENGTH_SHORT).show();
                 }
-                else {
+                else
                     Toast.makeText(getActivity(), "Data was updated", Toast.LENGTH_SHORT).show();
-                }
 
-                if (!currentAnimal.equals(newAnimal)){
+                if (!currentAnimal.equals(newAnimal))
                     animals.setAdapter(none);
-                }
-                if (!currentSex.equals(newGender)){
+
+                if (!currentSex.equals(newGender))
                     sex.setAdapter(none);
-                }
 
 
 //                onStop();  --> not have to
-
             }
         });
         OnclickButtonListener();
         return view;
     }
-
 
     // when we press the pic so we will transfer to a new activity to upload the img
     public void OnclickButtonListener() {

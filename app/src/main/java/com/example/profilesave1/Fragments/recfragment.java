@@ -42,7 +42,6 @@ import java.util.List;
 
 public class recfragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-
     /*
        This fragment displays a list of users.
        There is a filter button that the user can activate on the list.
@@ -74,8 +73,8 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
 
     public recfragment() {
-
     }
+
     public static recfragment newInstance(String param1, String param2) {
         recfragment fragment = new recfragment();
         Bundle args = new Bundle();
@@ -145,7 +144,6 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         listU = new ArrayList<>();
         search_btn = view.findViewById(R.id.search_btn);
 
-
         // gives us all the users except of getCurrentUser()
         FirebaseDatabase.getInstance().getReference().child("Users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -153,7 +151,6 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                 progressBar.setVisibility(View.GONE);
                 linearLayout.setVisibility(View.VISIBLE);
                 recview.setVisibility(View.VISIBLE);
-
 
                 List<User> list = new ArrayList<>();
                 for(DataSnapshot ds : snapshot.getChildren()) {
@@ -211,19 +208,15 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                 if (mProgressDialog != null && mProgressDialog.isShowing()) {
                     mProgressDialog.dismiss();
                 }
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
         return view;
     }
-
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -232,6 +225,5 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 }

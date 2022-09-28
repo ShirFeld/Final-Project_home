@@ -26,12 +26,12 @@ import java.util.concurrent.Executor;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 
-
 public class LogOutFragment extends Fragment {
 
     /*
     Here the user can logout from the app.
      */
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -42,7 +42,6 @@ public class LogOutFragment extends Fragment {
     private String mParam2;
 
     public LogOutFragment() {
-
     }
 
 
@@ -54,7 +53,6 @@ public class LogOutFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,15 +64,12 @@ public class LogOutFragment extends Fragment {
 
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.fragment_log_out, container, false);
        btn_logout = (Button)view.findViewById(R.id.log_out_btn);
        mFirebaseAuth = FirebaseAuth.getInstance();
-
 
        // When the user will press the logout button he will transfer to the main page
        btn_logout.setOnClickListener(new View.OnClickListener() {
@@ -86,11 +81,6 @@ public class LogOutFragment extends Fragment {
                startActivity(intent);
            }
        });
-
        return view;
     }
-
-
-
-
 }

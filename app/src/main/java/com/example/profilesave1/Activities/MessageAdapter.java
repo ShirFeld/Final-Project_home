@@ -43,11 +43,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageH
 
     @Override
     public void onBindViewHolder(@NonNull MessageHolder holder, int position) {
-
         holder.txtMessage.setText(messages.get(position).getContent());
         ConstraintLayout constraintLayout = holder.ccll;
-
-
 
         // those functions decided what bubble to show
         if(messages.get(position).getSender().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
@@ -59,8 +56,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageH
             constraintSet.connect(R.id.profile_cardView,ConstraintSet.RIGHT, R.id.ccLayout,ConstraintSet.RIGHT,0);
             constraintSet.connect(R.id.txt_message_content,ConstraintSet.RIGHT, R.id.profile_cardView,ConstraintSet.LEFT,0);
             constraintSet.applyTo(constraintLayout);
-
         }
+
         else{
             Glide.with(context).load(reciverImg).error(R.drawable.ic_profile).placeholder(R.drawable.ic_profile).into(holder.profImage);
             ConstraintSet constraintSet = new ConstraintSet();
@@ -75,20 +72,17 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageH
 
     @Override
     public int getItemCount() {
-
         return messages.size();
 
     }
 
     class MessageHolder extends RecyclerView.ViewHolder{  // The messages themselves, the bubbles
-
         ConstraintLayout ccll;
         TextView txtMessage;
         ImageView profImage;
 
         public MessageHolder(@NonNull View itemView) {
             super(itemView);
-
             ccll = itemView.findViewById(R.id.ccLayout);
             txtMessage = itemView.findViewById(R.id.txt_message_content);
             profImage = itemView.findViewById(R.id.small_profile_img);

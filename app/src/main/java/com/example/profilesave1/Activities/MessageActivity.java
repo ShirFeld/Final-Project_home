@@ -29,11 +29,11 @@ import java.util.ArrayList;
 
 public class MessageActivity extends AppCompatActivity {  // this class is the room message
 
-
     /*
     This activity represents the message.
     How the chatRoom will call.
      */
+
     private RecyclerView recyclerView;
     private EditText edtMessageInput;
     private TextView txtChattingWith;
@@ -63,12 +63,12 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
 
         txtChattingWith.setText(usernameOfTheRoommate);
 
-
         messages = new ArrayList<>();
         imgSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase.getInstance().getReference("messages/"+ chatRoomId ).push().setValue(new Message(FirebaseAuth.getInstance().getCurrentUser().getEmail(),emailOfRoommate,edtMessageInput.getText().toString()));
+                FirebaseDatabase.getInstance().getReference("messages/"+ chatRoomId ).push().setValue(new Message(FirebaseAuth.getInstance().getCurrentUser().getEmail()
+                        ,emailOfRoommate,edtMessageInput.getText().toString()));
                 edtMessageInput.setText("");
             }
         });
@@ -80,16 +80,12 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
 
         setUpChatRoom();
 
-
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               onBackPressed();
-
             }
         });
-
     }
 
 
@@ -99,23 +95,19 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String myUsername ="";
-                if (snapshot.getValue(User.class) != null){
+                if (snapshot.getValue(User.class) != null)
                      myUsername = snapshot.getValue(User.class).getName();
-                }
 
-                if (usernameOfTheRoommate.compareTo(myUsername)>0){
+                if (usernameOfTheRoommate.compareTo(myUsername)>0)
                     chatRoomId = myUsername +usernameOfTheRoommate;
-                }
-                else if(usernameOfTheRoommate.compareTo(myUsername) == 0){
+
+                else if(usernameOfTheRoommate.compareTo(myUsername) == 0)
                     chatRoomId = myUsername +usernameOfTheRoommate;
-                }
-                else{
-                    chatRoomId = usernameOfTheRoommate + myUsername;
-                }
+
+                else chatRoomId = usernameOfTheRoommate + myUsername;
 
                 attachMessageListener(chatRoomId);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -132,16 +124,10 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     messages.add(dataSnapshot.getValue(Message.class));     // shows us all the messages
                 }
-
                 messageAdapter.notifyDataSetChanged();
-//                recyclerView.setAdapter(messageAdapter);
                 recyclerView.scrollToPosition(messages.size()-1);
-//                recyclerView.setVisibility(View.VISIBLE);
-
-
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

@@ -59,17 +59,14 @@ public class ChatFragment extends Fragment {
 
     private ProgressBar progressBar;
     private UsersAdapter usersAdapter;
-
     private SearchView searchUser;
     UsersAdapter.OnUserClickListener onUserClickListener;
     private SwipeRefreshLayout swipeRefreshLayout;
-
     String myImageUrl;
 
     public ChatFragment() {
         // Required empty public constructor
     }
-
     public static ChatFragment newInstance(String param1, String param2) {
         ChatFragment fragment = new ChatFragment();
         Bundle args = new Bundle();
@@ -78,7 +75,6 @@ public class ChatFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,11 +84,11 @@ public class ChatFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
         mAuth = FirebaseAuth.getInstance();
         progressBar = view.findViewById(R.id.progreeBar);
@@ -113,20 +109,17 @@ public class ChatFragment extends Fragment {
             }
         });
 
-
         searchUser.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 getUsers(newText);
                 return false;
             }
         });
-
 
         // pass the information to the message
         onUserClickListener = new UsersAdapter.OnUserClickListener() {
@@ -139,13 +132,10 @@ public class ChatFragment extends Fragment {
                         .putExtra("my_img", myImageUrl));
             }
         };
-
-
      getUsers("") ;
-        getMessages();
-        return view;
+     //getMessages();
+     return view;
     }
-
 
     // here the user can search for a person
     private void getUsers(String s) {
@@ -157,8 +147,6 @@ public class ChatFragment extends Fragment {
             String name1 = s.substring(0, 1).toUpperCase(); // the first letter on uppercase
             s = name1 + s.substring(1);
         }
-
-
         users.clear();
         FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("name").startAt(s).endAt(s+"\uf8ff").addValueEventListener(new ValueEventListener() {
             @Override
@@ -212,8 +200,6 @@ public class ChatFragment extends Fragment {
         });
 
     }
-
-
     // take all the users and put them on the recyclerView.
 //    private void getUsers2(){
 //        users.clear();

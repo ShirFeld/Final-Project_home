@@ -106,17 +106,13 @@ public class PhotoActivity extends AppCompatActivity {
         }
     }
 
-
-
     // UploadImage method
-    private void uploadImage()
-    {
+    private void uploadImage(){
         if (imageUri != null) {
             uploadToFirebase(imageUri);
         }
         else
             Toast.makeText(PhotoActivity.this , "Please select an image" , Toast.LENGTH_SHORT).show();
-
     }
 
     private void uploadToFirebase(Uri uri) {
@@ -124,7 +120,6 @@ public class PhotoActivity extends AppCompatActivity {
                 = new ProgressDialog(this);
         progressDialog.setTitle("Uploading...");
         progressDialog.show();
-
 
         StorageReference fileRef = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(uri));
         FirebaseUser currentUser = mAuth.getCurrentUser(); // gives the user
@@ -142,7 +137,6 @@ public class PhotoActivity extends AppCompatActivity {
                         onBackPressed();  // Returns us to profile page
                     }
                 });
-
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -162,8 +156,7 @@ public class PhotoActivity extends AppCompatActivity {
         });
     }
 
-
-    // קשור לסיומת של התמונה
+    // related to the ending of the image
     private String getFileExtension(Uri mUri) {
         ContentResolver cr = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();

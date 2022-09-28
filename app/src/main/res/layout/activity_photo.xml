@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Activities.PhotoActivity">
 
-    <!--Linear Layout with horizontal orientation
-     and other properties-->
-
-
-    <!--Image View for showing image chosen from gallery-->
     <ImageView
         android:id="@+id/imgView"
         android:layout_marginBottom="100dp"
@@ -27,9 +22,7 @@
         android:layout_margin="30dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:weightSum="2"
-        >
-
+        android:weightSum="2" >
 
         <Button
             android:id="@+id/btnChoose"
@@ -53,7 +46,7 @@
             android:fontFamily="@font/montserrat_alternates_semibold"
             android:text="@string/Upload"
             android:textColor="@color/white" />
-        <!--Button for choosing image from gallery-->
+
 
     </LinearLayout>
 

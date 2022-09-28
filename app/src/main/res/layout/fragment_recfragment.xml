@@ -18,8 +18,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="visible"
-            />
+            android:visibility="visible"/>
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -36,7 +35,6 @@
                 android:visibility="gone"
                 android:weightSum="2"
                 tools:layout_editor_absoluteX="20dp">
-
 
                 <TextView
                     android:id="@+id/filter_text"
@@ -56,7 +54,6 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
                     android:text="Filter" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -69,8 +66,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:visibility="gone"
-                android:background="@drawable/message_input_background"
-                >
+                android:background="@drawable/message_input_background">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -79,16 +75,14 @@
                     android:text="Choose your filter settings"
                     android:textColor="@color/white"
                     android:textSize="20dp"
-                    android:layout_marginTop="15dp"
-                    />
+                    android:layout_marginTop="15dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="5"
-                    android:layout_marginTop="15dp"
-                    >
+                    android:layout_marginTop="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -98,8 +92,7 @@
                         android:gravity="center"
                         android:text="Age: "
                         android:textColor="@color/white"
-                        android:textSize="20dp"
-                        />
+                        android:textSize="20dp"/>
 
                     <EditText
                         android:id="@+id/ageStart"
@@ -111,15 +104,14 @@
                         android:inputType="number"
                         android:maxLines="1"
                         android:maxLength="2"
-                        android:gravity="center"
-                        />
+                        android:gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"/>
 
                     <EditText
                         android:layout_width="wrap_content"
@@ -131,10 +123,7 @@
                         android:maxLines="1"
                         android:maxLength="2"
                         android:gravity="center"
-                        android:id="@+id/ageFinish"
-                        />
-
-
+                        android:id="@+id/ageFinish"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -155,17 +144,13 @@
                         android:textColor="@color/white"
                         android:textSize="20dp" />
 
-
                     <Spinner
                         android:id="@+id/spinnerGenderFilter"
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:gravity="center"
-
-                        />
-
+                        android:gravity="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -186,13 +171,10 @@
                         android:text="Search"
                         android:fontFamily="@font/montserrat_alternates_semibold"
                         android:textSize="9dp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recview"

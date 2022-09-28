@@ -17,11 +17,9 @@ public class GPStracker implements LocationListener {
 
     public GPStracker(Context c){
         context = c;
-
     }
 
     public Location getLocation(){
-
         // check that the permission is ok
         if(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             Toast.makeText(context,"Permission denied",Toast.LENGTH_LONG).show();
@@ -35,27 +33,21 @@ public class GPStracker implements LocationListener {
             lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,6000, 10, this);
             Location l = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             return l;
-        }else {
-            Toast.makeText(context,"Please turn on the GPS! )", Toast.LENGTH_LONG).show();
         }
+        else
+            Toast.makeText(context,"Please turn on the GPS! )", Toast.LENGTH_LONG).show();
         return null;
     }
-
     @Override
     public void onLocationChanged(Location location) {
-
     }
-
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-
     }
-
     @Override
     public void onProviderEnabled(String provider) {
 
     }
-
     @Override
     public void onProviderDisabled(String provider) {
 

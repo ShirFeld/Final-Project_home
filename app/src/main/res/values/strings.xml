@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">profileSave1</string>
-
     <string name="Questions">User preferences: </string>
     <string name="name">Your full name </string>
     <string name="email_edit_text0">answer:</string>
@@ -8,14 +7,11 @@
     <string name="name_text"> </string>
     <string name="full_name">Full Name:</string>
     <string name="hello">Welcome to us at </string>
-
     <string name="gender">Male or female? </string>
     <string name="app_name_after">Better Together</string>
     <string name="text_bottom">Enter to your Account or Register new one</string>
     <string name="btn_sign_in">SIGN IN </string>
     <string name="btn_registry">REGISTER</string>
-
-
     <string name="phoneField">*Telephone number </string>
     <string name="details_fullName">Full Name:</string>
     <string name="details_age">Age:</string>
@@ -34,7 +30,6 @@
     <string name="about_us">About us</string>
     <string name="settings">Settings</string>
     <string name="headername">headerName</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="log_out">Log out</string>
     <string name="psik">,</string>
@@ -74,6 +69,4 @@
         <item>Female</item>
         <item>Other</item>
     </string-array>
-
-
 </resources>

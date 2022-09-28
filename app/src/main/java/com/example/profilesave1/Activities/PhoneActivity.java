@@ -54,19 +54,15 @@ public class PhoneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone);
         init();
-
-
         otp_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(phone.getText().toString()))
                     Toast.makeText(PhoneActivity.this, "Pleas enter valid phone number", Toast.LENGTH_SHORT).show();
-                else
-                {
+                else {
                     String number = phone.getText().toString();
                     senderificationacode(number);
                 }
-
             }
         });
 
@@ -77,11 +73,9 @@ public class PhoneActivity extends AppCompatActivity {
                     Toast.makeText(PhoneActivity.this, "Wrong code entered", Toast.LENGTH_SHORT).show();
                 else {
                     verifyCode(OTP_input.getText().toString());
-
                 }
             }
         });
-
     }
     private void init(){
         textView = findViewById(R.id.enter);
@@ -94,8 +88,6 @@ public class PhoneActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
         users = db.getReference("Users");
-
-
     }
 
     private void senderificationacode(String number ) {
@@ -107,8 +99,8 @@ public class PhoneActivity extends AppCompatActivity {
                         .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
-
     }
+
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks
             mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -147,7 +139,6 @@ public class PhoneActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             addDetails();
-
                         }
                     }
                 });
@@ -200,7 +191,8 @@ public class PhoneActivity extends AppCompatActivity {
                             name2 = name1 + name0.getText().toString().substring(1);
                         }
 
-                        User user = new User(name2,email2.getText().toString(),phone2.getText().toString(),city,sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,whyAreYouHere,preferExit,latitude,longitude,UDurl);
+                        User user = new User(name2,email2.getText().toString(),phone2.getText().toString(),city,sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,
+                                whyAreYouHere, preferExit,latitude,longitude,UDurl);
                         users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

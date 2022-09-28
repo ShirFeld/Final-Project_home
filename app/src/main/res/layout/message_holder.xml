@@ -12,28 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
-
         <androidx.cardview.widget.CardView
             android:id="@+id/profile_cardView"
             android:layout_marginHorizontal="10dp"
             android:layout_width="35dp"
             android:layout_height="35dp"
             app:cardCornerRadius="20dp"
-
             tools:ignore="MissingConstraints">
-
             <ImageView
                 android:id="@+id/small_profile_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:src="@drawable/no_avatar"
-                />
-
+                android:src="@drawable/no_avatar" />
         </androidx.cardview.widget.CardView>
-
         <TextView
-
             android:id="@+id/txt_message_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,10 +38,5 @@
             android:textColor="@color/white"
             android:layout_marginTop="5dp"
             tools:ignore="MissingConstraints" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

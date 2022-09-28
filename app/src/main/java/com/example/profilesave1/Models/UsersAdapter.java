@@ -27,7 +27,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserHolder> 
         this.onUserClickListener = onUserClickListener;
     }
 
-
     public interface OnUserClickListener{
         void onUserClicked(int position);
     }
@@ -36,7 +35,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserHolder> 
     @Override
     public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
        View view =LayoutInflater.from(context).inflate(R.layout.user_holder,parent,false);
-
        return new UserHolder(view);
     }
 
@@ -44,20 +42,15 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserHolder> 
     public void onBindViewHolder(@NonNull UserHolder holder, int position) {
         holder.txtUsername.setText(users.get(position).getName());
         Glide.with(context).load(users.get(position).getUrl()).error(R.drawable.no_avatar).placeholder(R.drawable.no_avatar).into(holder.imageView);
-
     }
-
     @Override
     public int getItemCount() {
         return users.size();
     }
 
-
-
     class UserHolder extends RecyclerView.ViewHolder{  // Each line in the list - includes a picture and name of the user
             TextView txtUsername;
             ImageView imageView;
-
 
         public UserHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,5 +64,4 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserHolder> 
             imageView = itemView.findViewById(R.id.img_prof);
         }
     }
-
 }

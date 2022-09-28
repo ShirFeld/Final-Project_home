@@ -11,7 +11,6 @@ public class Message {
         this.receiver = receiver;
         this.content = content;
     }
-
     public Message(){
 
     }

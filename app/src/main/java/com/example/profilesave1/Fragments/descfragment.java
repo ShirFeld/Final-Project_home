@@ -46,8 +46,6 @@ public class descfragment extends Fragment {
     private ArrayList<User> users2 ;
     String myImageUrl;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-
     String city, name, Url,age ,relationship, haveAnimals;
 
 
@@ -61,6 +59,7 @@ public class descfragment extends Fragment {
         this.relationship = relationship;
         this.haveAnimals=haveAnimals;
     }
+
     public static descfragment newInstance(String param1, String param2) {
         descfragment fragment = new descfragment();
         Bundle args = new Bundle();
@@ -79,7 +78,6 @@ public class descfragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -95,7 +93,6 @@ public class descfragment extends Fragment {
         TextView nameholder=view.findViewById(R.id.nameholder);
         TextView relationshipHolder=view.findViewById(R.id.typeRelationshipHolder);
         TextView haveAnimalsholder=view.findViewById(R.id.animalsHolder);
-
 
         Button btn_back = view.findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -114,10 +111,7 @@ public class descfragment extends Fragment {
                       .putExtra("email_of_roommate",users.get(MyAdapter2.indexPosition).getEmail())
                       .putExtra("img_of_roommate",users.get(MyAdapter2.indexPosition).getUrl())
                       .putExtra("my_img",myImageUrl));
-
            }
-
-
         });
         onUserClickListener = new UsersAdapter.OnUserClickListener() {
             @Override
@@ -127,15 +121,10 @@ public class descfragment extends Fragment {
                         .putExtra("email_of_roommate",users.get(position).getEmail())
                         .putExtra("img_of_roommate",users.get(position).getUrl())
                         .putExtra("my_img",myImageUrl));
-
             }
 
         };
         getUsers();
-
-
-
-
 
         // titles in layout
         TextView agePlace=view.findViewById(R.id.agePlace);
@@ -173,7 +162,6 @@ public class descfragment extends Fragment {
             nameholder.setVisibility(View.GONE);
             Nameholder1.setVisibility(View.GONE);
         }
-
         return  view;
     }
 
@@ -208,9 +196,5 @@ public class descfragment extends Fragment {
 
             }
         });
-
     }
-
-
-
 }

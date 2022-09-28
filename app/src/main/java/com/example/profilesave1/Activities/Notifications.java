@@ -17,9 +17,6 @@ public class Notifications extends AppCompatActivity {
 
     //// אפשר למחוק לדעתי את המחלקה - רק ראינו מה הטוקן שלי
 
-
-
-
     EditText etToken;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

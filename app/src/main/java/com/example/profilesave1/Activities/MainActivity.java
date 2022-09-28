@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "GOOGLE_SIGN_IN_TAG";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         phoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, PhoneActivity.class);
                 startActivity(intent);
             }
@@ -98,14 +96,12 @@ public class MainActivity extends AppCompatActivity {
                 showRegisterWindow();
             }
         });
-
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showSignInWindow();
             }
         });
-
         forgot_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,11 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        // for google
-
-
-
     }
 
     private void init(){
@@ -135,8 +126,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     //google - 3 methods
     private void createRequest() {
         // Configure Google Sing in , we create the request here (to GoogleSignInClient)
@@ -147,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Build a GoogleSignInClient with the options specified by gso --> here the request will sent to google
         mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
-
     }
 
     // this func will happened only if the user is click on the button --> in the intent the user will select the user he wants to enter with
@@ -259,7 +247,6 @@ public class MainActivity extends AppCompatActivity {
                                     startActivity(new Intent(MainActivity.this, FirstPageActivity.class));
                                 }
                             });
-//                            progressDialog.dismiss();
                         }
                     });
 
@@ -274,6 +261,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser cUser = mAuth.getCurrentUser();
+
         // if the user is already exist he will pass to the app and he will not see this page
         if (cUser != null) {
             Toast.makeText(this,"User exist!",Toast.LENGTH_SHORT);
@@ -402,8 +390,8 @@ public class MainActivity extends AppCompatActivity {
                                     name2 = name1 + name.getText().toString().substring(1);
                                 }
 
-
-                                User user = new User(name2,email.getText().toString(),city,phone.getText().toString(),sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,whyAreYouHere,preferExit,latitude,longitude,UDurl);
+                                User user = new User(name2,email.getText().toString(),city,phone.getText().toString(),sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,
+                                        whyAreYouHere,preferExit,latitude,longitude,UDurl);
                                 users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                         .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
@@ -424,6 +412,4 @@ public class MainActivity extends AppCompatActivity {
         });
         dialog.show();
     }
-
-
 }

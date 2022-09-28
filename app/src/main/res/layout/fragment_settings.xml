@@ -23,13 +23,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:background="@color/white">
-
                 </TextView>
 
                 <TextView
@@ -57,7 +56,6 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="@string/changeEmail">
-
             </TextView>
 
 
@@ -72,7 +70,6 @@
                 android:layout_marginStart="40dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/button">
-
             </com.google.android.material.button.MaterialButton>
 
             <TextView
@@ -86,7 +83,6 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="@string/changepassword">
-
             </TextView>
 
             <com.google.android.material.button.MaterialButton
@@ -99,40 +95,8 @@
                 android:text="@string/pas_button"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="40dp"
-                android:layout_marginStart="40dp"
-
-                >
+                android:layout_marginStart="40dp">
             </com.google.android.material.button.MaterialButton>
-
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:id="@+id/phone"-->
-<!--                android:layout_gravity="left"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:layout_marginLeft="40dp"-->
-<!--                android:textAllCaps="true"-->
-<!--                android:textSize="14sp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textStyle="bold"-->
-<!--                android:text="change your phone number:">-->
-
-<!--            </TextView>-->
-
-
-<!--            <com.google.android.material.button.MaterialButton-->
-<!--                android:id="@+id/change_phone"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_gravity="left"-->
-<!--                android:layout_marginLeft="40dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                app:cornerRadius="12dp"-->
-<!--                android:backgroundTint="@color/colorPrimary"-->
-<!--                android:text="CHANGE phone number">-->
-
-<!--            </com.google.android.material.button.MaterialButton>-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -145,9 +109,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
                 android:text="@string/deletebutton">
-
             </TextView>
-
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
@@ -161,11 +123,6 @@
                 android:layout_marginEnd="40dp"
                 android:layout_marginStart="40dp">
             </com.google.android.material.button.MaterialButton>
-
-
-
-
         </LinearLayout>
     </ScrollView>
-
 </FrameLayout>

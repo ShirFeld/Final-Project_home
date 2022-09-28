@@ -42,11 +42,10 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
     static double lon2;
     static double lat2;
 
+
     public MyAdapter2(ArrayList<User> arrayList) {
         this.arrayList = arrayList;
     }
-
-
     @Override
     public void onBindViewHolder(@NonNull MyAdapter2.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.nametext.setText(arrayList.get(position).getName());
@@ -57,16 +56,17 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
             holder.agetext1.setVisibility(View.GONE);
             holder.agetext.setVisibility(View.GONE);
         }
+
         // open the user details
         holder.img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity=(AppCompatActivity)view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new descfragment(arrayList.get(position).getCity(),arrayList.get(position).getName(),arrayList.get(position).getUrl(),arrayList.get(position).getAge(),arrayList.get(position).getWhyAreYouHere(),arrayList.get(position).getHaveAnimals())).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new descfragment(arrayList.get(position).getCity(),
+                        arrayList.get(position).getName(),arrayList.get(position).getUrl(),arrayList.get(position).getAge(),arrayList.get(position)
+                        .getWhyAreYouHere(),arrayList.get(position).getHaveAnimals())).addToBackStack(null).commit();
                 indexPosition = position;
-
             }
-
         });
 
         // In this method we will receive and display the distances between users on the recyclerView
@@ -86,18 +86,17 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
                     lon1 = 0;
                     lat1 = 0;
                 }
-                if(arrayList.get(position).getLatitude().equals("")){
+                if(arrayList.get(position).getLatitude().equals(""))
                     lat2 = 0;
-                }else
-                {
+
+                else
                     lat2 = Double.parseDouble(arrayList.get(position).getLatitude());
-                }
-                if(arrayList.get(position).getLongitude().equals("")){
+
+                if(arrayList.get(position).getLongitude().equals(""))
                     lon2 = 0;
-                }else
-                {
+
+                else
                     lon2 = Double.parseDouble(arrayList.get(position).getLongitude());
-                }
 
                 double ab = distanceBetween(lon1,lat1,lon2,lat2)/1000;
                 ab = round(ab,1) ;
@@ -106,18 +105,17 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
                     holder.gpstext1.setVisibility(View.GONE);
                     String ab1 = "";
                     holder.gpstext.setText(ab1);
-                }else
-                {
+                }
+
+                else {
                     String ab1 = ab+"";
                     holder.gpstext.setText(ab1);
                 }
-
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
@@ -127,9 +125,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
     public MyAdapter2.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.singlerowdesign,parent,false);
         return new ViewHolder(view);
-
     }
-
 
     @Override
     public int getItemCount() {

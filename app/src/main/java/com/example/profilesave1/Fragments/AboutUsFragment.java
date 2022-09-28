@@ -17,7 +17,6 @@ public class AboutUsFragment extends Fragment {
     /*In this fragment the user will see information about the developers of the application
      */
 
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -29,7 +28,6 @@ public class AboutUsFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     public static AboutUsFragment newInstance(String param1, String param2) {
         AboutUsFragment fragment = new AboutUsFragment();
         Bundle args = new Bundle();
@@ -38,7 +36,6 @@ public class AboutUsFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +50,7 @@ public class AboutUsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_about_us, container, false);
 
-
         return view;
     }
-
-
-
-
 
 }

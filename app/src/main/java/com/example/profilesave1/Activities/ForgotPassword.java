@@ -44,9 +44,7 @@ public class ForgotPassword extends AppCompatActivity {
                 resetButton();
             }
         });
-
     }
-
 
     public void init(){
         enter_email = findViewById(R.id.enter_email);
@@ -56,8 +54,6 @@ public class ForgotPassword extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
     }
-
-
 
     private void resetButton() {
         String email = enter_email.getText().toString().trim();  // remove spaces if we have

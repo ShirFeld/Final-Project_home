@@ -10,7 +10,6 @@
     android:background="@color/colorBgColor"
     tools:context=".Activities.SplashActivity">
 
-
     <ImageView
         android:id="@+id/lefthandid"
         android:layout_width="140dp"
@@ -24,7 +23,6 @@
         android:id="@+id/heart"
         android:layout_width="196dp"
         android:layout_height="251dp"
-
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
@@ -34,22 +32,17 @@
         android:layout_marginBottom="219dp"
         android:src="@drawable/heart1"
         android:visibility="gone">
-
     </ImageView>
-
 
     <ImageView
         android:id="@+id/righthandid"
         android:layout_width="140dp"
         android:layout_height="300dp"
-
-
         android:layout_centerInParent="true"
         android:layout_marginLeft="-14dp"
         android:layout_toRightOf="@+id/lefthandid"
         android:paddingBottom="23dp"
         android:src="@drawable/rightpng">
-
     </ImageView>
 
     <TextView
@@ -64,6 +57,4 @@
         android:textColor="@color/black"
         android:textSize="35sp"
         android:textStyle="italic" />
-
-
 </RelativeLayout>

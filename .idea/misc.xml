@@ -149,11 +149,31 @@
         <entry key="..\:/michaek/withChat/Final-Project-master/app/src/main/res/layout/spinner_item.xml" value="0.25416666666666665" />
         <entry key="..\:/michaek/withChat/Final-Project-master/app/src/main/res/layout/user_holder.xml" value="0.25416666666666665" />
         <entry key="..\:/michaek/withChat/Final-Project-master/app/src/main/res/menu/navigation_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/activity_first_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/activity_forgot_password.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/activity_message.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/activity_notifications.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/activity_phone.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/activity_photo.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/activity_spalash.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/drop_down_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/fragment_about_us.xml" value="0.36666666666666664" />
         <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/fragment_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/fragment_descfragment.xml" value="0.36666666666666664" />
         <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/fragment_log_out.xml" value="0.25416666666666665" />
         <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/fragment_recfragment.xml" value="0.24456521739130435" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/fragment_search.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/fragment_settings.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/layout_navigation_header.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/message_holder.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/register_window.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/sign_in_window.xml" value="0.36666666666666664" />
         <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/singlerowdesign.xml" value="0.25416666666666665" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/spinner_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/layout/user_holder.xml" value="0.36666666666666664" />
+        <entry key="..\:/michaek/withGPS/Final-Project_home-master/app/src/main/res/menu/navigation_menu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

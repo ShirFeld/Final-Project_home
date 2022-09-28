@@ -5,14 +5,14 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardElevation="10dp"
-    >
+    app:cardElevation="10dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,8 +24,7 @@
             android:textColorHint="@color/hint_for_field"
             android:textSize="20sp"
             android:paddingLeft="20dp"
-            app:met_singleLineEllipsis="true"
-            />
+            app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
@@ -38,9 +37,6 @@
             android:textColorHint="@color/hint_for_field"
             android:textSize="20sp"
             android:paddingLeft="20dp"
-            app:met_singleLineEllipsis="true"
-            />
-
+            app:met_singleLineEllipsis="true" />
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>
