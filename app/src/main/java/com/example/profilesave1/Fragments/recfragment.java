@@ -155,8 +155,10 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                 List<User> list = new ArrayList<>();
                 for(DataSnapshot ds : snapshot.getChildren()) {
                     String uuid = ds.getKey();
-                    if (!mAuth.getCurrentUser().getUid().equals(uuid)){
-                        list.add(ds.getValue(User.class));
+                    if (mAuth.getCurrentUser() != null){
+                        if (!mAuth.getCurrentUser().getUid().equals(uuid)){
+                            list.add(ds.getValue(User.class));
+                        }
                     }
                 }
                 for (int i = 0; i < list.size(); i++) {

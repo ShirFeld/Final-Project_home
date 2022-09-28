@@ -42,10 +42,12 @@ public class SettingsFragment extends Fragment {
     This fragment includes 3 buttons : change email , change password and delete the account
      */
 
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+
 
     private ProgressDialog progressDialog;
     FirebaseUser firebaseUser ;
@@ -55,6 +57,7 @@ public class SettingsFragment extends Fragment {
     FirebaseUser user;
     Button delete_button , change_password , change_email , change_phone;
     private static final String TAG = "SettingsFragment";
+
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -76,6 +79,9 @@ public class SettingsFragment extends Fragment {
         }
     }
 
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,6 +91,8 @@ public class SettingsFragment extends Fragment {
         delete_button = (Button)view.findViewById(R.id.delete_button);
         change_password = (Button)view.findViewById(R.id.change_password);
         change_email = view.findViewById(R.id.change_email);
+//        change_phone = view.findViewById(R.id.change_phone);
+
 
         auth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -123,6 +131,7 @@ public class SettingsFragment extends Fragment {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            //Toast.makeText(getActivity(), "Password reset failed", Toast.LENGTH_SHORT).show();
                             Toast.makeText(getActivity(), "log out and try again", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -131,7 +140,9 @@ public class SettingsFragment extends Fragment {
                     // close
                 });
                 changeEmailDialog.create().show();
+
             }
+
         });
 
         change_password.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +153,7 @@ public class SettingsFragment extends Fragment {
                 changePasswordDialog.setTitle("Do you want to change your password ?");
                 changePasswordDialog.setMessage("Enter a new password with at least 6 characters long");
                 changePasswordDialog.setView(resetPassword);
+
 
                 changePasswordDialog.setPositiveButton("Yes" ,(dialog, which) -> {
                     String newPassword = resetPassword.getText().toString();
@@ -154,6 +166,8 @@ public class SettingsFragment extends Fragment {
                                     .beginTransaction()
                                     .replace(R.id.wrapper, new LogOutFragment())
                                     .commit();
+
+
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -170,13 +184,19 @@ public class SettingsFragment extends Fragment {
                 changePasswordDialog.create().show();
             }
         });
+
         return view;
     }
+
+
+
+
 
     // func to delete account
     private void deleteAccount(){
         final AlertDialog.Builder deleteAccount = new AlertDialog.Builder(getContext());
         deleteAccount.setTitle("Are you sure you want to delete your account? ");
+
         deleteAccount.setPositiveButton("yes" ,(dialog, which) -> {
             // delete from auth
             FirebaseAuth.getInstance().getCurrentUser().delete().addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -212,10 +232,12 @@ public class SettingsFragment extends Fragment {
                 }
             });
 
+
         }); deleteAccount.setNegativeButton("no" , (dialog, which) -> {
             // close
         });
         deleteAccount.create().show();
-    }
-}
 
+    }
+
+}

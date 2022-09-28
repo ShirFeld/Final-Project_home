@@ -3,6 +3,7 @@ package com.example.profilesave1.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -48,6 +49,7 @@ public class PhoneActivity extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference users;
 
+    ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +59,9 @@ public class PhoneActivity extends AppCompatActivity {
         otp_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(phone.getText().toString()))
+                if (TextUtils.isEmpty(phone.getText().toString()) || phone.getText().length() <10)
                     Toast.makeText(PhoneActivity.this, "Pleas enter valid phone number", Toast.LENGTH_SHORT).show();
+
                 else {
                     String number = phone.getText().toString();
                     senderificationacode(number);
@@ -99,6 +102,7 @@ public class PhoneActivity extends AppCompatActivity {
                         .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
+        Toast.makeText(PhoneActivity.this, "Wait for the code", Toast.LENGTH_LONG).show();
     }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks
@@ -108,15 +112,16 @@ public class PhoneActivity extends AppCompatActivity {
         public void onVerificationCompleted(@NonNull PhoneAuthCredential credential) {
             // verification complete
             final String code = credential.getSmsCode();  // firebase send otp -> One-time password
-            Toast.makeText(PhoneActivity.this, "Wait for sms code", Toast.LENGTH_SHORT).show();
-            if (code != null)
+            if (code != null){
                 verifyCode(code);
-        }
+            }
 
+        }
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
             Toast.makeText(PhoneActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
         }
+
 
         @Override
         public void onCodeSent(@NonNull String verificationId,
@@ -191,13 +196,20 @@ public class PhoneActivity extends AppCompatActivity {
                             name2 = name1 + name0.getText().toString().substring(1);
                         }
 
-                        User user = new User(name2,email2.getText().toString(),phone2.getText().toString(),city,sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,
+                        User user = new User(name2,email2.getText().toString(),city,phone2.getText().toString(),sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,
                                 whyAreYouHere, preferExit,latitude,longitude,UDurl);
                         users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(PhoneActivity.this, "Login Successful , change your password on the settings page", Toast.LENGTH_SHORT).show();
+
+                                //Toast.makeText(PhoneActivity.this, "Login Successful , change your password on the settings page", Toast.LENGTH_SHORT).show();
+                                if (mProgressDialog == null) {
+                                    mProgressDialog = new ProgressDialog(PhoneActivity.this);
+                                    mProgressDialog.setMessage("Login Successful , change your password on the settings page ");
+                                    mProgressDialog.setIndeterminate(true);
+                                }
+                                mProgressDialog.show();
                                 startActivity(new Intent(PhoneActivity.this, FirstPageActivity.class));
                             }
                         });
