@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference users;
     RelativeLayout root;
     ImageView googleBtn;
-    ImageView phoneBtn;
-
 
     String uid ="";
     String google_email ="";
@@ -213,7 +211,6 @@ public class MainActivity extends AppCompatActivity {
             final String maritalStatus = "";
             final String favoriteMoviesCategory = "";
             final String whyAreYouHere = "";
-            final String preferExit = "";
             final String latitude = "";
             final String longitude = "";
             final String UDurl = "";
@@ -231,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
                                 name2 = name1 + name.substring(1);
                             }
 
-                            User user = new User(name2, email,city, phone, sex, age, haveAnimals, haveChildren, maritalStatus, favoriteMoviesCategory, whyAreYouHere, preferExit,latitude, longitude, UDurl);
+                            User user = new User(name2, email,city, phone, sex, age, haveAnimals, haveChildren, maritalStatus, favoriteMoviesCategory, whyAreYouHere,latitude, longitude, UDurl);
                             users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

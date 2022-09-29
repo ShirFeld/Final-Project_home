@@ -91,12 +91,12 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         View view=inflater.inflate(R.layout.fragment_recfragment, container, false);
         progressBar = view.findViewById(R.id.progreeBar);
 
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(getContext());
-            mProgressDialog.setMessage("Please wait ");
-            mProgressDialog.setIndeterminate(true);
-        }
-        mProgressDialog.show();
+//        if (mProgressDialog == null) {
+//            mProgressDialog = new ProgressDialog(getContext());
+//            mProgressDialog.setMessage("Please wait ");
+//            mProgressDialog.setIndeterminate(true);
+//        }
+//        mProgressDialog.show();
 
         Spinner spinner = view.findViewById(R.id.spinnerGenderFilter);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getContext(),R.array.Gender, R.layout.spinner_item);

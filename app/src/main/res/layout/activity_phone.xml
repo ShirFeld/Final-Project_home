@@ -124,7 +124,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:hint="code"
-
             app:counterEnabled="true"
             app:counterMaxLength="10"
             app:endIconMode="clear_text"
@@ -142,7 +141,6 @@
                 android:textColor="#000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -156,6 +154,5 @@
             android:fontFamily="@font/montserrat_alternates_semibold"
             android:text="@string/verify"
             android:textColor="@color/white" />
-
     </LinearLayout>
 </RelativeLayout>

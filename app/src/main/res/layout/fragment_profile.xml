@@ -183,81 +183,6 @@
                     />
             </LinearLayout>
 
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal"-->
-            <!--                android:layout_marginTop="25sp">-->
-
-            <!--                <com.google.android.material.textfield.TextInputLayout-->
-            <!--                    android:id="@+id/prof_email_layout_id"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_marginStart="40sp"-->
-            <!--                    android:layout_marginEnd="40sp"-->
-            <!--                    android:hint="Email"-->
-            <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-            <!--                    app:startIconDrawable="@drawable/ic_mail"-->
-            <!--                    app:helperText="Char"-->
-            <!--                    app:counterEnabled="true"-->
-            <!--                    app:counterMaxLength="25"-->
-            <!--                    app:endIconMode="clear_text"-->
-            <!--                    >-->
-
-            <!--                    <com.google.android.material.textfield.TextInputEditText-->
-            <!--                        android:id="@+id/prof_email_editText_id"-->
-            <!--                        android:layout_width="match_parent"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:textColor="#000"-->
-            <!--                        android:textSize="15sp"-->
-            <!--                        android:textStyle="bold"-->
-            <!--                        android:maxLength="35"-->
-            <!--                        android:inputType="textWebEmailAddress"-->
-            <!--                        />-->
-
-            <!--                </com.google.android.material.textfield.TextInputLayout>-->
-
-
-            <!--            </LinearLayout>-->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="25sp">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/preferExit"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="40sp"
-                    android:layout_marginEnd="40sp"
-                    android:hint="@string/favorite_place"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:startIconDrawable="@drawable/ic_baseline_blur_off_24"
-                    app:helperText="Char"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="25"
-                    app:endIconMode="clear_text"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/preferExit_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:maxLength="35"
-                        android:inputType="textWebEmailAddress"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-            </LinearLayout>
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -464,15 +389,7 @@
                         android:text="No"
                         />
                 </RadioGroup>
-
-
-
-
-
             </LinearLayout>
-
-
-
             <Button
                 android:id="@+id/btn_update"
                 android:layout_width="wrap_content"
@@ -489,7 +406,4 @@
 
         </LinearLayout>
     </ScrollView>
-
-
-
 </FrameLayout>

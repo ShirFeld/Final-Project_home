@@ -50,7 +50,8 @@ public class descfragment extends Fragment {
 
     public descfragment() {
     }
-    public descfragment(String city, String name, String Url, String age, String relationship, String haveAnimals , String sex , String maritalStatus , String haveChildren, String favoriteMoviesCategory ) {
+    public descfragment(String city, String name, String Url, String age, String relationship, String haveAnimals , String sex ,
+                        String maritalStatus , String haveChildren, String favoriteMoviesCategory ) {
         this.city=city;
         this.name = name;
         this.Url=Url;

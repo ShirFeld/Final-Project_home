@@ -1,12 +1,11 @@
 package com.example.profilesave1.Models;
 
 public class User {
-    private String name,email,city,phone,sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory, whyAreYouHere,preferExit,latitude,longitude,Url;
+    private String name,email,city,phone,sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory, whyAreYouHere,latitude,longitude,Url;
 
     public User(){}
-
     public User(String name, String email, String city, String phone, String sex, String age, String haveAnimals, String haveChildren, String maritalStatus,
-                String favoriteMoviesCategory, String whyAreYouHere, String preferExit,String latitude,String longitude,String Url) {
+                String favoriteMoviesCategory, String whyAreYouHere,String latitude,String longitude,String Url) {
         this.name = name;
         this.email = email;
         this.city = city;
@@ -18,12 +17,10 @@ public class User {
         this.maritalStatus = maritalStatus;
         this.favoriteMoviesCategory = favoriteMoviesCategory;
         this.whyAreYouHere = whyAreYouHere;
-        this.preferExit = preferExit;
         this.latitude = latitude;
         this.longitude = longitude;
         this.Url="https://startplay.online/files/avatars/no_avatar.jpg";
     }
-
 
     public String getName() {
         return name;
@@ -42,12 +39,6 @@ public class User {
     }
     public void setCity(String city) {
         this.city = city;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
     public String getSex() {
         return sex;
@@ -90,12 +81,6 @@ public class User {
     }
     public void setWhyAreYouHere(String whyYouHere) {
         this.whyAreYouHere = whyYouHere;
-    }
-    public String getPreferExit() {
-        return preferExit;
-    }
-    public void setPreferExit(String preferExit) {
-        this.preferExit = preferExit;
     }
     public String getLatitude() {
         return latitude;

@@ -23,7 +23,6 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
     public myadapter(@NonNull FirebaseRecyclerOptions<model> options) {
         super(options);
     }
-
     @Override
     protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull final model model) {
         holder.nametext.setText(model.getName());
@@ -35,20 +34,19 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity=(AppCompatActivity)view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new descfragment(model.getCity(),model.getName(),model.getUrl(),model.getAge(),model.getWhyAreYouHere(),model.getHaveAnimals() , model.getSex(), model.getMaritalStatus()
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new descfragment(model.getCity(),model.getName(),model.getUrl(),model.getAge(),
+                        model.getWhyAreYouHere(),model.getHaveAnimals() , model.getSex(), model.getMaritalStatus()
                 , model.getHaveChildren(),model.getFavoriteMoviesCategory())).addToBackStack(null).commit();
             }
 
         });
     }
-
     @NonNull
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.singlerowdesign,parent,false);
         return new myviewholder(view);
     }
-
     public class myviewholder extends RecyclerView.ViewHolder
     {
         ImageView img1;
@@ -56,7 +54,6 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);
-
             img1=itemView.findViewById(R.id.img1);
             nametext=itemView.findViewById(R.id.nametext);
             citytext =itemView.findViewById(R.id.citytext);

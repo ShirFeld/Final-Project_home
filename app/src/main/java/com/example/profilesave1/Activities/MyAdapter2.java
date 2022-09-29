@@ -101,7 +101,9 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
 
                 double ab = distanceBetween(lon1,lat1,lon2,lat2)/1000;
                 ab = round(ab,1) ;
-                if(lon2 == 0 && lat2 == 0 || lon1 == 0 && lat1 == 0  ){
+
+                // if there is no city so dont show anything
+                if(lon2 == 0 && lat2 == 0 || lon1 == 0 && lat1 == 0  || arrayList.get(position).getCity().equals("")){
                     holder.gpstext0.setVisibility(View.GONE);
                     holder.gpstext1.setVisibility(View.GONE);
                     String ab1 = "";

@@ -11,7 +11,6 @@ public class model
         this.Url = Url;
         this.age=age;
     }
-
     public model(String city, String name, String Url,String age,String whyAreYouHere,String haveAnimals ,  String sex , String maritalStatus , String haveChildren, String favoriteMoviesCategory ) {
         this.city = city;
         this.name = name;
@@ -24,7 +23,6 @@ public class model
         this.haveChildren = haveChildren;
         this.favoriteMoviesCategory = favoriteMoviesCategory;
     }
-
     public String getSex() {
         return sex;
     }

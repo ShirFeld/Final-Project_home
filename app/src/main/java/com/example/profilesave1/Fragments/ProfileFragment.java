@@ -66,7 +66,6 @@ public class ProfileFragment extends Fragment {
     static String currentSex;
     static String currentStatus;
     static String currentFavoriteMoviesCategory;
-    static String currentPreferExit;
     static String currentChildren;
     static String currentWhyAreYouHere;
 
@@ -82,7 +81,6 @@ public class ProfileFragment extends Fragment {
     static String userSexTemp;
     static String userStatusTemp;
     static String userFavoriteMoviesCategoryTemp;
-    static String userPreferExitTemp;
     static String userChildrenTemp;
     static String userWhyAreYouHereTemp;
 
@@ -98,7 +96,6 @@ public class ProfileFragment extends Fragment {
     AutoCompleteTextView moviesCategory;
     AutoCompleteTextView status;
     AutoCompleteTextView whyAreYouHere;
-
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -127,7 +124,6 @@ public class ProfileFragment extends Fragment {
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -142,7 +138,6 @@ public class ProfileFragment extends Fragment {
         sex = view.findViewById(R.id.auto_Complete_TextView);
         animals = view.findViewById(R.id.auto_Complete_TextView_animal);
         whyAreYouHere = view.findViewById(R.id.whyAreYouHere);
-        preferExit = view.findViewById(R.id.preferExit_edit);
         moviesCategory = view.findViewById(R.id.auto_Complete_TextView_favoriteMoviesCategory);
         status = view.findViewById(R.id.auto_Complete_TextView_status);
         radioGroup = view.findViewById(R.id.radioGroup);
@@ -162,7 +157,6 @@ public class ProfileFragment extends Fragment {
                 userSexTemp = sex.getText().toString();
                 userStatusTemp = status.getText().toString();
                 userFavoriteMoviesCategoryTemp = moviesCategory.getText().toString();
-                userPreferExitTemp = preferExit.getText().toString();
                 userChildrenTemp = radioGroup.getContext().toString();
                 userWhyAreYouHereTemp = whyAreYouHere.getText().toString();
 
@@ -203,7 +197,6 @@ public class ProfileFragment extends Fragment {
                                 sex.setText(userSexTemp);
                                 status.setText(userStatusTemp);
                                 moviesCategory.setText(userFavoriteMoviesCategoryTemp);
-                                preferExit.setText(userPreferExitTemp);
                                 whyAreYouHere.setText(userWhyAreYouHereTemp);
 
                                 if (userChildrenTemp.equals("Yes")){
@@ -250,7 +243,6 @@ public class ProfileFragment extends Fragment {
                     currentSex = user.getSex();
                     currentStatus = user.getMaritalStatus();
                     currentFavoriteMoviesCategory = user.getFavoriteMoviesCategory();
-                    currentPreferExit = user.getPreferExit();
                     currentChildren = user.getHaveChildren();
                     currentWhyAreYouHere = user.getWhyAreYouHere();
 
@@ -273,7 +265,6 @@ public class ProfileFragment extends Fragment {
                     sex.setText(user.getSex());
                     whyAreYouHere.setText(user.getWhyAreYouHere());
                     animals.setText(user.getHaveAnimals());
-                    preferExit.setText(user.getPreferExit());
                     moviesCategory.setText(user.getFavoriteMoviesCategory());
                     status.setText(user.getMaritalStatus());
                     radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -324,7 +315,6 @@ public class ProfileFragment extends Fragment {
                 String newAnimal = animals.getText().toString();
                 String newStatus = status.getText().toString();
                 String newMovie = moviesCategory.getText().toString();
-                String newExit = preferExit.getText().toString();
 
                 String newWhyAreYouHere = whyAreYouHere.getText().toString();
 
@@ -353,9 +343,6 @@ public class ProfileFragment extends Fragment {
                 if(!currentFavoriteMoviesCategory.equals(newMovie))
                     reference.child("favoriteMoviesCategory").setValue(newMovie);
 
-                if(!currentPreferExit.equals(newExit))
-                    reference.child("preferExit").setValue(newExit);
-
                 if (r1.isChecked()){
                     reference.child("haveChildren").setValue("Yes");
                     flag = true;
@@ -368,7 +355,7 @@ public class ProfileFragment extends Fragment {
                     reference.child("haveChildren").setValue("");
 
                 if(currentName.equals(newName) && currentAge.equals(newAge)  && currentCity.equals(newCity) && currentSex.equals(newGender) && currentAnimal.equals(newAnimal)
-                        && currentStatus.equals(newStatus) && currentFavoriteMoviesCategory.equals(newMovie) && currentPreferExit.equals(newExit)
+                        && currentStatus.equals(newStatus) && currentFavoriteMoviesCategory.equals(newMovie)
                         && currentWhyAreYouHere.equals(newWhyAreYouHere) && flag == false){
                     Toast.makeText(getActivity(), "Data has not updated", Toast.LENGTH_SHORT).show();
                 }
