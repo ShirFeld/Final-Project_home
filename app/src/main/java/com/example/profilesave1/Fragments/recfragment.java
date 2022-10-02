@@ -163,7 +163,8 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                     public void onClick(View v) {
                         ArrayList<User> listU1 = new ArrayList<>();
                         int a,ageStart1,ageFinish1;
-                        User adminUser = new User("adminUser" , "" , "admin","","","","","","","","","","","");
+                        User adminUser = new User("adminUser" , "" , "admin","","","","",
+                                "","", "","","","","");
 
                         // users value
                         ageStart = ageStartEditView.getText().toString();       // left side on age filter
@@ -190,8 +191,6 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                             else{
                                 listU1.add(adminUser);
                             }
-
-
                         }
                         // show the list after the user filter
                         recview.setHasFixedSize(true);
