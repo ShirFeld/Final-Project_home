@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -43,6 +44,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
     static double lat2;
 
 
+
     public MyAdapter2(ArrayList<User> arrayList) {
         this.arrayList = arrayList;
     }
@@ -52,9 +54,24 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
         holder.citytext.setText(arrayList.get(position).getCity());
         Glide.with(holder.img1.getContext()).load(arrayList.get(position).getUrl()).into(holder.img1); // url
         holder.agetext.setText(arrayList.get(position).getAge());
+
         if(arrayList.get(position).getAge().equals("")){
             holder.agetext1.setVisibility(View.GONE);
             holder.agetext.setVisibility(View.GONE);
+        }
+
+        // after the filter we will show only the right users
+        if(arrayList.get(position).getName().equals("adminUser")){
+            holder.agetext1.setVisibility(View.GONE);
+            holder.agetext.setVisibility(View.GONE);
+            holder.nametext.setVisibility(View.GONE);
+            holder.citytext.setVisibility(View.GONE);
+            holder.gpstext.setVisibility(View.GONE);
+            holder.gpstext0.setVisibility(View.GONE);
+            holder.gpstext1.setVisibility(View.GONE);
+            holder.img1.setVisibility(View.GONE);
+            holder.root.setVisibility(View.GONE);
+
         }
 
         // open the user details
@@ -141,6 +158,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img1;
         TextView nametext, citytext,agetext,agetext1,gpstext,gpstext0,gpstext1;
+        CardView root ;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -152,6 +170,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
             gpstext = itemView.findViewById(R.id.gpstext);
             gpstext0 = itemView.findViewById(R.id.gpstext0);
             gpstext1 = itemView.findViewById(R.id.gpstext1);
+            root = itemView.findViewById(R.id.single);
         }
     }
 

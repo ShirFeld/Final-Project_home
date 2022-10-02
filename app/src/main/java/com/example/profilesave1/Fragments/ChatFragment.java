@@ -26,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 
 public class ChatFragment extends Fragment {
@@ -44,8 +46,8 @@ public class ChatFragment extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<User> users;
     private ArrayList<User> users2;
-    private ArrayList<Message> messages;
-    private ArrayList<String> names;
+    private ArrayList<Message > messages;
+
 
     private ProgressBar progressBar;
     private UsersAdapter usersAdapter;
@@ -53,6 +55,7 @@ public class ChatFragment extends Fragment {
     UsersAdapter.OnUserClickListener onUserClickListener;
     private SwipeRefreshLayout swipeRefreshLayout;
     String myImageUrl;
+
 
     public ChatFragment() {
         // Required empty public constructor
@@ -85,7 +88,6 @@ public class ChatFragment extends Fragment {
         users = new ArrayList<>();
         users2 = new ArrayList<>();
         messages = new ArrayList<>();
-        names = new ArrayList<>();
         searchUser = view.findViewById(R.id.searchUser);
 
         recyclerView = view.findViewById(R.id.recycler);
@@ -123,7 +125,12 @@ public class ChatFragment extends Fragment {
             }
         };
      getUsers("") ;
-     //getMessages();
+     getMessages();
+
+
+
+
+
      return view;
     }
 
@@ -171,17 +178,23 @@ public class ChatFragment extends Fragment {
         });
     }
 
-
     private void getMessages() {
 
-        FirebaseDatabase.getInstance().getReference("messages").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("messages").child("Admin AdDana levi").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                System.out.println(snapshot.getChildren().toString() + " children");
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    messages.add(dataSnapshot.getValue(Message.class));
+                    String name = dataSnapshot.child("receiver").getValue().toString();
+//                  messages.add(dataSnapshot.getValue(Message.class));
+                    System.out.println(name + " !!!!!!!!!!!!!!!!!!!");
+
                 }
-                System.out.println(messages.size() + "%%%%%");
-//                System.out.println(messages.get(0).getReceiver() + " ^^^^^&");
+//                System.out.println(messages.get(0) + " !!!!!!!!!!!!!!!!!!!");
+//                System.out.println(messages.get(0).getReceiver() + " !!!!!!!!!!!!!!!!!!!");
+
+
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

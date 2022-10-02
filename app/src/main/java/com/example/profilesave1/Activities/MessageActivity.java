@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.profilesave1.Fragments.ChatFragment;
 import com.example.profilesave1.Models.Message;
 import com.example.profilesave1.Models.User;
 import com.example.profilesave1.R;
@@ -61,15 +62,16 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         txtChattingWith.setText(usernameOfTheRoommate);
 
         messages = new ArrayList<>();
+
         imgSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase.getInstance().getReference("messages/"+ chatRoomId ).push().setValue(new Message(FirebaseAuth.getInstance().getCurrentUser().getEmail()
-                        ,emailOfRoommate,edtMessageInput.getText().toString()));
+                FirebaseDatabase.getInstance().getReference("messages/" + chatRoomId).push().setValue(new Message(FirebaseAuth.getInstance().getCurrentUser().getEmail()
+                        , emailOfRoommate, edtMessageInput.getText().toString()));
                 edtMessageInput.setText("");
             }
         });
-        messageAdapter = new MessageAdapter(messages,getIntent().getStringExtra("my_img"),getIntent().getStringExtra("img_of_roommate"),MessageActivity.this);
+        messageAdapter = new MessageAdapter(messages, getIntent().getStringExtra("my_img"), getIntent().getStringExtra("img_of_roommate"), MessageActivity.this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(messageAdapter);
@@ -80,11 +82,15 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              onBackPressed();
+                onBackPressed();
             }
         });
-    }
 
+
+
+
+
+    }
 
     // this method creates room name of 2 users in the firebase
     private void setUpChatRoom(){
@@ -131,4 +137,6 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
             }
         });
     }
+
+
 }
