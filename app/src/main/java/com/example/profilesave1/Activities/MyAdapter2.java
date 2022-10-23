@@ -36,13 +36,13 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
     /*
     This adapter is connect to recfragment.fragment (to the list - search)
      */
-
     private ArrayList<User> arrayList;
     public static int indexPosition;
     static double lon1;
     static double lat1;
     static double lon2;
     static double lat2;
+
 
 
     public MyAdapter2(ArrayList<User> arrayList) {
