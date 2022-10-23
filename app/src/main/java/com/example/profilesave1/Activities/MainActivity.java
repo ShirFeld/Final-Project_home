@@ -265,13 +265,14 @@ public class MainActivity extends AppCompatActivity {
 
     // Button of signIn
     private void showSignInWindow() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this,R.style.MyDialogStyle);
         dialog.setTitle("Enter your account");
         dialog.setMessage("Enter your email and password");
         LayoutInflater inflater = LayoutInflater.from(this);
         View signinWindow = inflater.inflate(R.layout.sign_in_window,null);
         dialog.setView(signinWindow);
         onStart();
+
 
         final MaterialEditText email = signinWindow.findViewById(R.id.emailField);
         final MaterialEditText password = signinWindow.findViewById(R.id.passwordField);

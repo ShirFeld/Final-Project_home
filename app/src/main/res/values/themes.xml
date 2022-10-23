@@ -16,4 +16,12 @@
         <item name="android:windowFullscreen">true</item>
 
     </style>
+
+    <!-- Alert Dialog -->
+    <style name="MyDialogStyle" parent="Theme.AppCompat.Dialog">
+        <!-- Background Color-->
+        <item name="android:background">@color/colorPrimary</item>
+        <!-- Text Color for title and message -->
+<!--        <item name="colorOnSurface">@color/white</item>-->
+    </style>
 </resources>

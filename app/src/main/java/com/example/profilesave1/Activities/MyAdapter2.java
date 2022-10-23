@@ -43,8 +43,6 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
     static double lon2;
     static double lat2;
 
-
-
     public MyAdapter2(ArrayList<User> arrayList) {
         this.arrayList = arrayList;
     }

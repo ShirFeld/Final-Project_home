@@ -59,7 +59,6 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
     static String text ="";
     static String ageStart ="";
     static String ageFinish ="";
-    static String genderItems [] ={"Male","Female","Other"};
     EditText ageStartEditView,ageFinishEditView;
 
 
@@ -100,7 +99,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
         Spinner spinner = view.findViewById(R.id.spinnerGenderFilter);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getContext(),R.array.Gender, R.layout.spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter1.setDropDownViewResource(R.layout.spinner_drop);
         spinner.setAdapter(adapter1);
 
         spinner.setOnItemSelectedListener(this);

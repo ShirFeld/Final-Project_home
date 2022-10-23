@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:layout_gravity="center"
-    android:background="@color/colorBgColor"
+    android:background="@color/back"
     tools:context=".Activities.SplashActivity">
 
     <ImageView
@@ -42,8 +42,7 @@
         android:layout_marginLeft="-14dp"
         android:layout_toRightOf="@+id/lefthandid"
         android:paddingBottom="23dp"
-        android:src="@drawable/rightpng">
-    </ImageView>
+        android:src="@drawable/rightpng"></ImageView>
 
     <TextView
         android:id="@+id/textViewRegister"
