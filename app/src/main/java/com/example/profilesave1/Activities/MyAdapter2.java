@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,7 +45,6 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
     static double lat2;
 
 
-
     public MyAdapter2(ArrayList<User> arrayList) {
         this.arrayList = arrayList;
     }
@@ -62,16 +62,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
 
         // after the filter we will show only the right users
         if(arrayList.get(position).getName().equals("adminUser")){
-            holder.agetext1.setVisibility(View.GONE);
-            holder.agetext.setVisibility(View.GONE);
-            holder.nametext.setVisibility(View.GONE);
-            holder.citytext.setVisibility(View.GONE);
-            holder.gpstext.setVisibility(View.GONE);
-            holder.gpstext0.setVisibility(View.GONE);
-            holder.gpstext1.setVisibility(View.GONE);
-            holder.img1.setVisibility(View.GONE);
-            holder.root.setVisibility(View.GONE);
-
+            holder.rel.setVisibility(View.GONE);
         }
 
         // open the user details
@@ -159,6 +150,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
         ImageView img1;
         TextView nametext, citytext,agetext,agetext1,gpstext,gpstext0,gpstext1;
         CardView root ;
+        RelativeLayout rel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -171,6 +163,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
             gpstext0 = itemView.findViewById(R.id.gpstext0);
             gpstext1 = itemView.findViewById(R.id.gpstext1);
             root = itemView.findViewById(R.id.single);
+            rel = itemView.findViewById(R.id.rel);
         }
     }
 

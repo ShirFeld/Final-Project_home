@@ -120,11 +120,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
             // will close and open the filter button
             @Override
             public void onClick(View v) {
-                if (counter%2 != 0)
-                    myfilter.setVisibility(View.GONE);
-                else
-                    myfilter.setVisibility(View.VISIBLE);
-                counter++;
+                closeAndOpen();
             }
         });
 
@@ -140,7 +136,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 progressBar.setVisibility(View.GONE);
-                linearLayout.setVisibility(View.VISIBLE);
+                linearLayout.setVisibility(View.VISIBLE); // the filter window
                 recview.setVisibility(View.VISIBLE);
 
                 List<User> list = new ArrayList<>();
@@ -161,15 +157,17 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                 search_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        closeAndOpen();
                         ArrayList<User> listU1 = new ArrayList<>();
-                        int a,ageStart1,ageFinish1;
+                        int a,ageStart1,ageFinish1;  // a = user age
+
+                        // we create a new user to save the indexes for the messages
                         User adminUser = new User("adminUser" , "" , "admin","","","","",
                                 "","", "","","","","");
 
                         // users value
                         ageStart = ageStartEditView.getText().toString();       // left side on age filter
                         ageFinish = ageFinishEditView.getText().toString();     // right side on age filter
-
                         for (int i = 0; i < listU.size(); i++) {
                             if(listU.get(i).getAge().equals(""))
                                 a = 0;
@@ -196,6 +194,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                         recview.setHasFixedSize(true);
                         mAdapter = new MyAdapter2(listU1);
                         recview.setAdapter(mAdapter);
+
                     }
                 });
 
@@ -215,6 +214,15 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         return view;
     }
 
+    // will close and open the filter button
+    public void closeAndOpen (){
+        if (counter%2 != 0)
+            myfilter.setVisibility(View.GONE);
+        else
+            myfilter.setVisibility(View.VISIBLE);
+        counter++;
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         text = parent.getItemAtPosition(position).toString();
@@ -223,4 +231,6 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
     }
+
+
 }
