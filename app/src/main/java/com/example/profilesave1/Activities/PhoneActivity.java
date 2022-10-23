@@ -43,11 +43,9 @@ public class PhoneActivity extends AppCompatActivity {
     EditText phone , OTP_input , email , name;
     Button verify_btn , otp_btn;
     FirebaseAuth mAuth;
-
     String name2 = "";
     FirebaseDatabase db;
     DatabaseReference users;
-
     ProgressDialog mProgressDialog;
 
     @Override
@@ -55,6 +53,7 @@ public class PhoneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone);
         init();
+
         otp_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +85,7 @@ public class PhoneActivity extends AppCompatActivity {
         name = findViewById(R.id.nameInput);
         OTP_input = findViewById(R.id.OTP_input);
         verify_btn = findViewById(R.id.verify_btn);
-        otp_btn = findViewById(R.id.btn2);
+        otp_btn = findViewById(R.id.btn2); // get code
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
         users = db.getReference("Users");
@@ -114,13 +113,12 @@ public class PhoneActivity extends AppCompatActivity {
             if (code != null){
                 verifyCode(code);
             }
-
         }
+
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
             Toast.makeText(PhoneActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
         }
-
 
         @Override
         public void onCodeSent(@NonNull String verificationId,
