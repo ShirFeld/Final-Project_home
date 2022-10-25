@@ -48,8 +48,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:maxLength="21"
-                android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                />
+                android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
