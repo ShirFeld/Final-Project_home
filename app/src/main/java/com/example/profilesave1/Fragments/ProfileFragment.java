@@ -273,6 +273,7 @@ public class ProfileFragment extends Fragment {
                     animals.setText(user.getHaveAnimals());
                     moviesCategory.setText(user.getFavoriteMoviesCategory());
                     status.setText(user.getMaritalStatus());
+                    aboutMe.setText(user.getAboutMe());
                     radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(RadioGroup group, int checkedId) {
