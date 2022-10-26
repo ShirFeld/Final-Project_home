@@ -2,7 +2,7 @@ package com.example.profilesave1.Models;
 
 public class model
 {
-    String city,name,Url,age, whyAreYouHere,haveAnimals,sex , maritalStatus , haveChildren , favoriteMoviesCategory;
+    String city,name,Url,age, favoriteHobby,haveAnimals,sex , maritalStatus , haveChildren , favoriteMoviesCategory;
 
     public model() {
     }
@@ -11,12 +11,12 @@ public class model
         this.Url = Url;
         this.age=age;
     }
-    public model(String city, String name, String Url, String age, String whyAreYouHere, String haveAnimals , String sex , String maritalStatus , String haveChildren, String favoriteMoviesCategory ) {
+    public model(String city, String name, String Url, String age, String favoriteHobby, String haveAnimals , String sex , String maritalStatus , String haveChildren, String favoriteMoviesCategory ) {
         this.city = city;
         this.name = name;
         this.Url = Url;
         this.age=age;
-        this.whyAreYouHere = whyAreYouHere;
+        this.favoriteHobby = favoriteHobby;
         this.haveAnimals = haveAnimals;
         this.sex = sex;
         this.maritalStatus = maritalStatus;
@@ -65,11 +65,11 @@ public class model
     public void setCity(String email) {
         this.city = email;
     }
-    public String getWhyAreYouHere() {
-        return whyAreYouHere;
+    public String getFavoriteHobby() {
+        return favoriteHobby;
     }
-    public void setWhyAreYouHere(String whyAreYouHere) {
-        this.whyAreYouHere = whyAreYouHere;
+    public void setFavoriteHobby(String favoriteHobby) {
+        this.favoriteHobby = favoriteHobby;
     }
     public String getName() {
         return name;

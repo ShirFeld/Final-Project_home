@@ -175,7 +175,7 @@ public class PhoneActivity extends AppCompatActivity {
         final String haveChildren = "";
         final String maritalStatus = "";
         final String favoriteMoviesCategory = "";
-        final String whyAreYouHere = "";
+        final String favoriteHobby = "";
         final String latitude = "";
         final String longitude = "";
         final String UDurl = "";
@@ -193,7 +193,7 @@ public class PhoneActivity extends AppCompatActivity {
                         }
 
                         User user = new User(name2,email2.getText().toString(),city,phone2.getText().toString(),sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,
-                                whyAreYouHere,latitude,longitude,UDurl);
+                                favoriteHobby,latitude,longitude,UDurl);
                         users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

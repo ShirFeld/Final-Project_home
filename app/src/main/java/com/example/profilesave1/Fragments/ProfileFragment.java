@@ -244,7 +244,7 @@ public class ProfileFragment extends Fragment {
                     currentStatus = user.getMaritalStatus();
                     currentFavoriteMoviesCategory = user.getFavoriteMoviesCategory();
                     currentChildren = user.getHaveChildren();
-                    currentHobbies = user.getWhyAreYouHere();
+                    currentHobbies = user.getFavoriteHobby();
 
                     // Displays the radioGroup on the screen
                     if (user.getHaveChildren().equals("")){
@@ -263,7 +263,7 @@ public class ProfileFragment extends Fragment {
                     city.setText(user.getCity());
                     age.setText(user.getAge());
                     sex.setText(user.getSex());
-                    hobbiesAuto.setText(user.getWhyAreYouHere());
+                    hobbiesAuto.setText(user.getFavoriteHobby());
                     animals.setText(user.getHaveAnimals());
                     moviesCategory.setText(user.getFavoriteMoviesCategory());
                     status.setText(user.getMaritalStatus());
@@ -338,7 +338,7 @@ public class ProfileFragment extends Fragment {
                     reference.child("maritalStatus").setValue(newStatus);
 
                 if(!currentHobbies.equals(newHobbies))
-                    reference.child("whyAreYouHere").setValue(newHobbies);
+                    reference.child("favoriteHobby").setValue(newHobbies);
 
                 if(!currentFavoriteMoviesCategory.equals(newMovie))
                     reference.child("favoriteMoviesCategory").setValue(newMovie);
