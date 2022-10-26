@@ -46,7 +46,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="5dp"
                     android:text="@string/aboutMe"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/back"
                     android:textSize="20sp" />
 
                 <TextView
