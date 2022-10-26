@@ -95,7 +95,7 @@ public class descfragment extends Fragment {
         TextView cityholder=view.findViewById(R.id.cityholder);
         TextView ageholder=view.findViewById(R.id.ageholder);
         TextView nameholder=view.findViewById(R.id.nameholder);
-        TextView relationshipHolder=view.findViewById(R.id.typeRelationshipHolder);
+        TextView relationshipHolder=view.findViewById(R.id.typeHobbyHolder);
         TextView haveAnimalsholder=view.findViewById(R.id.animalsHolder);
         TextView sexholder=view.findViewById(R.id.sexholder);
         TextView maritalStatusholder=view.findViewById(R.id.statusholder);
@@ -140,7 +140,7 @@ public class descfragment extends Fragment {
         TextView agePlace=view.findViewById(R.id.agePlace);
         TextView haveAnimalsholder1=view.findViewById(R.id.animalsHolder1);
         TextView cityholder1= view.findViewById(R.id.cityholder1);
-        TextView typeRelationship1= view.findViewById(R.id.typeRelationship1);
+        TextView typeRelationship1= view.findViewById(R.id.hobby1);
         TextView Nameholder1= view.findViewById(R.id.Nameholder1);
         TextView Sexholder1= view.findViewById(R.id.Sexholder1);
         TextView MaritalStatusholder1= view.findViewById(R.id.Statusholder1);

@@ -228,12 +228,12 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="40sp"
                     android:layout_marginEnd="40sp"
-                    android:hint="Type of relationship you looking"
+                    android:hint="What is your hobby"
                     app:startIconDrawable="@drawable/ic_baseline_connect_without_contact_24"
                     >
 
                     <AutoCompleteTextView
-                        android:id="@+id/whyAreYouHere"
+                        android:id="@+id/hobby"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"

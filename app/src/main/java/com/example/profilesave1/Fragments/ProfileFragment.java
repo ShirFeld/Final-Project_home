@@ -49,13 +49,13 @@ public class ProfileFragment extends Fragment {
     static String animalsItems [] ={"No","Yes","No,but I love them"};
     static String moviesCategoryItems [] ={"Comedy","Action","Drama","Fantasy","Horror","Mystery"};
     static String statusItems [] ={"Single","Married","Widower","Divorce","Complicated","Other"};
-    static String whyAreYouHereItems[] = {"Friends" , "Romantic"};
+    static String hobbies[] = {"Friends" , "Sport" , "Dancing" , "Fishing" , "Running" ,"Baking" };
 
     ArrayAdapter<String> adapterGenderItems;
     ArrayAdapter<String> adapterGenderItems_animals;
     ArrayAdapter<String> adapterStatusItems;
     ArrayAdapter<String> adapterMoviesCategoryItems;
-    ArrayAdapter<String> adapterWhyAreYouHereItems;
+    ArrayAdapter<String> adapterHobbiesItems;
     ArrayAdapter<String> none;
 
     // All these (static) vars are for testing to check if the var is changed
@@ -67,7 +67,7 @@ public class ProfileFragment extends Fragment {
     static String currentStatus;
     static String currentFavoriteMoviesCategory;
     static String currentChildren;
-    static String currentWhyAreYouHere;
+    static String currentHobbies;
 
     boolean flag =false;
     // GPS
@@ -82,7 +82,7 @@ public class ProfileFragment extends Fragment {
     static String userStatusTemp;
     static String userFavoriteMoviesCategoryTemp;
     static String userChildrenTemp;
-    static String userWhyAreYouHereTemp;
+    static String useHobbies;
 
 
     DatabaseReference reference;
@@ -95,7 +95,7 @@ public class ProfileFragment extends Fragment {
     AutoCompleteTextView animals;
     AutoCompleteTextView moviesCategory;
     AutoCompleteTextView status;
-    AutoCompleteTextView whyAreYouHere;
+    AutoCompleteTextView hobbiesAuto;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -137,7 +137,7 @@ public class ProfileFragment extends Fragment {
         city = view.findViewById(R.id.city_edit);
         sex = view.findViewById(R.id.auto_Complete_TextView);
         animals = view.findViewById(R.id.auto_Complete_TextView_animal);
-        whyAreYouHere = view.findViewById(R.id.whyAreYouHere);
+        hobbiesAuto = view.findViewById(R.id.hobby);
         moviesCategory = view.findViewById(R.id.auto_Complete_TextView_favoriteMoviesCategory);
         status = view.findViewById(R.id.auto_Complete_TextView_status);
         radioGroup = view.findViewById(R.id.radioGroup);
@@ -158,7 +158,7 @@ public class ProfileFragment extends Fragment {
                 userStatusTemp = status.getText().toString();
                 userFavoriteMoviesCategoryTemp = moviesCategory.getText().toString();
                 userChildrenTemp = radioGroup.getContext().toString();
-                userWhyAreYouHereTemp = whyAreYouHere.getText().toString();
+                useHobbies = hobbiesAuto.getText().toString();
 
                 GPStracker g = new GPStracker(getContext()); //create a tracker
                 Location l = g.getLocation(); // get the coordinates (latitude , longitude)
@@ -197,7 +197,7 @@ public class ProfileFragment extends Fragment {
                                 sex.setText(userSexTemp);
                                 status.setText(userStatusTemp);
                                 moviesCategory.setText(userFavoriteMoviesCategoryTemp);
-                                whyAreYouHere.setText(userWhyAreYouHereTemp);
+                                hobbiesAuto.setText(useHobbies);
 
                                 if (userChildrenTemp.equals("Yes")){
                                     r1.setChecked(true);
@@ -233,7 +233,7 @@ public class ProfileFragment extends Fragment {
                     adapterGenderItems_animals = new ArrayAdapter<String>(view.getContext(),R.layout.drop_down_item,animalsItems);
                     adapterStatusItems = new ArrayAdapter<String>(view.getContext(),R.layout.drop_down_item,statusItems);
                     adapterMoviesCategoryItems = new ArrayAdapter<String>(view.getContext(),R.layout.drop_down_item,moviesCategoryItems);
-                    adapterWhyAreYouHereItems = new ArrayAdapter<String>(view.getContext(),R.layout.drop_down_item,whyAreYouHereItems);
+                    adapterHobbiesItems = new ArrayAdapter<String>(view.getContext(),R.layout.drop_down_item, hobbies);
 
                     userName.setText(user.getName());
                     currentName = user.getName();
@@ -244,7 +244,7 @@ public class ProfileFragment extends Fragment {
                     currentStatus = user.getMaritalStatus();
                     currentFavoriteMoviesCategory = user.getFavoriteMoviesCategory();
                     currentChildren = user.getHaveChildren();
-                    currentWhyAreYouHere = user.getWhyAreYouHere();
+                    currentHobbies = user.getWhyAreYouHere();
 
                     // Displays the radioGroup on the screen
                     if (user.getHaveChildren().equals("")){
@@ -263,7 +263,7 @@ public class ProfileFragment extends Fragment {
                     city.setText(user.getCity());
                     age.setText(user.getAge());
                     sex.setText(user.getSex());
-                    whyAreYouHere.setText(user.getWhyAreYouHere());
+                    hobbiesAuto.setText(user.getWhyAreYouHere());
                     animals.setText(user.getHaveAnimals());
                     moviesCategory.setText(user.getFavoriteMoviesCategory());
                     status.setText(user.getMaritalStatus());
@@ -291,7 +291,7 @@ public class ProfileFragment extends Fragment {
                     animals.setAdapter(adapterGenderItems_animals);
                     moviesCategory.setAdapter(adapterMoviesCategoryItems);
                     status.setAdapter(adapterStatusItems);
-                    whyAreYouHere.setAdapter(adapterWhyAreYouHereItems);
+                    hobbiesAuto.setAdapter(adapterHobbiesItems);
                 }
             }
 
@@ -316,7 +316,7 @@ public class ProfileFragment extends Fragment {
                 String newStatus = status.getText().toString();
                 String newMovie = moviesCategory.getText().toString();
 
-                String newWhyAreYouHere = whyAreYouHere.getText().toString();
+                String newHobbies = hobbiesAuto.getText().toString();
 
                 // if the details were changed do the second line
                 if(!currentName.equals(newName) )
@@ -337,8 +337,8 @@ public class ProfileFragment extends Fragment {
                 if(!currentStatus.equals(newStatus))
                     reference.child("maritalStatus").setValue(newStatus);
 
-                if(!currentWhyAreYouHere.equals(newWhyAreYouHere))
-                    reference.child("whyAreYouHere").setValue(newWhyAreYouHere);
+                if(!currentHobbies.equals(newHobbies))
+                    reference.child("whyAreYouHere").setValue(newHobbies);
 
                 if(!currentFavoriteMoviesCategory.equals(newMovie))
                     reference.child("favoriteMoviesCategory").setValue(newMovie);
@@ -356,7 +356,7 @@ public class ProfileFragment extends Fragment {
 
                 if(currentName.equals(newName) && currentAge.equals(newAge)  && currentCity.equals(newCity) && currentSex.equals(newGender) && currentAnimal.equals(newAnimal)
                         && currentStatus.equals(newStatus) && currentFavoriteMoviesCategory.equals(newMovie)
-                        && currentWhyAreYouHere.equals(newWhyAreYouHere) && flag == false){
+                        && currentHobbies.equals(newHobbies) && flag == false){
                     Toast.makeText(getActivity(), "Data has not updated", Toast.LENGTH_SHORT).show();
                 }
                 else
