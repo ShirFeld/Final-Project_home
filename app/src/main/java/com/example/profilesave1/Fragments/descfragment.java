@@ -45,18 +45,18 @@ public class descfragment extends Fragment {
     private ArrayList<User> users2 ;
     String myImageUrl;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    String city, name, Url,age ,relationship, haveAnimals , sex , maritalStatus , haveChildren , favoriteMoviesCategory;
+    String city, name, Url,age , fHobby, haveAnimals , sex , maritalStatus , haveChildren , favoriteMoviesCategory;
 
 
     public descfragment() {
     }
-    public descfragment(String city, String name, String Url, String age, String relationship, String haveAnimals , String sex ,
+    public descfragment(String city, String name, String Url, String age, String fHobby, String haveAnimals , String sex ,
                         String maritalStatus , String haveChildren, String favoriteMoviesCategory ) {
         this.city=city;
         this.name = name;
         this.Url=Url;
         this.age = age;
-        this.relationship = relationship;
+        this.fHobby = fHobby;
         this.haveAnimals=haveAnimals;
         this.sex = sex;
         this.maritalStatus = maritalStatus;
@@ -91,11 +91,12 @@ public class descfragment extends Fragment {
         users = new ArrayList<>();
         users2 = new ArrayList<>();
 
+        // the answer / the data
         ImageView imageholder=view.findViewById(R.id.imagegholder);
         TextView cityholder=view.findViewById(R.id.cityholder);
         TextView ageholder=view.findViewById(R.id.ageholder);
         TextView nameholder=view.findViewById(R.id.nameholder);
-        TextView relationshipHolder=view.findViewById(R.id.typeHobbyHolder);
+        TextView hobbyHolder=view.findViewById(R.id.typeHobbyHolder);
         TextView haveAnimalsholder=view.findViewById(R.id.animalsHolder);
         TextView sexholder=view.findViewById(R.id.sexholder);
         TextView maritalStatusholder=view.findViewById(R.id.statusholder);
@@ -140,7 +141,7 @@ public class descfragment extends Fragment {
         TextView agePlace=view.findViewById(R.id.agePlace);
         TextView haveAnimalsholder1=view.findViewById(R.id.animalsHolder1);
         TextView cityholder1= view.findViewById(R.id.cityholder1);
-        TextView typeRelationship1= view.findViewById(R.id.hobby1);
+        TextView typeHobby1= view.findViewById(R.id.hobby1);
         TextView Nameholder1= view.findViewById(R.id.Nameholder1);
         TextView Sexholder1= view.findViewById(R.id.Sexholder1);
         TextView MaritalStatusholder1= view.findViewById(R.id.Statusholder1);
@@ -153,7 +154,7 @@ public class descfragment extends Fragment {
         ageholder.setText(age);
         nameholder.setText(name);
         Glide.with(getContext()).load(Url).into(imageholder); // url
-        relationshipHolder.setText(relationship);
+        hobbyHolder.setText(fHobby);
         haveAnimalsholder.setText(haveAnimals);
         sexholder.setText(sex);
         maritalStatusholder.setText(maritalStatus);
@@ -174,9 +175,9 @@ public class descfragment extends Fragment {
             cityholder.setVisibility(View.GONE);
             cityholder1.setVisibility(View.GONE);
         }
-        if(relationshipHolder.getText().toString().equals("")){
-            relationshipHolder.setVisibility(View.GONE);
-            typeRelationship1.setVisibility(View.GONE);
+        if(hobbyHolder.getText().toString().equals("")){
+            hobbyHolder.setVisibility(View.GONE);
+            typeHobby1.setVisibility(View.GONE);
         }
         if(nameholder.getText().toString().equals("")){
             nameholder.setVisibility(View.GONE);

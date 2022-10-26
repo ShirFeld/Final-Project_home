@@ -70,7 +70,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
                 AppCompatActivity activity=(AppCompatActivity)view.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new descfragment(arrayList.get(position).getCity(),
                         arrayList.get(position).getName(),arrayList.get(position).getUrl(),arrayList.get(position).getAge(),arrayList.get(position)
-                        .getHobby(),arrayList.get(position).getHaveAnimals() , arrayList.get(position).getSex() , arrayList.get(position).getMaritalStatus(),
+                        .getWhyAreYouHere(),arrayList.get(position).getHaveAnimals() , arrayList.get(position).getSex() , arrayList.get(position).getMaritalStatus(),
                         arrayList.get(position).getHaveChildren(),arrayList.get(position).getFavoriteMoviesCategory())).addToBackStack(null).commit();
                 indexPosition = position;
             }

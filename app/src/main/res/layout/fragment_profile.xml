@@ -228,7 +228,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="40sp"
                     android:layout_marginEnd="40sp"
-                    android:hint="What is your hobby"
+                    android:hint="Favorite hobby"
                     app:startIconDrawable="@drawable/ic_baseline_connect_without_contact_24"
                     >
 
