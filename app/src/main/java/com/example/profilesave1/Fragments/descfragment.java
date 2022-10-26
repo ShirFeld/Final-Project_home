@@ -82,7 +82,6 @@ public class descfragment extends Fragment {
         }
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -103,7 +102,7 @@ public class descfragment extends Fragment {
         TextView maritalStatusholder=view.findViewById(R.id.statusholder);
         TextView haveChildrenholder=view.findViewById(R.id.childrenholder);
         TextView favoriteMoviesCategoryholder=view.findViewById(R.id.movieholder);
-
+        TextView aboutholder=view.findViewById(R.id.aboutMeHolder);
 
 
         Button btn_back = view.findViewById(R.id.btn_back);
@@ -148,6 +147,7 @@ public class descfragment extends Fragment {
         TextView MaritalStatusholder1= view.findViewById(R.id.Statusholder1);
         TextView HaveChildrenholder1= view.findViewById(R.id.Childrenholder1);
         TextView FavoriteMoviesCategoryholder1= view.findViewById(R.id.Moviesholder1);
+        TextView AboutMeholder1= view.findViewById(R.id.aboutMeHolder1);
 
 
         // show user's data
@@ -161,6 +161,7 @@ public class descfragment extends Fragment {
         maritalStatusholder.setText(maritalStatus);
         haveChildrenholder.setText(haveChildren);
         favoriteMoviesCategoryholder.setText(favoriteMoviesCategory);
+        aboutholder.setText(aboutMe);
 
 
         // if there are no data in the fields so we dont want to show the the titles and the context
@@ -202,6 +203,10 @@ public class descfragment extends Fragment {
         if(haveChildrenholder.getText().toString().equals("")){
             haveChildrenholder.setVisibility(View.GONE);
             HaveChildrenholder1.setVisibility(View.GONE);
+        }
+        if(aboutholder.getText().toString().equals("")){
+            aboutholder.setVisibility(View.GONE);
+            AboutMeholder1.setVisibility(View.GONE);
         }
         return  view;
     }
