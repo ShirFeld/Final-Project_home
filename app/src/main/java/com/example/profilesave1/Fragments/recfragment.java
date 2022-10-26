@@ -201,9 +201,6 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                                 listU1.add(listU.get(i));
                             }
                             else {
-                                System.out.println("elseeeeeeee");
-                                System.out.println(" else hobby = " + hobby);
-                                System.out.println(" else gender = " + gender);
                                 listU1.add(adminUser);
                             }
                         }
