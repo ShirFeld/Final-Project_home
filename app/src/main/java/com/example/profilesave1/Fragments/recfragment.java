@@ -56,7 +56,8 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
     private ProgressBar progressBar;
 
 
-    static String text ="";
+    static String gender ="";
+    static String hobby ="";
     static String ageStart ="";
     static String ageFinish ="";
     EditText ageStartEditView,ageFinishEditView;
@@ -98,11 +99,17 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 //        mProgressDialog.show();
 
         Spinner spinner = view.findViewById(R.id.spinnerGenderFilter);
+        Spinner spinnerHobby = view.findViewById(R.id.spinnerHobbyFilter);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getContext(),R.array.Gender, R.layout.spinner_item);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getContext(),R.array.Hobby, R.layout.spinner_item);
         adapter1.setDropDownViewResource(R.layout.spinner_drop);
+        adapter2.setDropDownViewResource(R.layout.spinner_drop);
         spinner.setAdapter(adapter1);
+        spinnerHobby.setAdapter(adapter2);
 
         spinner.setOnItemSelectedListener(this);
+        spinnerHobby.setOnItemSelectedListener(this);
+
 
         ageStartEditView = view.findViewById(R.id.ageStart);
         ageFinishEditView = view.findViewById(R.id.ageFinish);
@@ -183,8 +190,8 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                             else
                                 ageFinish1 = Integer.parseInt(ageFinish);
 
-                            if(a >= ageStart1 && a <= ageFinish1 && (listU.get(i).getSex().equals(text) || text.equals("All")))
-                                listU1.add(listU.get(i));
+                            if(a >= ageStart1 && a <= ageFinish1 && listU.get(i).getFavoriteHobby().equals(hobby) || hobby.equals("All") && (listU.get(i).getSex().equals(gender) || gender.equals("All")))
+                            listU1.add(listU.get(i));
                             else{
                                 listU1.add(adminUser);
                             }
@@ -222,9 +229,11 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         counter++;
     }
 
+    // this func gives us the value that the user is chose
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        text = parent.getItemAtPosition(position).toString();
+        gender = parent.getItemAtPosition(position).toString();
+        hobby = parent.getItemAtPosition(position).toString();
     }
 
     @Override
