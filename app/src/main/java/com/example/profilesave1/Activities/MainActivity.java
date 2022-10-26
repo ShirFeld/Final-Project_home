@@ -214,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
             final String latitude = "";
             final String longitude = "";
             final String UDurl = "";
+            final String aboutMe = "";
 
 
 
@@ -228,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                                 name2 = name1 + name.substring(1);
                             }
 
-                            User user = new User(name2, email,city, phone, sex, age, haveAnimals, haveChildren, maritalStatus, favoriteMoviesCategory, favoriteHobby,latitude, longitude, UDurl);
+                            User user = new User(name2, email,city, phone, sex, age, haveAnimals, haveChildren, maritalStatus, favoriteMoviesCategory, favoriteHobby,latitude, longitude, UDurl,aboutMe);
                             users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

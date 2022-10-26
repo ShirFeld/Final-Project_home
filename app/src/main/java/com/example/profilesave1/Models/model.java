@@ -2,7 +2,7 @@ package com.example.profilesave1.Models;
 
 public class model
 {
-    String city,name,Url,age, favoriteHobby,haveAnimals,sex , maritalStatus , haveChildren , favoriteMoviesCategory;
+    String city,name,Url,age, favoriteHobby,haveAnimals,sex , maritalStatus , haveChildren , favoriteMoviesCategory, aboutMe;
 
     public model() {
     }
@@ -11,7 +11,10 @@ public class model
         this.Url = Url;
         this.age=age;
     }
-    public model(String city, String name, String Url, String age, String favoriteHobby, String haveAnimals , String sex , String maritalStatus , String haveChildren, String favoriteMoviesCategory ) {
+
+
+
+    public model(String city, String name, String Url, String age, String favoriteHobby, String haveAnimals , String sex , String maritalStatus , String haveChildren, String favoriteMoviesCategory , String aboutMe) {
         this.city = city;
         this.name = name;
         this.Url = Url;
@@ -22,6 +25,7 @@ public class model
         this.maritalStatus = maritalStatus;
         this.haveChildren = haveChildren;
         this.favoriteMoviesCategory = favoriteMoviesCategory;
+        this.aboutMe = aboutMe;
     }
     public String getSex() {
         return sex;
@@ -82,5 +86,11 @@ public class model
     }
     public void setUrl(String url) {
         this.Url = url;
+    }
+    public String getAboutMe() {
+        return aboutMe;
+    }
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
     }
 }

@@ -68,6 +68,7 @@ public class ProfileFragment extends Fragment {
     static String currentFavoriteMoviesCategory;
     static String currentChildren;
     static String currentHobbies;
+    static String currentAboutMe;
 
     boolean flag =false;
     // GPS
@@ -83,11 +84,12 @@ public class ProfileFragment extends Fragment {
     static String userFavoriteMoviesCategoryTemp;
     static String userChildrenTemp;
     static String useHobbies;
+    static String userAboutMeTemp;
 
 
     DatabaseReference reference;
     FirebaseUser user;
-    EditText userName, age, preferExit , city;
+    EditText userName, age , city , aboutMe;
     ImageView imageView;
     RadioGroup radioGroup;
     RadioButton r1 , r2;
@@ -140,6 +142,7 @@ public class ProfileFragment extends Fragment {
         hobbiesAuto = view.findViewById(R.id.hobby);
         moviesCategory = view.findViewById(R.id.auto_Complete_TextView_favoriteMoviesCategory);
         status = view.findViewById(R.id.auto_Complete_TextView_status);
+        aboutMe = view.findViewById(R.id.aboutMe_editText);
         radioGroup = view.findViewById(R.id.radioGroup);
         r1 = view.findViewById(R.id.yesChildren);
         r2 = view.findViewById(R.id.noChildren);
@@ -159,6 +162,7 @@ public class ProfileFragment extends Fragment {
                 userFavoriteMoviesCategoryTemp = moviesCategory.getText().toString();
                 userChildrenTemp = radioGroup.getContext().toString();
                 useHobbies = hobbiesAuto.getText().toString();
+                userAboutMeTemp = aboutMe.getText().toString();
 
                 GPStracker g = new GPStracker(getContext()); //create a tracker
                 Location l = g.getLocation(); // get the coordinates (latitude , longitude)
@@ -198,6 +202,7 @@ public class ProfileFragment extends Fragment {
                                 status.setText(userStatusTemp);
                                 moviesCategory.setText(userFavoriteMoviesCategoryTemp);
                                 hobbiesAuto.setText(useHobbies);
+                                aboutMe.setText(userAboutMeTemp);
 
                                 if (userChildrenTemp.equals("Yes")){
                                     r1.setChecked(true);
@@ -245,6 +250,7 @@ public class ProfileFragment extends Fragment {
                     currentFavoriteMoviesCategory = user.getFavoriteMoviesCategory();
                     currentChildren = user.getHaveChildren();
                     currentHobbies = user.getFavoriteHobby();
+                    currentAboutMe = user.getAboutMe();
 
                     // Displays the radioGroup on the screen
                     if (user.getHaveChildren().equals("")){
@@ -315,8 +321,9 @@ public class ProfileFragment extends Fragment {
                 String newAnimal = animals.getText().toString();
                 String newStatus = status.getText().toString();
                 String newMovie = moviesCategory.getText().toString();
-
                 String newHobbies = hobbiesAuto.getText().toString();
+                String newAboutMe = aboutMe.getText().toString();
+
 
                 // if the details were changed do the second line
                 if(!currentName.equals(newName) )
@@ -343,6 +350,9 @@ public class ProfileFragment extends Fragment {
                 if(!currentFavoriteMoviesCategory.equals(newMovie))
                     reference.child("favoriteMoviesCategory").setValue(newMovie);
 
+                if(!currentAboutMe.equals(newAboutMe) )
+                    reference.child("aboutMe").setValue(newAboutMe);
+
                 if (r1.isChecked()){
                     reference.child("haveChildren").setValue("Yes");
                     flag = true;
@@ -356,7 +366,7 @@ public class ProfileFragment extends Fragment {
 
                 if(currentName.equals(newName) && currentAge.equals(newAge)  && currentCity.equals(newCity) && currentSex.equals(newGender) && currentAnimal.equals(newAnimal)
                         && currentStatus.equals(newStatus) && currentFavoriteMoviesCategory.equals(newMovie)
-                        && currentHobbies.equals(newHobbies) && flag == false){
+                        && currentHobbies.equals(newHobbies) && currentAboutMe.equals(newAboutMe )&& flag == false){
                     Toast.makeText(getActivity(), "Data has not updated", Toast.LENGTH_SHORT).show();
                 }
                 else

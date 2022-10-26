@@ -162,7 +162,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
                         // we create a new user to save the indexes for the messages
                         User adminUser = new User("adminUser" , "" , "admin","","","","",
-                                "","", "","","","","");
+                                "","", "","","","","","");
 
                         // users value
                         ageStart = ageStartEditView.getText().toString();       // left side on age filter

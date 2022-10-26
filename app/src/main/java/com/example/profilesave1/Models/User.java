@@ -1,11 +1,14 @@
 package com.example.profilesave1.Models;
 
 public class User {
-    private String name,email,city,phone,sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory, favoriteHobby,latitude,longitude,Url;
+    private String name,email,city,phone,sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory, favoriteHobby,latitude,longitude,Url , aboutMe;
 
     public User(){}
+
+
+
     public User(String name, String email, String city, String phone, String sex, String age, String haveAnimals, String haveChildren, String maritalStatus,
-                String favoriteMoviesCategory, String favoriteHobby, String latitude, String longitude, String Url) {
+                String favoriteMoviesCategory, String favoriteHobby, String latitude, String longitude, String Url, String aboutMe) {
         this.name = name;
         this.email = email;
         this.city = city;
@@ -20,6 +23,7 @@ public class User {
         this.latitude = latitude;
         this.longitude = longitude;
         this.Url="https://startplay.online/files/avatars/no_avatar.jpg";
+        this.aboutMe = aboutMe;
     }
 
     public String getName() {
@@ -100,4 +104,14 @@ public class User {
     public void setUrl(String url) {
         this.Url = url;
     }
+
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
+    }
+
+    
 }

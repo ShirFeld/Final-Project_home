@@ -179,6 +179,7 @@ public class PhoneActivity extends AppCompatActivity {
         final String latitude = "";
         final String longitude = "";
         final String UDurl = "";
+        final String aboutMe = "";
 
 
         //register user if pass authentication
@@ -193,7 +194,7 @@ public class PhoneActivity extends AppCompatActivity {
                         }
 
                         User user = new User(name2,email2.getText().toString(),city,phone2.getText().toString(),sex,age,haveAnimals,haveChildren,maritalStatus,favoriteMoviesCategory,
-                                favoriteHobby,latitude,longitude,UDurl);
+                                favoriteHobby,latitude,longitude,UDurl,aboutMe);
                         users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

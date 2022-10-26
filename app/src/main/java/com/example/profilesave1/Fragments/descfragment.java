@@ -45,13 +45,13 @@ public class descfragment extends Fragment {
     private ArrayList<User> users2 ;
     String myImageUrl;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    String city, name, Url,age , fHobby, haveAnimals , sex , maritalStatus , haveChildren , favoriteMoviesCategory;
+    String city, name, Url,age , fHobby, haveAnimals , sex , maritalStatus , haveChildren , favoriteMoviesCategory, aboutMe;
 
 
     public descfragment() {
     }
     public descfragment(String city, String name, String Url, String age, String fHobby, String haveAnimals , String sex ,
-                        String maritalStatus , String haveChildren, String favoriteMoviesCategory ) {
+                        String maritalStatus , String haveChildren, String favoriteMoviesCategory, String aboutMe ) {
         this.city=city;
         this.name = name;
         this.Url=Url;
@@ -62,6 +62,7 @@ public class descfragment extends Fragment {
         this.maritalStatus = maritalStatus;
         this.haveChildren = haveChildren;
         this.favoriteMoviesCategory = favoriteMoviesCategory;
+        this.aboutMe = aboutMe;
     }
 
     public static descfragment newInstance(String param1, String param2) {
