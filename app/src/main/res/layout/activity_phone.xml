@@ -11,7 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/li1">
 
         <TextView
             android:layout_width="match_parent"
@@ -155,5 +156,30 @@
             android:fontFamily="@font/montserrat_alternates_semibold"
             android:text="@string/verify"
             android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            >
+
+            <TextView
+                android:id="@+id/forgot_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:text="Don't forget to change your password. Now it's your phone number"
+                android:textColor="@color/colorPrimary">
+
+            </TextView>
+        </LinearLayout>
+
     </LinearLayout>
+
+
 </RelativeLayout>

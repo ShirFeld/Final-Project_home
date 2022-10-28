@@ -60,7 +60,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
 
         // after the filter we will show only the right users
         if(arrayList.get(position).getName().equals("adminUser")){
-            holder.rel.setVisibility(View.GONE);
+           holder.rel.setVisibility(View.GONE);
         }
 
         // open the user details
