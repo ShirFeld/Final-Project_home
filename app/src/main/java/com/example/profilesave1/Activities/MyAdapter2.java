@@ -43,6 +43,8 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
     static double lon2;
     static double lat2;
 
+    static String  flagV = "";
+
     public MyAdapter2(ArrayList<User> arrayList) {
         this.arrayList = arrayList;
     }
@@ -61,6 +63,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
         // after the filter we will show only the right users
         if(arrayList.get(position).getName().equals("adminUser")){
            holder.rel.setVisibility(View.GONE);
+           flagV = "gone";
         }
 
         // open the user details

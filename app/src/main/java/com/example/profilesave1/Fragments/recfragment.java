@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.profilesave1.Activities.MyAdapter2;
 import com.example.profilesave1.Models.User;
 import com.example.profilesave1.R;
+import com.example.profilesave1.SpaceItemDecoration;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -97,7 +98,6 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 //            mProgressDialog.setIndeterminate(true);
 //        }
 //        mProgressDialog.show();
-
         Spinner spinner = view.findViewById(R.id.spinnerGenderFilter);
         Spinner spinnerHobby = view.findViewById(R.id.spinnerHobbyFilter);
 
@@ -134,6 +134,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         });
 
         recview=(RecyclerView)view.findViewById(R.id.recview); // the list
+        recview.addItemDecoration(new SpaceItemDecoration(20));        /////////////////////// space
         recview.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mAuth = FirebaseAuth.getInstance();
@@ -204,9 +205,12 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                                 listU1.add(adminUser);
                             }
                         }
+
                         // show the list after the user filter
                         recview.setHasFixedSize(true);
                         mAdapter = new MyAdapter2(listU1);
+
+                        System.out.println(mAdapter.toString() + " %%%%%%%%%%%%%%%%%%%%%%%%%");
                         recview.setAdapter(mAdapter);
 
                     }
