@@ -47,7 +47,6 @@ public class descfragment extends Fragment {
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     String city, name, Url,age , fHobby, haveAnimals , sex , maritalStatus , haveChildren , favoriteMoviesCategory, aboutMe;
 
-
     public descfragment() {
     }
     public descfragment(String city, String name, String Url, String age, String fHobby, String haveAnimals , String sex ,
@@ -135,6 +134,8 @@ public class descfragment extends Fragment {
             }
 
         };
+
+
         getUsers();
 
         // titles in layout
@@ -243,4 +244,6 @@ public class descfragment extends Fragment {
             }
         });
     }
+
+
 }

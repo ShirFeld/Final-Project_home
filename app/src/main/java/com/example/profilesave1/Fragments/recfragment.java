@@ -209,8 +209,6 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                         // show the list after the user filter
                         recview.setHasFixedSize(true);
                         mAdapter = new MyAdapter2(listU1);
-
-                        System.out.println(mAdapter.toString() + " %%%%%%%%%%%%%%%%%%%%%%%%%");
                         recview.setAdapter(mAdapter);
 
                     }

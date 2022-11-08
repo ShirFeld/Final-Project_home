@@ -71,6 +71,7 @@
     <string name="Step_1">Step 1:</string>
     <string name="Step_2">Step 2:</string>
     <string name="aboutMe">About me:</string>
+    <string name="block">block</string>
 
     <string-array name="Gender">
         <item>All</item>
