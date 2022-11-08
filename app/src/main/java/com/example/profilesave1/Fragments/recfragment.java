@@ -134,7 +134,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         });
 
         recview=(RecyclerView)view.findViewById(R.id.recview); // the list
-        recview.addItemDecoration(new SpaceItemDecoration(20));        /////////////////////// space
+        recview.addItemDecoration(new SpaceItemDecoration(-30));        /////////////////////// space
         recview.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mAuth = FirebaseAuth.getInstance();

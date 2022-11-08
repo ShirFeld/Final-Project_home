@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class SpaceItemDecoration extends RecyclerView.ItemDecoration {
 
+    // המחלקה שמגדירה את הרווחים ידנית ולא לפי הדיפולט
+
+
     private int space;
 
     public SpaceItemDecoration(int space) {
