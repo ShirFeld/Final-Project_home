@@ -1,9 +1,13 @@
 package com.example.profilesave1.Activities;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -13,7 +17,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.profilesave1.Fragments.ChatFragment;
 import com.example.profilesave1.Models.Message;
 import com.example.profilesave1.Models.User;
 import com.example.profilesave1.R;
@@ -36,12 +39,12 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     private EditText edtMessageInput;
     private TextView txtChattingWith;
     private ProgressBar progressBar;
-    private ImageView imgToolBar,imgSend, back;
-
+    private ImageView imgToolBar,imgSend, back , map , menu , block;
+    LinearLayout myMenuOptions;
     private MessageAdapter messageAdapter;
     private ArrayList<Message> messages;
 
-    String usernameOfTheRoommate,emailOfRoommate,chatRoomId;
+    String usernameOfTheRoommate,emailOfRoommate,chatRoomId , longitude, Latitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,8 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
 
         usernameOfTheRoommate = getIntent().getStringExtra("username_of_roommate");
         emailOfRoommate = getIntent().getStringExtra("email_of_roommate");
+        longitude = getIntent().getStringExtra("longitude");
+        Latitude = getIntent().getStringExtra("Latitude");
 
         recyclerView = findViewById(R.id.recyclerMessages);
         edtMessageInput = findViewById(R.id.edtText);
@@ -57,10 +62,12 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         progressBar = findViewById(R.id.progreeBar);
         imgToolBar = findViewById(R.id.img_toolbar);
         imgSend = findViewById(R.id.imgSend);
+        menu = findViewById(R.id.menu);
+        map = findViewById(R.id.navigation);
+        block = findViewById(R.id.block);
         back = findViewById(R.id.back);
-
+        myMenuOptions = findViewById(R.id.options);
         txtChattingWith.setText(usernameOfTheRoommate);
-
         messages = new ArrayList<>();
 
         imgSend.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +78,35 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                 edtMessageInput.setText("");
             }
         });
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeAndOpen();
+            }
+        });
+
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("hiii");
+                String str = "http://maps.google.com/maps?f=d&daddr="+Latitude+","+longitude;
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(str));
+                intent.setComponent(new ComponentName("com.google.android.apps.maps",
+                        "com.google.android.maps.MapsActivity"));
+                startActivity(intent);
+            }
+        });
+
+        block.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("hiiwwwwwwwwwiiii");
+
+            }
+        });
+
         messageAdapter = new MessageAdapter(messages, getIntent().getStringExtra("my_img"), getIntent().getStringExtra("img_of_roommate"), MessageActivity.this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -91,6 +127,15 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
 
 
     }
+    static int counter =0;
+    public void closeAndOpen (){
+        if (counter%2 != 0)
+            myMenuOptions.setVisibility(View.GONE);
+        else
+            myMenuOptions.setVisibility(View.VISIBLE);
+        counter++;
+    }
+
 
     // this method creates room name of 2 users in the firebase
     private void setUpChatRoom(){

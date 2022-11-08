@@ -119,13 +119,15 @@ public class ChatFragment extends Fragment {
             public void onUserClicked(int position) { // user details are pass to message activity
                 startActivity(new Intent(getActivity(), MessageActivity.class)
                         .putExtra("username_of_roommate", users.get(position).getName())
+                        .putExtra("longitude" ,users.get(position).getLongitude())
+                        .putExtra("Latitude" ,users.get(position).getLatitude())
                         .putExtra("email_of_roommate", users.get(position).getEmail())
                         .putExtra("img_of_roommate", users.get(position).getUrl())
                         .putExtra("my_img", myImageUrl));
             }
         };
      getUsers("") ;
-     getMessages();
+   //  getMessages();
 
 
 
@@ -190,8 +192,6 @@ public class ChatFragment extends Fragment {
                     System.out.println(name + " !!!!!!!!!!!!!!!!!!!");
 
                 }
-//                System.out.println(messages.get(0) + " !!!!!!!!!!!!!!!!!!!");
-//                System.out.println(messages.get(0).getReceiver() + " !!!!!!!!!!!!!!!!!!!");
 
 
 

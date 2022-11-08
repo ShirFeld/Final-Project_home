@@ -27,7 +27,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserHolder> 
         this.onUserClickListener = onUserClickListener;
     }
 
-    public interface OnUserClickListener{
+    public interface OnUserClickListener{  // This click will happen when the user clicks on another username is a chat fragment
         void onUserClicked(int position);
     }
 

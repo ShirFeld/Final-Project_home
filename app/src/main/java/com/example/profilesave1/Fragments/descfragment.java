@@ -119,6 +119,8 @@ public class descfragment extends Fragment {
               startActivity(new Intent(getActivity(), MessageActivity.class)
                       .putExtra("username_of_roommate",users.get(MyAdapter2.indexPosition).getName())
                       .putExtra("email_of_roommate",users.get(MyAdapter2.indexPosition).getEmail())
+                      .putExtra("longitude" ,users.get(MyAdapter2.indexPosition).getLongitude())
+                      .putExtra("Latitude" ,users.get(MyAdapter2.indexPosition).getLatitude())
                       .putExtra("img_of_roommate",users.get(MyAdapter2.indexPosition).getUrl())
                       .putExtra("my_img",myImageUrl));
            }
@@ -130,6 +132,8 @@ public class descfragment extends Fragment {
                         .putExtra("username_of_roommate",users.get(position).getName())
                         .putExtra("email_of_roommate",users.get(position).getEmail())
                         .putExtra("img_of_roommate",users.get(position).getUrl())
+                        .putExtra("longitude" ,users.get(position).getLongitude())
+                        .putExtra("Latitude" ,users.get(position).getLatitude())
                         .putExtra("my_img",myImageUrl));
             }
 
