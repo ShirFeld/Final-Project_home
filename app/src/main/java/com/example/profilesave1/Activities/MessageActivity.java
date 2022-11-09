@@ -1,10 +1,14 @@
 package com.example.profilesave1.Activities;
 
+import android.Manifest;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,6 +18,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ShareCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +27,9 @@ import com.bumptech.glide.Glide;
 import com.example.profilesave1.Models.Message;
 import com.example.profilesave1.Models.User;
 import com.example.profilesave1.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,22 +49,28 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     private EditText edtMessageInput;
     private TextView txtChattingWith;
     private ProgressBar progressBar;
-    private ImageView imgToolBar,imgSend, back , map , menu , block;
+    private ImageView imgToolBar, imgSend, back, map, menu, block;
     RelativeLayout myMenuOptions;
     private MessageAdapter messageAdapter;
     private ArrayList<Message> messages;
+    String usernameOfTheRoommate, emailOfRoommate, chatRoomId;
 
-    String usernameOfTheRoommate,emailOfRoommate,chatRoomId , longitude, Latitude;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    String longitude = "";
+    String latitude = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
+
+
         usernameOfTheRoommate = getIntent().getStringExtra("username_of_roommate");
         emailOfRoommate = getIntent().getStringExtra("email_of_roommate");
-        longitude = getIntent().getStringExtra("longitude");
-        Latitude = getIntent().getStringExtra("Latitude");
 
         recyclerView = findViewById(R.id.recyclerMessages);
         edtMessageInput = findViewById(R.id.edtText);
@@ -87,16 +102,28 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
             }
         });
 
-        map.setOnClickListener(new View.OnClickListener() {
+        // if i want to send my location to other user i will press the button
+        Button b  = findViewById(R.id.loc);
+        b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("hiii");
-                String str = "http://maps.google.com/maps?f=d&daddr="+Latitude+","+longitude;
-                Intent intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(str));
-                intent.setComponent(new ComponentName("com.google.android.apps.maps",
-                        "com.google.android.maps.MapsActivity"));
-                startActivity(intent);
+                getLocation(v);
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                String messageToUser = "http://maps.google.com/maps?f=d&daddr="+latitude+","+longitude;
+                                edtMessageInput.setText(messageToUser);
+
+                            }}, 100);
+
+//                String str = "http://maps.google.com/maps?f=d&daddr="+getLatitude+","+getLongitude;
+//                Intent intent = new Intent(Intent.ACTION_VIEW,
+//                        Uri.parse(str));
+//                intent.setComponent(new ComponentName("com.google.android.apps.maps",
+//                        "com.google.android.maps.MapsActivity"));
+//                startActivity(intent);
+
+
             }
         });
 
@@ -124,13 +151,12 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         });
 
 
-
-
-
     }
-    static int counter =0;
-    public void closeAndOpen (){
-        if (counter%2 != 0)
+
+    static int counter = 0;
+
+    public void closeAndOpen() {
+        if (counter % 2 != 0)
             myMenuOptions.setVisibility(View.GONE);
         else
             myMenuOptions.setVisibility(View.VISIBLE);
@@ -139,24 +165,25 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
 
 
     // this method creates room name of 2 users in the firebase
-    private void setUpChatRoom(){
-        FirebaseDatabase.getInstance().getReference("Users/"+ FirebaseAuth.getInstance().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+    private void setUpChatRoom() {
+        FirebaseDatabase.getInstance().getReference("Users/" + FirebaseAuth.getInstance().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String myUsername ="";
+                String myUsername = "";
                 if (snapshot.getValue(User.class) != null)
-                     myUsername = snapshot.getValue(User.class).getName();
+                    myUsername = snapshot.getValue(User.class).getName();
 
-                if (usernameOfTheRoommate.compareTo(myUsername)>0)
-                    chatRoomId = myUsername +usernameOfTheRoommate;
+                if (usernameOfTheRoommate.compareTo(myUsername) > 0)
+                    chatRoomId = myUsername + usernameOfTheRoommate;
 
-                else if(usernameOfTheRoommate.compareTo(myUsername) == 0)
-                    chatRoomId = myUsername +usernameOfTheRoommate;
+                else if (usernameOfTheRoommate.compareTo(myUsername) == 0)
+                    chatRoomId = myUsername + usernameOfTheRoommate;
 
                 else chatRoomId = usernameOfTheRoommate + myUsername;
 
                 attachMessageListener(chatRoomId);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -165,18 +192,19 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     }
 
     // this method shows all the messages between 2 users
-    private void attachMessageListener(String chatRoomId){
+    private void attachMessageListener(String chatRoomId) {
         FirebaseDatabase.getInstance().getReference("messages/" + chatRoomId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 messages.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     messages.add(dataSnapshot.getValue(Message.class));     // shows us all the messages
                 }
                 messageAdapter.notifyDataSetChanged();
-                recyclerView.scrollToPosition(messages.size()-1);
+                recyclerView.scrollToPosition(messages.size() - 1);
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -185,4 +213,29 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     }
 
 
+    // My current location
+    public void getLocation(View view) {
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location!= null){
+                    latitude = Double.toString(location.getLatitude());
+                    longitude = Double.toString(location.getLongitude());
+                }
+            }
+        });
+
+
+    }
 }

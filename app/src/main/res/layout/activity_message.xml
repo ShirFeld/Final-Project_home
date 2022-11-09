@@ -49,6 +49,13 @@
             android:orientation="horizontal"
             android:layout_gravity="center">
 
+            <Button
+                android:id="@+id/loc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="location">
+            </Button>
+
             <ImageView
                 android:id="@+id/menu"
                 android:layout_width="30dp"
@@ -78,7 +85,8 @@
 <!--        android:layout_weight="1"-->
 <!--        android:layout_marginRight="10dp"-->
 <!--        android:layout_gravity="center"-->
-<!--        android:src="@drawable/location" />-->
+<!--        android:src="@drawable/location"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
     <RelativeLayout
         android:id="@+id/options"
@@ -163,6 +171,7 @@
                     android:layout_weight="2.2"
                     android:src="@drawable/block_user" />
             </LinearLayout>
+
         </LinearLayout>
     </RelativeLayout>
 
