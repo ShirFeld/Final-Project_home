@@ -62,13 +62,8 @@ public class AboutUsFragment extends Fragment {
             public void onClick(View v) {
                 Uri webpage = Uri.parse("www.linkedin.com/in/shirfeld");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                try {
-                    startActivity(webIntent);
-                } catch (ActivityNotFoundException e) {
-                    // Define what your app should do if no activity can handle the intent.
+                startActivity(webIntent);
                 }
-
-            }
         });
 
         michael.setOnClickListener(new View.OnClickListener() {
@@ -76,11 +71,7 @@ public class AboutUsFragment extends Fragment {
             public void onClick(View v) {
                 Uri webpage = Uri.parse("https://www.linkedin.com/in/michaelv84/");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                try {
-                    startActivity(webIntent);
-                } catch (ActivityNotFoundException e) {
-                    // Define what your app should do if no activity can handle the intent.
-                }
+                startActivity(webIntent);
             }
         });
         return view;
