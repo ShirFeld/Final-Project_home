@@ -1,5 +1,6 @@
 package com.example.profilesave1.Fragments;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,12 +25,8 @@ public class AboutUsFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     private String mParam1;
     private String mParam2;
-
-
-
     public AboutUsFragment() {
         // Required empty public constructor
     }
@@ -65,15 +62,25 @@ public class AboutUsFragment extends Fragment {
             public void onClick(View v) {
                 Uri webpage = Uri.parse("www.linkedin.com/in/shirfeld");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                startActivity(webIntent);
+                try {
+                    startActivity(webIntent);
+                } catch (ActivityNotFoundException e) {
+                    // Define what your app should do if no activity can handle the intent.
+                }
+
             }
         });
+
         michael.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri webpage = Uri.parse("https://www.linkedin.com/in/michaelv84/");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                startActivity(webIntent);
+                try {
+                    startActivity(webIntent);
+                } catch (ActivityNotFoundException e) {
+                    // Define what your app should do if no activity can handle the intent.
+                }
             }
         });
         return view;
