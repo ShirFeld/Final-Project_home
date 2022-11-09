@@ -46,7 +46,7 @@ public class ProfileFragment extends Fragment {
     Here the user will select, write and choose the right answer about himself.
      */
     static String genderItems [] ={"Male","Female","Other"};
-    static String animalsItems [] ={"No","Yes","No,but I love them"};
+    static String animalsItems [] ={"No","Yes","No but love them"};
     static String moviesCategoryItems [] ={"Comedy","Action","Drama","Fantasy","Horror","Mystery"};
     static String statusItems [] ={"Single","Married","Widower","Divorce","Complicated","Other"};
     static String hobbies[] = {"Friends" , "Sport" , "Dancing" , "Fishing" , "Running" ,"Baking" };
