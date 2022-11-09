@@ -90,4 +90,19 @@
         <item>Baking</item>
     </string-array>
 
+    <string-array name="children">
+        <item>All</item>
+        <item>Yes</item>
+        <item>No</item>
+
+    </string-array>
+
+    <string-array name="animals">
+        <item>All</item>
+        <item>Yes</item>
+        <item>No</item>
+        <item>No but love them</item>
+    </string-array>
+
+
 </resources>

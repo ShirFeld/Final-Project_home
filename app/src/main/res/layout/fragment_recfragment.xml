@@ -92,7 +92,7 @@
                         android:gravity="center"
                         android:text="Age: "
                         android:textColor="@color/white"
-                        android:textSize="20dp"/>
+                        android:textSize="15dp"/>
 
                     <EditText
                         android:id="@+id/ageStart"
@@ -142,7 +142,7 @@
                         android:gravity="center"
                         android:text="Gender: "
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
 
                     <Spinner
                         android:id="@+id/spinnerGenderFilter"
@@ -170,10 +170,66 @@
                         android:gravity="center"
                         android:text="Hobby: "
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
 
                     <Spinner
                         android:id="@+id/spinnerHobbyFilter"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:popupBackground="@color/colorPrimary"
+                        android:layout_weight="1"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Children: "
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerChildrenFilter"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:popupBackground="@color/colorPrimary"
+                        android:layout_weight="1"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Animals: "
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerAnimalsFilter"
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

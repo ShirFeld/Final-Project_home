@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,7 +41,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     private TextView txtChattingWith;
     private ProgressBar progressBar;
     private ImageView imgToolBar,imgSend, back , map , menu , block;
-    LinearLayout myMenuOptions;
+    RelativeLayout myMenuOptions;
     private MessageAdapter messageAdapter;
     private ArrayList<Message> messages;
 

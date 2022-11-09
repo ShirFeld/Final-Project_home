@@ -59,6 +59,8 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
     static String gender ="";
     static String hobby ="";
+    static String children ="";
+    static String animals ="";
     static String ageStart ="";
     static String ageFinish ="";
     EditText ageStartEditView,ageFinishEditView;
@@ -100,18 +102,28 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 //        mProgressDialog.show();
         Spinner spinner = view.findViewById(R.id.spinnerGenderFilter);
         Spinner spinnerHobby = view.findViewById(R.id.spinnerHobbyFilter);
+        Spinner spinnerChildren = view.findViewById(R.id.spinnerChildrenFilter);
+        Spinner spinnerAnimals = view.findViewById(R.id.spinnerAnimalsFilter);
 
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getContext(),R.array.Gender, R.layout.spinner_item);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getContext(),R.array.Hobby, R.layout.spinner_item);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(getContext(),R.array.children, R.layout.spinner_item);
+        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(getContext(),R.array.animals, R.layout.spinner_item);
 
         adapter1.setDropDownViewResource(R.layout.spinner_drop);
         adapter2.setDropDownViewResource(R.layout.spinner_drop);
+        adapter3.setDropDownViewResource(R.layout.spinner_drop);
+        adapter4.setDropDownViewResource(R.layout.spinner_drop);
 
         spinner.setAdapter(adapter1);
         spinnerHobby.setAdapter(adapter2);
+        spinnerChildren.setAdapter(adapter3);
+        spinnerAnimals.setAdapter(adapter4);
 
         spinner.setOnItemSelectedListener(this);
         spinnerHobby.setOnItemSelectedListener(this);
+        spinnerChildren.setOnItemSelectedListener(this);
+        spinnerAnimals.setOnItemSelectedListener(this);
 
 
         ageStartEditView = view.findViewById(R.id.ageStart);
@@ -196,9 +208,9 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
                             if(a >= ageStart1 && a <= ageFinish1  &&
                                     (listU.get(i).getSex().equals(gender) || gender.equals("All")) &&
-                                    (listU.get(i).getFavoriteHobby().equals(hobby) || hobby.equals("All"))){
-                                System.out.println(" hobby = " + hobby);
-                                System.out.println(" gender = " + gender);
+                                    (listU.get(i).getFavoriteHobby().equals(hobby) || hobby.equals("All"))&&
+                                    (listU.get(i).getHaveChildren().equals(children) || children.equals("All"))&&
+                                    (listU.get(i).getHaveAnimals().equals(animals) || animals.equals("All"))){
                                 listU1.add(listU.get(i));
                             }
                             else {
@@ -243,12 +255,14 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if(parent.getId() == R.id.spinnerGenderFilter)
-        {
             gender = parent.getItemAtPosition(position).toString();
-        }
+
         else if(parent.getId() == R.id.spinnerHobbyFilter)
-        {
-            hobby = parent.getItemAtPosition(position).toString();        }
+            hobby = parent.getItemAtPosition(position).toString();
+        else if (parent.getId() == R.id.spinnerChildrenFilter)
+            children = parent.getItemAtPosition(position).toString();
+        else if (parent.getId() == R.id.spinnerAnimalsFilter)
+            animals = parent.getItemAtPosition(position).toString();
     }
 
     @Override
