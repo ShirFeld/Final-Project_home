@@ -102,7 +102,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
             }
         });
 
-        // if i want to send my location to other user i will press the button
+        // If the user wants to send his location to another user he will press the button
         Button b  = findViewById(R.id.loc);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +114,8 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                                 String messageToUser = "http://maps.google.com/maps?f=d&daddr="+latitude+","+longitude;
                                 edtMessageInput.setText(messageToUser);
 
+                                System.out.println(latitude + "ll");
+                                System.out.println(longitude + "ll");
                             }}, 100);
 
 //                String str = "http://maps.google.com/maps?f=d&daddr="+getLatitude+","+getLongitude;
