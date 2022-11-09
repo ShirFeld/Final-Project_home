@@ -1,5 +1,7 @@
 package com.example.profilesave1.Fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.profilesave1.R;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class AboutUsFragment extends Fragment {
@@ -22,6 +27,7 @@ public class AboutUsFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
 
 
     public AboutUsFragment() {
@@ -50,6 +56,26 @@ public class AboutUsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_about_us, container, false);
 
+        CircleImageView shir = view.findViewById(R.id.shir);
+        CircleImageView michael = view.findViewById(R.id.michael);
+
+
+        shir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri webpage = Uri.parse("www.linkedin.com/in/shirfeld");
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                startActivity(webIntent);
+            }
+        });
+        michael.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri webpage = Uri.parse("https://www.linkedin.com/in/michaelv84/");
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                startActivity(webIntent);
+            }
+        });
         return view;
     }
 

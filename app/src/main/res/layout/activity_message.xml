@@ -86,13 +86,10 @@
         android:layout_height="250dp"
         android:background="@drawable/message_input_background"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="90dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         android:layout_marginBottom="10dp"
         app:layout_constraintTop_toTopOf="@+id/linearLayout">
 
@@ -102,9 +99,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:weightSum="3">
 
             <TextView
@@ -119,12 +113,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
-                android:weightSum="2"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_marginTop="20dp">
+                android:weightSum="3">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -134,18 +125,15 @@
                     android:gravity="center"
                     android:text="User location: "
                     android:textColor="@color/white"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:id="@+id/navigation"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:layout_marginRight="10dp"
                     android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
                     android:src="@drawable/location" />
             </LinearLayout>
 
@@ -153,26 +141,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
-                android:weightSum="2"
-                android:layout_marginTop="20dp">
+                android:weightSum="4">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="1.1"
                     android:gravity="center"
                     android:text="Block user: "
                     android:textColor="@color/white"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:id="@+id/block"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="2.2"
                     android:src="@drawable/block_user" />
             </LinearLayout>
         </LinearLayout>
