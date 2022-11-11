@@ -50,7 +50,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     private TextView txtChattingWith;
     private ProgressBar progressBar;
     private ImageView imgToolBar, imgSend, back, map, menu, block;
-    RelativeLayout myMenuOptions;
+    LinearLayout myMenuOptions;
     private MessageAdapter messageAdapter;
     private ArrayList<Message> messages;
     String usernameOfTheRoommate, emailOfRoommate, chatRoomId;
@@ -103,20 +103,11 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         });
 
         // If the user wants to send his location to another user he will press the button
-        Button b  = findViewById(R.id.loc);
-        b.setOnClickListener(new View.OnClickListener() {
+        map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getLocation(v);
-                new android.os.Handler().postDelayed(
-                        new Runnable() {
-                            public void run() {
-                                String messageToUser = "http://maps.google.com/maps?f=d&daddr="+latitude+","+longitude;
-                                edtMessageInput.setText(messageToUser);
 
-                                System.out.println(latitude + "ll");
-                                System.out.println(longitude + "ll");
-                            }}, 100);
 
 //                String str = "http://maps.google.com/maps?f=d&daddr="+getLatitude+","+getLongitude;
 //                Intent intent = new Intent(Intent.ACTION_VIEW,
@@ -231,10 +222,20 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if (location!= null){
-                    latitude = Double.toString(location.getLatitude());
-                    longitude = Double.toString(location.getLongitude());
-                }
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                if (location!= null){
+                                    latitude = Double.toString(location.getLatitude());
+                                    longitude = Double.toString(location.getLongitude());
+                                }
+                                String messageToUser = "http://maps.google.com/maps?f=d&daddr="+latitude+","+longitude;
+                                edtMessageInput.setText(messageToUser);
+
+                                System.out.println(messageToUser + "  $$$$$$$$$$$$$$");
+                            }}, 100);
+
+
             }
         });
 
