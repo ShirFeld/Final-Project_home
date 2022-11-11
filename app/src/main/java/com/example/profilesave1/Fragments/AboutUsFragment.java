@@ -60,18 +60,25 @@ public class AboutUsFragment extends Fragment {
         shir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri webpage = Uri.parse("www.linkedin.com/in/shirfeld");
-                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                startActivity(webIntent);
-                }
+                try {
+                    Uri webpage = Uri.parse("https://www.linkedin.com/in/shirfeld/");
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                    startActivity(webIntent);
+                }catch (ActivityNotFoundException e){
+                }}
         });
 
         michael.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri webpage = Uri.parse("https://www.linkedin.com/in/michaelv84/");
-                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-                startActivity(webIntent);
+               try {
+                   Uri webpage = Uri.parse("https://www.linkedin.com/in/michaelv84/");
+                   Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                   startActivity(webIntent);
+               }
+               catch (ActivityNotFoundException e){
+
+               }
             }
         });
         return view;
