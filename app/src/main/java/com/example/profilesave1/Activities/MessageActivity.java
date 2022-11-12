@@ -2,6 +2,7 @@ package com.example.profilesave1.Activities;
 
 import android.Manifest;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -17,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ShareCompat;
@@ -49,7 +51,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     private EditText edtMessageInput;
     private TextView txtChattingWith;
     private ProgressBar progressBar;
-    private ImageView imgToolBar, imgSend, back, map, menu, block;
+    private ImageView imgToolBar, imgSend, back, map, menu, block ,unBlock;
     LinearLayout myMenuOptions;
     private MessageAdapter messageAdapter;
     private ArrayList<Message> messages;
@@ -81,6 +83,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         menu = findViewById(R.id.menu);
         map = findViewById(R.id.navigation);
         block = findViewById(R.id.block);
+        unBlock = findViewById(R.id.unBlock);
         back = findViewById(R.id.back);
         myMenuOptions = findViewById(R.id.options);
         txtChattingWith.setText(usernameOfTheRoommate);
@@ -107,24 +110,48 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
             @Override
             public void onClick(View v) {
                 getLocation(v);
-
-
 //                String str = "http://maps.google.com/maps?f=d&daddr="+getLatitude+","+getLongitude;
 //                Intent intent = new Intent(Intent.ACTION_VIEW,
 //                        Uri.parse(str));
 //                intent.setComponent(new ComponentName("com.google.android.apps.maps",
 //                        "com.google.android.maps.MapsActivity"));
 //                startActivity(intent);
-
-
             }
         });
 
         block.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("hiiwwwwwwwwwiiii");
+                new AlertDialog.Builder(MessageActivity.this) .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Block user")
+                        .setMessage("Are you sure you want to block this user?")
+                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                recyclerView.setVisibility(v.GONE);
+                            }
+                        }).setNegativeButton("No",null).show();
 
+
+            }
+        });
+
+        unBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new AlertDialog.Builder(MessageActivity.this) .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Unblock user")
+                        .setMessage("Are you sure you want to unblock this user?")
+                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                if (recyclerView.getVisibility() == v.GONE)
+                                    recyclerView.setVisibility(v.VISIBLE);
+                            }
+                        }).setNegativeButton("No",null).show();
             }
         });
 
