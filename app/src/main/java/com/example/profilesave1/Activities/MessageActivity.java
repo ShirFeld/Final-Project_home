@@ -130,6 +130,9 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                                 recyclerView.setVisibility(v.GONE);
+                                myMenuOptions.setVisibility(v.GONE);
+                                counter++;
+                                edtMessageInput.setHint("You block this user");
                             }
                         }).setNegativeButton("No",null).show();
 
@@ -148,8 +151,12 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                if (recyclerView.getVisibility() == v.GONE)
+                                if (recyclerView.getVisibility() == v.GONE){
                                     recyclerView.setVisibility(v.VISIBLE);
+                                    myMenuOptions.setVisibility(v.GONE);
+                                    counter++;
+                                    edtMessageInput.setHint("Type your message...");
+                                }
                             }
                         }).setNegativeButton("No",null).show();
             }
@@ -237,13 +244,6 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     public void getLocation(View view) {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
@@ -258,8 +258,8 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                                 }
                                 String messageToUser = "http://maps.google.com/maps?f=d&daddr="+latitude+","+longitude;
                                 edtMessageInput.setText(messageToUser);
-
-                                System.out.println(messageToUser + "  $$$$$$$$$$$$$$");
+                                myMenuOptions.setVisibility(view.GONE);
+                                counter++;
                             }}, 100);
 
 
