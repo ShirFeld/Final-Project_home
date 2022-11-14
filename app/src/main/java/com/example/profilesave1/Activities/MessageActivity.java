@@ -92,7 +92,8 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         imgSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase.getInstance().getReference("messages/" + chatRoomId).push().setValue(new Message(FirebaseAuth.getInstance().getCurrentUser().getEmail()
+                FirebaseDatabase.getInstance().getReference("messages/" + chatRoomId).push()
+                        .setValue(new Message(FirebaseAuth.getInstance().getCurrentUser().getEmail()
                         , emailOfRoommate, edtMessageInput.getText().toString()));
                 edtMessageInput.setText("");
             }
@@ -162,11 +163,13 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
             }
         });
 
-        messageAdapter = new MessageAdapter(messages, getIntent().getStringExtra("my_img"), getIntent().getStringExtra("img_of_roommate"), MessageActivity.this);
+        messageAdapter = new MessageAdapter(messages, getIntent().getStringExtra("my_img"),
+                getIntent().getStringExtra("img_of_roommate"), MessageActivity.this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(messageAdapter);
-        Glide.with(MessageActivity.this).load(getIntent().getStringExtra("img_of_roommate")).placeholder(R.drawable.no_avatar).error(R.drawable.no_avatar).into(imgToolBar);
+        Glide.with(MessageActivity.this).load(getIntent().getStringExtra("img_of_roommate")).
+                placeholder(R.drawable.no_avatar).error(R.drawable.no_avatar).into(imgToolBar);
 
         setUpChatRoom();
 
@@ -176,12 +179,9 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                 onBackPressed();
             }
         });
-
-
     }
 
     static int counter = 0;
-
     public void closeAndOpen() {
         if (counter % 2 != 0)
             myMenuOptions.setVisibility(View.GONE);
@@ -189,7 +189,6 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
             myMenuOptions.setVisibility(View.VISIBLE);
         counter++;
     }
-
 
     // this method creates room name of 2 users in the firebase
     private void setUpChatRoom() {
@@ -199,21 +198,16 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                 String myUsername = "";
                 if (snapshot.getValue(User.class) != null)
                     myUsername = snapshot.getValue(User.class).getName();
-
                 if (usernameOfTheRoommate.compareTo(myUsername) > 0)
                     chatRoomId = myUsername + usernameOfTheRoommate;
-
                 else if (usernameOfTheRoommate.compareTo(myUsername) == 0)
                     chatRoomId = myUsername + usernameOfTheRoommate;
-
                 else chatRoomId = usernameOfTheRoommate + myUsername;
-
                 attachMessageListener(chatRoomId);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
@@ -229,12 +223,10 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                 }
                 messageAdapter.notifyDataSetChanged();
                 recyclerView.scrollToPosition(messages.size() - 1);
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
@@ -243,7 +235,8 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     // My current location
     public void getLocation(View view) {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
