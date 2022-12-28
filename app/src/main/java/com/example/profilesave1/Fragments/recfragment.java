@@ -37,7 +37,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
     /*
        This fragment displays a list of users.
        There is a filter button that the user can activate on the list.
-       When any user is clicked we will sew all his information.
+       When any user is clicked we will see all his information.
 
      */
     private static final String ARG_PARAM1 = "param1";
@@ -57,14 +57,14 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
     private ProgressBar progressBar;
 
 
+    static String ageStart ="";
+    static String ageFinish ="";
     static String gender ="";
     static String hobby ="";
     static String children ="";
     static String animals ="";
-    static String ageStart ="";
-    static String ageFinish ="";
-    EditText ageStartEditView,ageFinishEditView;
 
+    EditText ageStartEditView,ageFinishEditView;
 
     public recfragment() {
     }
@@ -129,6 +129,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         ageStartEditView = view.findViewById(R.id.ageStart);
         ageFinishEditView = view.findViewById(R.id.ageFinish);
 
+
         // the values at the beginning
         ageStartEditView.setText("18");
         ageFinishEditView.setText("60");
@@ -187,11 +188,13 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                         User adminUser = new User("adminUser" , "" , "admin","","","","",
                                 "","", "","","","","","");
 
-                        // users value
+                        // users input value
                         ageStart = ageStartEditView.getText().toString();       // left side on age filter
                         ageFinish = ageFinishEditView.getText().toString();     // right side on age filter
+
+
                         for (int i = 0; i < listU.size(); i++) {
-                            if(listU.get(i).getAge().equals(""))
+                            if(listU.get(i).getAge().equals(""))  // check if the user[i] has age
                                 a = 0;
                             else
                                 a = Integer.parseInt(listU.get(i).getAge());

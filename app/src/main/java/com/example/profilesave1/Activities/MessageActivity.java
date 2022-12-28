@@ -61,6 +61,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     String longitude = "";
     String latitude = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +88,8 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         back = findViewById(R.id.back);
         myMenuOptions = findViewById(R.id.options);
         txtChattingWith.setText(usernameOfTheRoommate);
+
+
         messages = new ArrayList<>();
 
         imgSend.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +137,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                                 myMenuOptions.setVisibility(v.GONE);
                                 counter++;
                                 edtMessageInput.setHint("You block this user");
+                                txtChattingWith.setText("This user is blocked");
                             }
                         }).setNegativeButton("No",null).show();
 
@@ -157,6 +161,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                                     myMenuOptions.setVisibility(v.GONE);
                                     counter++;
                                     edtMessageInput.setHint("Type your message...");
+                                    txtChattingWith.setText(usernameOfTheRoommate);
                                 }
                             }
                         }).setNegativeButton("No",null).show();
@@ -254,11 +259,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                                 myMenuOptions.setVisibility(view.GONE);
                                 counter++;
                             }}, 100);
-
-
             }
         });
-
-
     }
 }
