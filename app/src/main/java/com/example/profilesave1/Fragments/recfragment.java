@@ -1,6 +1,7 @@
 package com.example.profilesave1.Fragments;
 
 import android.app.ProgressDialog;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,12 +24,17 @@ import com.example.profilesave1.Models.User;
 import com.example.profilesave1.R;
 import com.example.profilesave1.SpaceItemDecoration;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,8 +76,8 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
     static String animals ="";
 
     EditText ageStartEditView,ageFinishEditView;
-
     EditText locationStartEditView,locationFinishEditView;
+    LinearLayout location;
 
     public recfragment() {
     }
@@ -138,6 +144,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
         locationStartEditView = view.findViewById(R.id.locationStart);
         locationFinishEditView = view.findViewById(R.id.locationFinish);
+        location = view.findViewById(R.id.location);
 
         // the values at the beginning
         ageStartEditView.setText("18");
@@ -167,6 +174,13 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         listU = new ArrayList<>();
         search_btn = view.findViewById(R.id.search_btn);
 
+
+
+
+        ArrayList<User> onlyOne = new ArrayList<>(); // the current user - to take the Latitude and Longitude.
+
+
+
         // gives us all the users except of getCurrentUser()
         FirebaseDatabase.getInstance().getReference().child("Users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -182,8 +196,22 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                         if (!mAuth.getCurrentUser().getUid().equals(uuid)){
                             list.add(ds.getValue(User.class));
                         }
+                        else{
+                            onlyOne.add(ds.getValue(User.class));
+                        }
                     }
                 }
+
+
+
+
+                // check if the current user has Longitude and Latitude : yes -> show on LinearLayout. no : LinearLayout gone
+                if (onlyOne.get(0).getLatitude().equals("") || onlyOne.get(0).getLongitude().equals("")){
+                    location.setVisibility(View.GONE);
+                }
+                else location.setVisibility(View.VISIBLE);
+
+
                 for (int i = 0; i < list.size(); i++) {
                     if (list.get(i) != null)
                         listU.add(list.get(i));
@@ -204,6 +232,9 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                         // users input value
                         ageStart = ageStartEditView.getText().toString();       // left side on age filter
                         ageFinish = ageFinishEditView.getText().toString();     // right side on age filter
+                        locationStart = locationStartEditView.getText().toString();
+                        locationFinish = locationFinishEditView.getText().toString();
+
 
 
                         for (int i = 0; i < listU.size(); i++) {
@@ -222,16 +253,58 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                             else
                                 ageFinish1 = Integer.parseInt(ageFinish);
 
-                            if(a >= ageStart1 && a <= ageFinish1  &&
-                                    (listU.get(i).getSex().equals(gender) || gender.equals("All")) &&
-                                    (listU.get(i).getFavoriteHobby().equals(hobby) || hobby.equals("All"))&&
-                                    (listU.get(i).getHaveChildren().equals(children) || children.equals("All"))&&
-                                    (listU.get(i).getHaveAnimals().equals(animals) || animals.equals("All"))){
-                                listU1.add(listU.get(i));
+
+                            if (!onlyOne.get(0).getLatitude().equals("") && !onlyOne.get(0).getLongitude().equals("")){
+
+                                // current user values
+                                double la = Double.parseDouble(onlyOne.get(0).getLatitude());
+                                double lo = Double.parseDouble(onlyOne.get(0).getLongitude());
+
+                                if (!listU.get(i).getLatitude().equals("") && !listU.get(i).getLongitude().equals("")){
+                                    System.out.println(listU.get(i).getLatitude() + " listU.get(i).getLatitude()");
+                                    System.out.println(listU.get(i).getLongitude() + " listU.get(i).getLongitude()");
+
+                                    double distance = distanceBetween(la,lo,Double.parseDouble(listU.get(i).getLatitude()) , Double.parseDouble(listU.get(i).getLongitude())) / 1000;
+                                    distance = round(distance ,1);
+
+                                    System.out.println(distance + " %%%%%%%%%%%%%%%%%%%%%%%%");
+
+                                    if (distance >= Integer.parseInt(locationStart) && distance <= Integer.parseInt(locationFinish)){
+                                        if(a >= ageStart1 && a <= ageFinish1  &&
+                                                (listU.get(i).getSex().equals(gender) || gender.equals("All")) &&
+                                                (listU.get(i).getFavoriteHobby().equals(hobby) || hobby.equals("All"))&&
+                                                (listU.get(i).getHaveChildren().equals(children) || children.equals("All"))&&
+                                                (listU.get(i).getHaveAnimals().equals(animals) || animals.equals("All"))){
+                                            listU1.add(listU.get(i));
+                                        }
+                                        else {
+                                            listU1.add(adminUser);
+                                        }
+                                    }
+                                }
+
                             }
-                            else {
-                                listU1.add(adminUser);
+                            else{
+                                if(a >= ageStart1 && a <= ageFinish1  &&
+                                        (listU.get(i).getSex().equals(gender) || gender.equals("All")) &&
+                                        (listU.get(i).getFavoriteHobby().equals(hobby) || hobby.equals("All"))&&
+                                        (listU.get(i).getHaveChildren().equals(children) || children.equals("All"))&&
+                                        (listU.get(i).getHaveAnimals().equals(animals) || animals.equals("All"))){
+                                    listU1.add(listU.get(i));
+                                }
+                                else {
+                                    listU1.add(adminUser);
+                                }
                             }
+
+
+
+
+
+                            // no location
+
+
+
                         }
 
                         // show the list after the user filter
@@ -286,6 +359,21 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
     }
 
 
+    // returns the distance between 2 users
+    public static float distanceBetween(double lat1,double lon1,double lat2,double lon2) {
+        float[] distance = new float[1];
+        Location.distanceBetween(lat1, lon1, lat2, lon2, distance);
+        return distance[0];
+    }
+
+    // doing the distance with only one number after the '.'
+    private static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(Double.toString(value));
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
 
 
 

@@ -132,7 +132,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
                 else
                     lon2 = Double.parseDouble(arrayList.get(position).getLongitude());
 
-                double ab = distanceBetween(lon1,lat1,lon2,lat2)/1000;
+                double ab = distanceBetween(lat1,lon1,lat2,lon2)/1000;
                 ab = round(ab,1) ;
 
                 // if there is no city so dont show anything
