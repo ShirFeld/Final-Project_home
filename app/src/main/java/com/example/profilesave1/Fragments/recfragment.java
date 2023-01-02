@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +60,10 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
     static String ageStart ="";
     static String ageFinish ="";
+
+    static String locationStart ="";
+    static String locationFinish ="";
+
     static String gender ="";
     static String hobby ="";
     static String children ="";

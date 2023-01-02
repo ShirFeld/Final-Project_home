@@ -2,6 +2,8 @@ package com.example.profilesave1.Activities;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -77,6 +80,28 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
                 indexPosition = position;
             }
         });
+
+
+        holder.block.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(v.getRootView().getContext()) .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Block user")
+                        .setMessage("Are you sure you want to block this user?")
+                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                holder.root.setVisibility(v.GONE);
+                                holder.rel.setVisibility(v.GONE);
+
+                            }
+                        }).setNegativeButton("No",null).show();
+            }
+        });
+
+
+
 
         // In this method we will receive and display the distances between users on the recyclerView
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -147,7 +172,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView img1;
+        ImageView img1 , block;
         TextView nametext, citytext,agetext,agetext1,gpstext,gpstext0,gpstext1;
         CardView root ;
         RelativeLayout rel;
@@ -164,6 +189,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
             gpstext1 = itemView.findViewById(R.id.gpstext1);
             root = itemView.findViewById(R.id.single);
             rel = itemView.findViewById(R.id.rel);
+            block = itemView.findViewById(R.id.block_user_img);
         }
     }
 
