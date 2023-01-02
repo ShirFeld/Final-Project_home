@@ -88,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="1"
+                        android:layout_weight="1.4"
                         android:gravity="center"
                         android:text="Age: "
                         android:textColor="@color/white"
@@ -140,7 +140,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Location: "
+                        android:text="Distance: "
                         android:textColor="@color/white"
                         android:textSize="15dp" />
 
@@ -201,9 +201,9 @@
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:popupBackground="@color/colorPrimary"
                         android:layout_weight="2"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:popupBackground="@color/colorPrimary" />
                 </LinearLayout>
 
                 <LinearLayout
