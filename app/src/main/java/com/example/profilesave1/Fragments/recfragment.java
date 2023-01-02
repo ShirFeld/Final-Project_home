@@ -71,6 +71,8 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
     EditText ageStartEditView,ageFinishEditView;
 
+    EditText locationStartEditView,locationFinishEditView;
+
     public recfragment() {
     }
 
@@ -134,10 +136,16 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         ageStartEditView = view.findViewById(R.id.ageStart);
         ageFinishEditView = view.findViewById(R.id.ageFinish);
 
+        locationStartEditView = view.findViewById(R.id.locationStart);
+        locationFinishEditView = view.findViewById(R.id.locationFinish);
 
         // the values at the beginning
         ageStartEditView.setText("18");
         ageFinishEditView.setText("60");
+
+        locationStartEditView.setText("0");
+        locationFinishEditView.setText("100");
+
 
         myfilter = view.findViewById(R.id.searchBar);
         filter = view.findViewById(R.id.btn_filter);
