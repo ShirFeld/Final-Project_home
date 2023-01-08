@@ -33,8 +33,10 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -83,8 +85,8 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         imgSend = findViewById(R.id.imgSend);
         menu = findViewById(R.id.menu);
         map = findViewById(R.id.navigation);
-        block = findViewById(R.id.block);
-        unBlock = findViewById(R.id.unBlock);
+//        block = findViewById(R.id.block);
+//        unBlock = findViewById(R.id.unBlock);
         back = findViewById(R.id.back);
         myMenuOptions = findViewById(R.id.options);
         txtChattingWith.setText(usernameOfTheRoommate);
@@ -123,50 +125,51 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
             }
         });
 
-        block.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(MessageActivity.this) .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle("Block user")
-                        .setMessage("Are you sure you want to block this user?")
-                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                recyclerView.setVisibility(v.GONE);
-                                myMenuOptions.setVisibility(v.GONE);
-                                counter++;
-                                edtMessageInput.setHint("You block this user");
-                                txtChattingWith.setText("This user is blocked");
-                            }
-                        }).setNegativeButton("No",null).show();
-
-
-            }
-        });
-
-        unBlock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                new AlertDialog.Builder(MessageActivity.this) .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle("Unblock user")
-                        .setMessage("Are you sure you want to unblock this user?")
-                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                if (recyclerView.getVisibility() == v.GONE){
-                                    recyclerView.setVisibility(v.VISIBLE);
-                                    myMenuOptions.setVisibility(v.GONE);
-                                    counter++;
-                                    edtMessageInput.setHint("Type your message...");
-                                    txtChattingWith.setText(usernameOfTheRoommate);
-                                }
-                            }
-                        }).setNegativeButton("No",null).show();
-            }
-        });
+//        block.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                new AlertDialog.Builder(MessageActivity.this) .setIcon(android.R.drawable.ic_dialog_alert)
+//                        .setTitle("Block user")
+//                        .setMessage("Are you sure you want to block this user?")
+//                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                                recyclerView.setVisibility(v.GONE);
+//                                myMenuOptions.setVisibility(v.GONE);
+//                                counter++;
+//                                edtMessageInput.setHint("You block this user");
+//                                txtChattingWith.setText("This user is blocked");
+//
+//                            }
+//                        }).setNegativeButton("No",null).show();
+//
+//
+//            }
+//        });
+//
+//        unBlock.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                new AlertDialog.Builder(MessageActivity.this) .setIcon(android.R.drawable.ic_dialog_alert)
+//                        .setTitle("Unblock user")
+//                        .setMessage("Are you sure you want to unblock this user?")
+//                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                                if (recyclerView.getVisibility() == v.GONE){
+//                                    recyclerView.setVisibility(v.VISIBLE);
+//                                    myMenuOptions.setVisibility(v.GONE);
+//                                    counter++;
+//                                    edtMessageInput.setHint("Type your message...");
+//                                    txtChattingWith.setText(usernameOfTheRoommate);
+//                                }
+//                            }
+//                        }).setNegativeButton("No",null).show();
+//            }
+//        });
 
         messageAdapter = new MessageAdapter(messages, getIntent().getStringExtra("my_img"),
                 getIntent().getStringExtra("img_of_roommate"), MessageActivity.this);

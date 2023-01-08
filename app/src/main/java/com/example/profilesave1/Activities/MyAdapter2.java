@@ -82,23 +82,23 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
         });
 
 
-        holder.block.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(v.getRootView().getContext()) .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle("Block user")
-                        .setMessage("Are you sure you want to block this user?")
-                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                holder.root.setVisibility(v.GONE);
-                                holder.rel.setVisibility(v.GONE);
-
-                            }
-                        }).setNegativeButton("No",null).show();
-            }
-        });
+//        holder.block.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                new AlertDialog.Builder(v.getRootView().getContext()) .setIcon(android.R.drawable.ic_dialog_alert)
+//                        .setTitle("Block user")
+//                        .setMessage("Are you sure you want to block this user?")
+//                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                                holder.root.setVisibility(v.GONE);
+//                                holder.rel.setVisibility(v.GONE);
+//
+//                            }
+//                        }).setNegativeButton("No",null).show();
+//            }
+//        });
 
 
 
@@ -189,7 +189,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
             gpstext1 = itemView.findViewById(R.id.gpstext1);
             root = itemView.findViewById(R.id.single);
             rel = itemView.findViewById(R.id.rel);
-            block = itemView.findViewById(R.id.block_user_img);
+//            block = itemView.findViewById(R.id.block_user_img);
         }
     }
 

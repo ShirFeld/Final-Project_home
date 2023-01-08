@@ -82,7 +82,7 @@
             <LinearLayout
                 android:id="@+id/options"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="120dp"
                 android:background="@drawable/message_input_background"
                 android:orientation="vertical"
                 android:visibility="gone"
@@ -134,61 +134,61 @@
                             android:src="@drawable/location" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center"
-                        android:weightSum="2">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:weightSum="2">-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Block user: "
-                            android:textColor="@color/white"
-                            android:textSize="20dp" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="Block user: "-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textSize="20dp" />-->
 
-                        <ImageView
-                            android:id="@+id/block"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1.3"
-                            android:layout_gravity="right"
-                            android:src="@drawable/block_user" />
+<!--                        <ImageView-->
+<!--                            android:id="@+id/block"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_weight="1.3"-->
+<!--                            android:layout_gravity="right"-->
+<!--                            android:src="@drawable/block_user" />-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center"
-                        android:weightSum="2">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:weightSum="2">-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1.1"
-                            android:gravity="center"
-                            android:text="Unblock user: "
-                            android:textColor="@color/white"
-                            android:textSize="20dp" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_weight="1.1"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="Unblock user: "-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textSize="20dp" />-->
 
-                        <ImageView
-                            android:id="@+id/unBlock"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="right"
-                            android:src="@drawable/ic_user2" />
+<!--                        <ImageView-->
+<!--                            android:id="@+id/unBlock"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_gravity="right"-->
+<!--                            android:src="@drawable/ic_user2" />-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
                 </LinearLayout>
 

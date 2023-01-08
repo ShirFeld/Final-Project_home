@@ -34,16 +34,16 @@
             android:textStyle="bold" />
 
 
-        <ImageView
-            android:id="@+id/block_user_img"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_gravity="right"
-            android:src="@drawable/block_user" />
+<!--        <ImageView-->
+<!--            android:id="@+id/block_user_img"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_gravity="right"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:src="@drawable/block_user" />-->
 
         <LinearLayout
             android:layout_width="wrap_content"
