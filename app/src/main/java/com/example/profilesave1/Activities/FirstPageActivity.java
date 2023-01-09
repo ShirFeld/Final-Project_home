@@ -31,6 +31,7 @@ public class FirstPageActivity extends AppCompatActivity {
     This is the main activity. All the fragments will be placed here.
     The menu is declare here.
      */
+
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
@@ -57,7 +58,7 @@ public class FirstPageActivity extends AppCompatActivity {
         navigationView.setItemIconTintList(null);
 
         NavController navController = Navigation.findNavController(this,R.id.wrapper); // fragment
-        NavigationUI.setupWithNavController(navigationView,navController);
+        NavigationUI.setupWithNavController(navigationView,navController); // navigationView --> the menu on left
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -65,7 +66,7 @@ public class FirstPageActivity extends AppCompatActivity {
             userID = user.getUid();
 
 
-        reference.child(userID).addValueEventListener(new ValueEventListener() {
+        reference.child(userID).addValueEventListener(new ValueEventListener() { // connection to db
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 model modelProfile = snapshot.getValue(model.class);

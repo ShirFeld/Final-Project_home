@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null); // תעודה = credential
 
-
         mAuth.signInWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
@@ -173,8 +172,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                     Snackbar.make(findViewById(R.id.google_btn),"This user is already sign in.Press on Sign in button",Snackbar.LENGTH_LONG).show();
-
-
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -183,8 +180,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     // create new user using google
     private void addDetails() {
@@ -247,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //check if the user is connected or not
+    //if the user is already connect he will pass to FirstPageActivity
     @Override
     protected void onStart() {
         super.onStart();

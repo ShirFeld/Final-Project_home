@@ -68,7 +68,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
            holder.rel.setVisibility(View.GONE);
         }
 
-        // open the user details
+        // open the user details - to descframent
         holder.img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,7 +172,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.ViewHolder> { //
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView img1 , block;
+        ImageView img1 ;
         TextView nametext, citytext,agetext,agetext1,gpstext,gpstext0,gpstext1;
         CardView root ;
         RelativeLayout rel;

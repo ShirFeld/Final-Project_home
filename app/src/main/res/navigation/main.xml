@@ -5,6 +5,7 @@
     android:id="@+id/main"
     app:startDestination="@id/recview">
 
+<!--    The system of navigation-->
     <fragment
         android:id="@+id/recview"
         android:name="com.example.profilesave1.Fragments.recfragment"

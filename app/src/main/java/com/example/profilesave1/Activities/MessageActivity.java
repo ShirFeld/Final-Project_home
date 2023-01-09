@@ -69,11 +69,11 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
 
+        // receive data from chat fragment
         usernameOfTheRoommate = getIntent().getStringExtra("username_of_roommate");
         emailOfRoommate = getIntent().getStringExtra("email_of_roommate");
 
@@ -190,6 +190,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     }
 
     static int counter = 0;
+    // open and close for menu
     public void closeAndOpen() {
         if (counter % 2 != 0)
             myMenuOptions.setVisibility(View.GONE);
@@ -206,6 +207,8 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
                 String myUsername = "";
                 if (snapshot.getValue(User.class) != null)
                     myUsername = snapshot.getValue(User.class).getName();
+
+                // compareTo --> from Comparable (-1 , 0 , 1)
                 if (usernameOfTheRoommate.compareTo(myUsername) > 0)
                     chatRoomId = myUsername + usernameOfTheRoommate;
                 else if (usernameOfTheRoommate.compareTo(myUsername) == 0)
@@ -225,7 +228,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
         FirebaseDatabase.getInstance().getReference("messages/" + chatRoomId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                messages.clear();
+                messages.clear();  //שלא יהיו כפילויות של הודעות
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     messages.add(dataSnapshot.getValue(Message.class));     // shows us all the messages
                 }
@@ -243,6 +246,7 @@ public class MessageActivity extends AppCompatActivity {  // this class is the r
     // My current location
     public void getLocation(View view) {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        // check if there is a permission
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;

@@ -175,10 +175,7 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
         search_btn = view.findViewById(R.id.search_btn);
 
 
-
-
         ArrayList<User> onlyOne = new ArrayList<>(); // the current user - to take the Latitude and Longitude.
-
 
 
         // gives us all the users except of getCurrentUser()
@@ -201,8 +198,6 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                         }
                     }
                 }
-
-
 
 
                 // check if the current user has Longitude and Latitude : yes -> show on LinearLayout. no : LinearLayout gone
@@ -267,7 +262,6 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
                                     double distance = distanceBetween(la,lo,Double.parseDouble(listU.get(i).getLatitude()) , Double.parseDouble(listU.get(i).getLongitude())) / 1000;
                                     distance = round(distance ,1);
 
-                                    System.out.println(distance + " %%%%%%%%%%%%%%%%%%%%%%%%");
 
                                     if (distance >= Integer.parseInt(locationStart) && distance <= Integer.parseInt(locationFinish)){
                                         if(a >= ageStart1 && a <= ageFinish1  &&

@@ -182,6 +182,7 @@ public class PhoneActivity extends AppCompatActivity {
         final String aboutMe = "";
 
 
+
         //register user if pass authentication
         mAuth.createUserWithEmailAndPassword(email2.getText().toString() , password).
                 addOnSuccessListener(new OnSuccessListener<AuthResult>() {

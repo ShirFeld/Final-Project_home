@@ -26,7 +26,6 @@ public class ForgotPassword extends AppCompatActivity {
     Button reset , back;
     ProgressBar progress;
     EditText enter_email;
-
     FirebaseAuth auth;
 
     @Override
@@ -48,7 +47,6 @@ public class ForgotPassword extends AppCompatActivity {
         reset = findViewById(R.id.reset_btn);
         back = findViewById(R.id.back);
         progress = findViewById(R.id.progress);
-
         auth = FirebaseAuth.getInstance();
     }
 

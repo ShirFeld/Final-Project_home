@@ -16,7 +16,7 @@ import com.example.profilesave1.Models.model;
 import com.example.profilesave1.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-
+// we can delete
 public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewholder>  // bring us data from database to singlerowdesign (search)
 {
 

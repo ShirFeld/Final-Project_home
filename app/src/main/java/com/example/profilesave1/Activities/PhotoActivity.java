@@ -31,6 +31,7 @@ public class PhotoActivity extends AppCompatActivity {
     /*
     This activity gives the options to upload a picture from user device to the app.
      */
+
     // request code for a method (onActivityResult)
     private final int REQUEST_CODE = 22;
     // views for button
@@ -130,7 +131,7 @@ public class PhotoActivity extends AppCompatActivity {
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                       users.child(currentUser.getUid()).child("url").setValue(uri.toString());
+                       users.child(currentUser.getUid()).child("url").setValue(uri.toString()); // put the link from storage to realtime db
                        // progressBar.setVisibility(View.INVISIBLE);
                         progressDialog.dismiss();
                         Toast.makeText(PhotoActivity.this, "Uploaded successfully", Toast.LENGTH_SHORT).show();
@@ -138,6 +139,7 @@ public class PhotoActivity extends AppCompatActivity {
                     }
                 });
             }
+            // shows the percentage of the uploading od the picture
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(
