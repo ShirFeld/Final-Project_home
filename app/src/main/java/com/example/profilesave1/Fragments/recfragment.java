@@ -201,11 +201,12 @@ public class recfragment extends Fragment implements AdapterView.OnItemSelectedL
 
 
                 // check if the current user has Longitude and Latitude : yes -> show on LinearLayout. no : LinearLayout gone
-                if (onlyOne.get(0).getLatitude().equals("") || onlyOne.get(0).getLongitude().equals("")){
-                    location.setVisibility(View.GONE);
+                if (onlyOne.size()>0){
+                    if (onlyOne.get(0).getLatitude().equals("") || onlyOne.get(0).getLongitude().equals("")){
+                        location.setVisibility(View.GONE);
+                    }
+                    else location.setVisibility(View.VISIBLE);
                 }
-                else location.setVisibility(View.VISIBLE);
-
 
                 for (int i = 0; i < list.size(); i++) {
                     if (list.get(i) != null)

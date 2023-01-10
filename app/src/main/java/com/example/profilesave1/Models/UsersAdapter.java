@@ -48,6 +48,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserHolder> 
         return users.size();
     }
 
+    // the bubbles in the chat fragment
     class UserHolder extends RecyclerView.ViewHolder{  // Each line in the list - includes a picture and name of the user
             TextView txtUsername;
             ImageView imageView;

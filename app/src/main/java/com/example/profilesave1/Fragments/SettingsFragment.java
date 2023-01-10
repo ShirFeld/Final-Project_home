@@ -16,8 +16,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.profilesave1.Activities.MainActivity;
 import com.example.profilesave1.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -186,14 +188,16 @@ public class SettingsFragment extends Fragment {
         deleteAccount.setTitle("Are you sure you want to delete your account? ");
 
         deleteAccount.setPositiveButton("yes" ,(dialog, which) -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
             // delete from auth
-            FirebaseAuth.getInstance().getCurrentUser().delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
-                public void onSuccess(Void unused) {
+                public void onComplete(@NonNull Task<Void> task) {
                     Toast.makeText(getActivity(), "Account deleted successfully", Toast.LENGTH_SHORT).show();
                     FirebaseAuth.getInstance().signOut();
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(getActivity(), MainActivity.class);
+//                    startActivity(intent);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
