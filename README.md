@@ -50,7 +50,7 @@ Authentication and Storage.
 
 ## **7. Filter Window**
 
-<img  src="/pics/7.PNG" title="Filter Window" />
+<img  src="/pics/7.png" title="Filter Window" />
 
 <br><br>
 
