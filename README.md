@@ -13,7 +13,7 @@ Authentication and Storage.
 
 ## **1. Splash Page**
 
-<img  src="/pics/1.PNG"  width="200" height="400" title="Splash Page" />
+<img  src="/pics/1.PNG"  width="300" height="500" title="Splash Page" />
 
 <br><br>
 
@@ -31,7 +31,7 @@ Authentication and Storage.
 
 ## **4. Sign-In Window**
 
-<img  src="/pics/4.PNG" title="‏‏Sign-In Window" />
+<img  src="/pics/4.PNG" width="200" height="400" title="‏‏Sign-In Window" />
 
 <br><br>
 
