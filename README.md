@@ -13,13 +13,13 @@ Authentication and Storage.
 
 ## **1. Splash Page**
 
-<img  src="./pics/‏‏1.PNG" title="Splash Page" />
+<img  src="pics/‏‏1.PNG" title="Splash Page" />
 
 <br><br>
 
 ## **2. Login Page**
 
-<img  src="./pics/‏‏2.PNG" title="Login Page" />
+<img  src=".pics/‏‏2.PNG" title="Login Page" />
 
 <br><br>
 
