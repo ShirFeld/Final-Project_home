@@ -1,12 +1,12 @@
 # Final-Project "Better Together"
 
-> One of the aftereffects of COVID-19 is the feeling of loneliness. This app is meant to help people to
+> One of the after effects of COVID-19 is the feeling of loneliness. This app is meant to help people to
 > connect with others so they can meet with a click of a button.
 
 #### <ins>About The App</ins>
 * Firebase -developed based on several services from Googles Firebase such as: Realtime database ,
 Authentication and Storage.
-* Users may login using their Gmail account or phone number.
+* Users may login using their gmail account or phone number.
 * Users can talk in a private chat with another user.
 * GPS is used to find the people around me.
 
