@@ -13,7 +13,7 @@ Authentication and Storage.
 
 ## **1. Splash Page**
 
-<img  src="pics/‏‏1.PNG" title="Splash Page" />
+<img  src="/pics/‏‏1.PNG" title="Splash Page" />
 
 <br><br>
 
