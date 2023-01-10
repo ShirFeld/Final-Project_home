@@ -188,16 +188,15 @@ public class SettingsFragment extends Fragment {
         deleteAccount.setTitle("Are you sure you want to delete your account? ");
 
         deleteAccount.setPositiveButton("yes" ,(dialog, which) -> {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            startActivity(intent);
             // delete from auth
             FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     Toast.makeText(getActivity(), "Account deleted successfully", Toast.LENGTH_SHORT).show();
                     FirebaseAuth.getInstance().signOut();
-//                    Intent intent = new Intent(getActivity(), MainActivity.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                    System.out.println("111111111111111111111");
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -214,8 +213,7 @@ public class SettingsFragment extends Fragment {
                 @Override
                 public void onSuccess(Void unused) {
                     //Toast.makeText(getActivity(), "Account deleted successfully from db", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -223,7 +221,6 @@ public class SettingsFragment extends Fragment {
                     Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-
 
         }); deleteAccount.setNegativeButton("no" , (dialog, which) -> {
             // close
