@@ -23,7 +23,7 @@ Authentication and Storage.
 
 <br><br>
 
-## **3. Registration Page **
+## **3. Registration Page**
 
 <img  src="./coding-app/pics/2.PNG" title="‏‏Registration Page" />
 
@@ -42,7 +42,7 @@ Authentication and Storage.
 
 <br><br>
 
-## **6. Search & Filter **
+## **6. Search & Filter**
 
 <img  src="./coding-app/pics/1.PNG" title="Search & Filter Page" />
 
@@ -104,7 +104,7 @@ Authentication and Storage.
 
 <br><br>
 
-## **16. Menu **
+## **16. Menu**
 
 <img  src="./coding-app/pics/list.PNG" title="Menu" />
 
