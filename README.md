@@ -19,7 +19,7 @@ Authentication and Storage.
 
 ## **2. Login Page**
 
-<img  src="/pics/2.PNG" title="Login Page" />
+<img  src="/pics/2.PNG" title="Login Page"  width="200" height="400"/>
 
 <br><br>
 
@@ -38,7 +38,7 @@ Authentication and Storage.
 
 ## **5. Forgot Password**
 
-<img  src="/pics/5.PNG" title="Reset Password Page" />
+<img  src="/pics/5.png" title="Reset Password Page" />
 
 <br><br>
 
