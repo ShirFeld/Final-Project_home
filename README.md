@@ -19,7 +19,7 @@ Authentication and Storage.
 
 ## **2. Login Page**
 
-<img  src="/pics/2.PNG" title="Login Page"  width="200" height="400"/>
+<img  src="/pics/2.PNG"  width="200" height="400" title="Login Page" />
 
 <br><br>
 
