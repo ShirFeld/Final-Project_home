@@ -113,5 +113,5 @@ Authentication and Storage.
 
 <br><br><br><br>
 
-> NOTE: ALL RIGHTS RESERVED TO Shir Feldman
+> NOTE: ALL RIGHTS RESERVED TO SHIR FELDMAN & MICHAEL VOLFSON
 
